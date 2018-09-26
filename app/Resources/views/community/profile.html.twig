@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% set i = 1 %}
+{% block body %}
+    <div class="mdl-grid">
+        <div class = "mdl-cell mdl-cell--4-col">
+            {% include 'community/includes/user-profile.html.twig' %}
+        </div>
+        <div class = "mdl-cell mdl-cell--8-col">
+
+            <p class="section-title">Favoris</p>
+            <div id="favoris">
+                <table class="mdl-data-table mdl-js-data-table" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric ">Nom</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Météo actuelle</th>
+                        <th>Voir</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for favorite in user.favorites %}
+                             <tr>
+                                 <td>{{ favorite.name }}</td>
+                                 <td>{{ favorite.lat }}</td>
+                                 <td>{{ favorite.lon }}</td>
+                                 <td id="favorite{{ i }}"></td>
+                                 <td><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                                        href="{{ path('app-coordinates', {'lat': favorite.lat, 'lon': favorite.lon }) }}">
+                                         <i class="material-icons">arrow_right_alt</i>
+                                     </a>
+                                 </td>
+                             </tr>
+                            {% set i = i+1 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="section-title">Statistiques</p>
+            <div id="stats">
+                <section class="section--footer mdl-color--white mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
+                        <b class="counter data-big" data-count="{{ user.markers }}">0</b>
+                        <p class="info-big">marqueurs</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
+                        <b class="counter data-big" data-count="{{ user.cities }}">0</b>
+                        <p class="info-big">villes</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
+                        <b class=" counter data-big" data-count="{{ user.favorites|length }}">0</b>
+                        <p class="info-big">favoris</p>
+                    </div>
+                </section>
+            </div>
+            <p class="section-title">Amis</p>
+            <div id="friends">
+                {% if user.friends is not empty %}
+                    <div class="row">
+                        {% for friend in user.friends %}
+                            <div class="col-md-3 text-center">
+                                <p><a href="{{ path('profile-index', { 'username': friend.username }) }}"><img class="profile-friend-avatar" src="{{ asset('uploads/users/' ~ friend.avatar) }}"></a></p>
+                                <p><a href="{{ path('profile-index', { 'username': friend.username }) }}">{{ friend.username }}</a></p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var user = {{ user.id }};
+        let j = 1;
+        {% for favorite in user.favorites %}
+            $.get("https://api.openweathermap.org/data/2.5/find?lat=" + {{ favorite.lat }} + "&lon=" + {{ favorite.lon }} + "&cnt=1&units=metric&appid=" + OWeatherMapAPIKey,
+                function(data) {
+                    if(data != null){
+                        let id = "#favorite" + j;
+                        $(id).append('<img class="weatherIcon" src="/icons/weather/' +  data.list[0].weather[0].icon  + '.png">');
+                        ++j;
+                    }
+                }
+            );
+        {% endfor %}
+    </script>
+{% endblock %}

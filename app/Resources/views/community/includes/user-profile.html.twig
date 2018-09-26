@@ -1,0 +1,86 @@
+<div class="col-md-4">
+<div class="section" >
+    <div class="mdl-typography--text-center">
+        <ul class="list-unstyled-custom">
+            <li>
+                <img class="profile-avatar" src="{{ asset('uploads/users/' ~ user.avatar) }}">
+            </li>
+            <li style="margin-top: 10px;">
+                <b style="font-size: 20px;">{{ user.username }}</b>
+            </li>
+            <li style="color: {{ user.role.roleColor }}">
+                <b>{{ user.role.roleName }}</b>
+            </li>
+        </ul>
+        <ul class="list-unstyled-custom">
+            {% if user.description is not empty %}
+                <li>
+                    "{{ user.description }}"
+                </li>
+            {% endif %}
+            <li>
+                Inscrit le {{ user.dateInscription | date('d/m/Y') }}
+            </li>
+            <li>
+                {% if app.user is not null %}
+                    {% if app.user.id == user.id %}
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                           href="{{ path('profile-edit', { 'username': app.user.username }) }}">
+                            Modifier le profil
+                        </a>
+                    {% elseif app.user in user.friends %}
+                        <a id="removeFriend" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white">
+                            Supprimer des amis
+                        </a>
+                    {% elseif app.user in user.pendingFriendRequests %}
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect dl-button--primary" disabled="disabled">
+                            Requête envoyée !
+                        </button>
+                    {% elseif user in app.user.pendingFriendRequests %}
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary acceptFriendRequest" data-user="{{ user.id }}">
+                            Accepter
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white removeFriendRequest" data-user="{{ user.id }}">
+                            Refuser
+                        </button>
+                    {% else %}
+                        <button id="addFriend" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                            Envoyer une demande d'ami
+                        </button>
+                    {% endif %}
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% if user.pendingFriendRequests is not empty and app.user == user %}
+    <div class="section" >
+        <div class="section-header">
+            <i class="fas fa-user-plus"></i>
+            <h2>Requêtes d'amis</h2>
+        </div>
+        <div class="section-content text-center">
+            <ul class="list-unstyled-custom">
+                {% for request in user.pendingFriendRequests %}
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>{{ request.username }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary acceptFriendRequest" data-user="{{ request.id }}">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-secondary removeFriendRequest" data-user="{{ request.id }}">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+</div>

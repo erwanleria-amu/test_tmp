@@ -1,0 +1,25 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+     avatars_dir: '%kernel.project_dir%/web/uploads/users/'
+
+services:
+    app.twig_extension:
+        class: AppBundle\Twig\ExcerptExtension
+        autowire: true
+        tags:
+            - { name: twig.extension }
+
+    app.doctrine.user_listener:
+        class: AppBundle\Doctrine\UserListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    app.security.provider:
+        class: AppBundle\Security\UserProvider
+        autowire: true
+
+    app.security.authenticator:
+        class: AppBundle\Security\UserAuthenticator
+        autowire: true

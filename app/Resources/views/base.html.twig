@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}MeteoRand{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_orange-red.min.css" />
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+                  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+                  crossorigin=""/>
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        {% endblock %}
+        <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+                integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+                crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    </head>
+    {% block page %}
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">{% block navTitle %}MétéoRando{% endblock %}</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        {% if not app.user %}
+                        <a class="mdl-navigation__link" href="{{ path('login') }}">Se connecter</a>
+                        {% endif %}
+                    </nav>
+                </div>
+            </header>
+            {% if app.user %}
+            <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50" aria-hidden="true">
+                <header class="drawer-header mdl-typography--text-center">
+                    <span style="margin-bottom: 10px"><img class="avatar" src="{{ asset('uploads/users/' ~ app.user.avatar) }}"></span>
+                    <div class="demo-avatar-dropdown">
+                        <span>{{ app.user.username }}</span>
+                    </div>
+                </header>
+                <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-900">
+                    <a class="mdl-navigation__link" href="{{ path('app') }}"><i class="material-icons">map</i> Carte</a>
+                    <a class="mdl-navigation__link" href="{{ path('app') }}"><i class="material-icons">event</i> Evènements</a>
+                    <a class="mdl-navigation__link" href="{{ path('profile-index', { username: app.user.username }) }}"><i class="material-icons">face</i> Profil</a>
+                    <a class="mdl-navigation__link" href="{{ path('logout') }}"><i class="material-icons">exit_to_app</i> Déconnexion</a>
+                </nav>
+            </div>
+            {% endif %}
+            <main class="mdl-layout__content">
+                {% block body %}{% endblock %}
+            </main>
+        </div>
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+            <script src="{{ asset('js/map-utils.js') }}"></script>
+            <script src="{{ asset('js/location.js') }}"></script>
+            <script>
+                $(".counter").each(function(){var t=$(this),n=t.attr("data-count");$({countNum:t.text()}).animate({countNum:n},{duration:2e3,easing:"linear",step:function(){t.text(Math.floor(this.countNum))},complete:function(){t.text(this.countNum)}})});
+            </script>
+            <script src="{{ asset('js/ajax.js') }}"></script>
+        {% endblock %}
+    </body>
+    {% endblock %}
+</html>

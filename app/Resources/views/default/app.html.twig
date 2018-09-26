@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body>
+        <div id="wrapper">
+            <div id="map"></div>
+
+            <form id="options">
+                <label for="radiusInput">Radius (max. 50)</label> <input type="number" value="5" min="0" id="radiusInput" name="radiusInput" autofocus="">
+                <label for="unitSelector">Units</label> <select id="unitSelector" name="unitSelector">
+                    <option value="km">Kilometers</option>
+                </select>
+                <p>Clic gauche pour placer/déplacer le marqueur{% if app.user %}, clic droit pour ajouter un favori{% endif %}.</p>
+            </form>
+        </div>
+        <table class="mdl-data-table mdl-js-data-table" width="100%">
+            <thead>
+            <tr>
+                <th class="mdl-typography--text-center" width="50%">Ville</th>
+                <th class="mdl-typography--text-center" width="50%">Météo</th>
+                <th class="mdl-typography--text-center" width="50%">Favori</th>
+            </tr>
+            </thead>
+            <tbody id="results">
+
+            </tbody>
+        </table>
+    </body>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        coordinates = {
+                lat: {{ coordinates.lat }},
+                lng: {{ coordinates.lon }}
+        };
+        map = L.map('map').setView(coordinates, 15);
+        marker = L.marker(coordinates).addTo(map);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDyAUYiB2W99SH25z5MlHfvo0n2wqHDESU"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}

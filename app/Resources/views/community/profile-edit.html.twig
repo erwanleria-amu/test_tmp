@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="mdl-grid">
+        <div class = "mdl-cell mdl-cell--4-col">
+            {% include 'community/includes/user-profile.html.twig' %}
+        </div>
+        <div class = "mdl-cell mdl-cell--8-col">
+            <b style="font-size: 20px;">Modifier le profil</b>
+            <div id="editProfile" class="mdl-grid">
+                {{ form_start(form) }}
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+                        {{ form_widget(form.description) }}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--file mdl-cell--12-col">
+                        <input class="mdl-textfield__input" placeholder="File" type="text" id="uploadFile" readonly/>
+                        <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                            <i class="material-icons">attach_file</i> {{ form_widget(form.avatar) }}
+                        </div>
+                    </div>
+                <div class="mdl-typography--text-center">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" type="submit">Modifier</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" onclick="window.history.back();">Annuler</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.getElementById("profile_edit_form_avatar").onchange = function () {
+            document.getElementById("uploadFile").value = this.files[0].name;
+        };
+    </script>
+{% endblock %}
