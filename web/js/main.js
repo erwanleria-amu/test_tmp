@@ -2,13 +2,29 @@
 
 
 // Copyright
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+
+//OpenTopoMap
+/*L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
+}).addTo(map);*/
+
+//http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
+
+// Copyright
+//http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
+
+// Copyright
+L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+
+//L.tileLayer('https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png').addTo(map);
+//L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png').addTo(map);
+//L.tileLayer('http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png').addTo(map);
 
 // Searchbar
 L.Control.geocoder().addTo(map);
@@ -99,6 +115,24 @@ function lookForRadiusChange()
 
 // Get
 function getNearestLocations(){
+    console.log(coordinates);
+    overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' + 
+    '[out:json][timeout:60];' + 
+    'node(around:' + radiusInput*1000 + ', ' + coordinates.lat + ', ' + coordinates.lon + ')[place=town];' + 
+    'out;';
+
+    dataOverpass = $.ajax({
+        url: overpassRequest,
+        dataType: 'json',
+        type: 'GET',
+        async: true,
+        crossDomain: true
+    }).done(function(returnOverpass){
+        console.log(returnOverpass);
+    }).fail(function(error){
+        console.log(error);
+    });
+
     $('#results').empty();
     $.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" + radiusInput + "&units=metric&appid=" + OWeatherMapAPIKey,
         function(data) {
@@ -125,7 +159,7 @@ function getNearestLocations(){
                                 starIcon = "star";
                                 startingClass = "removeFavorite";
                             }
-                            $('#results').append('<tr><td>' + value.name + '</td><td>' + value.weather[0].description + '<img src="/icons/weather/' +  value.weather[0].icon  + '.png"></td><td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon + '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
+                            $('#results').append('<tr><td>' + value.name + '</td><td>' + value.weather[0].description + ' (' + value.main.temp + ' °c)' + '<img src="/icons/weather/' +  value.weather[0].icon  + '.png"></td><td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon + '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
                         });
                     }
                 })
