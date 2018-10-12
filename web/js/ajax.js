@@ -85,3 +85,31 @@ $('#removeFriend').on('click', function () {
     });
 });
 
+$(document).on('click', '.joinEvent', function() {
+    let event = this;
+    $.ajax({
+        url: Routing.generate('join-event'),
+        type: 'POST',
+        data: {
+            eventId: $(this).attr('data-id')
+        }
+    }).done(function(data){
+        $(event).replaceWith('<img src="uploads/users/' + data + '" class="avatar">');
+    });
+});
+
+$('.quitEvent').on('click', function() {
+    let event = this;
+    $.ajax({
+        url: Routing.generate('quit-event'),
+        type: 'POST',
+        data: {
+            eventId: $(this).attr('data-id')
+        }
+    }).done(function(data){
+        let id = $(event).attr('data-id');
+        $('#user' + data).replaceWith('<button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="' + id + '"> <i class="material-icons">add</i></button>');
+        $(event).remove();
+    });
+});
+

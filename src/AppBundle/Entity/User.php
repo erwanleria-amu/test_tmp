@@ -6,10 +6,8 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
-use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * User
@@ -38,7 +36,6 @@ class User implements UserInterface, Serializable, EquatableInterface
 
     /**
      * @var string
-     *
      */
     private $plainPassword;
 

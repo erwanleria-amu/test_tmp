@@ -17,14 +17,15 @@ class LoginForm extends AbstractType
         $builder
             ->add('_username', TextType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Username'
+                    'class' => 'mdl-textfield__input',
+                    'placeholder' => 'Nom d\'utilisateur',
+                    'autofocus' => 'autofocus'
                 )
             ))
             ->add('_password', PasswordType::class, array(
                 'attr'=> array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Password'
+                    'class' => 'mdl-textfield__input',
+                    'placeholder' => 'Mot de passe'
                 )
             ));
     }

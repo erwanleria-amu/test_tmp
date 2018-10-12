@@ -233,4 +233,48 @@ class CommunityController extends Controller
             return new Response($favorite->getId());
         return new Response(0);
     }
+
+    /**
+     * @Route("/community/join-event", name="join-event", options={"expose" = true})
+     * @param Request $request
+     * @return Response
+     */
+    public function joinEventAction(Request $request){
+
+        $data = $request->request->all();
+
+        $user = $this->getUser();
+
+        $doctrine = $this->getDoctrine();
+        $event = $doctrine->getRepository('AppBundle:Event')
+            ->find($data['eventId']);
+
+        if($event != null) {
+            $event->addParticipant($user);
+            $doctrine->getManager()->flush();
+            return new Response($user->getAvatar());
+        }
+    }
+
+    /**
+     * @Route("/community/quit-event", name="quit-event", options={"expose" = true})
+     * @param Request $request
+     * @return Response
+     */
+    public function quitEventAction(Request $request){
+
+        $data = $request->request->all();
+
+        $user = $this->getUser();
+
+        $doctrine = $this->getDoctrine();
+        $event = $doctrine->getRepository('AppBundle:Event')
+            ->find($data['eventId']);
+
+        if($event != null) {
+            $event->removeParticipant($user);
+            $doctrine->getManager()->flush();
+            return new Response($user->getUsername());
+        }
+    }
 }

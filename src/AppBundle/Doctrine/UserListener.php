@@ -14,6 +14,7 @@ use AppBundle\Entity\User;
 use DateTime;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserListener implements EventSubscriber
@@ -53,6 +54,8 @@ class UserListener implements EventSubscriber
         $entity->setPassword($encoded);
         $entity->setDateInscription(new DateTime());
         $entity->setAvatar('default.png');
+        $entity->setCities(0);
+        $entity->setMarkers(0);
 
         $baseRole = $args->getEntityManager()->getRepository('AppBundle:Role')
             ->findOneBy(['roleName' => 'Membre']);
@@ -63,6 +66,12 @@ class UserListener implements EventSubscriber
             $baseRole->setIsModerator(0);
             $baseRole->setRoleName('Membre');
             $baseRole->setRoleColor('#2E9AFE');
+
+            $args->getEntityManager()->persist($baseRole);
+            try {
+                $args->getEntityManager()->flush();
+            } catch (OptimisticLockException $e) {
+            }
         }
 
         $entity->setRole($baseRole);

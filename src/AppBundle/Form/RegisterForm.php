@@ -17,12 +17,12 @@ class RegisterForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('_username', TextType::class, array('attr' => array('class' => 'form-control', 'placeholder' => 'Username')))
-            ->add('_email', EmailType::class, array('attr' => array('class' => 'form-control', 'placeholder' => 'Email')))
+            ->add('_username', TextType::class, array('attr' => array('class' => 'mdl-textfield__input', 'placeholder' => 'Nom d\'utilisateur')))
+            ->add('_email', EmailType::class, array('attr' => array('class' => 'mdl-textfield__input', 'placeholder' => 'Email')))
             ->add('_plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password', 'attr' => array('class' => 'form-control', 'placeholder' => 'Password')),
-                'second_options' => array('label' => 'Repeat Password', 'attr' => array('class' => 'form-control', 'placeholder' => 'Repeat Password'))
+                'first_options'  => array('label' => 'Mot de passe', 'attr' => array('class' => 'mdl-textfield__input', 'placeholder' => 'Mot de passe')),
+                'second_options' => array('label' => 'Confirmer le mot de passe', 'attr' => array('class' => 'mdl-textfield__input', 'placeholder' => 'Confirmer le mot de passe'))
             ))
             /*
             ->add('termsAccepted', CheckboxType::class, array('label' => 'J\'accepte', 'required' => false, 'mapped' => false, 'constraints' => new IsTrue()))

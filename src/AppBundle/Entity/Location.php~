@@ -184,4 +184,28 @@ class Location
     {
         return $this->owm_id;
     }
+
+    /**
+     * Set mapId
+     *
+     * @param integer $mapId
+     *
+     * @return Location
+     */
+    public function setMapId($mapId)
+    {
+        $this->map_id = $mapId;
+
+        return $this;
+    }
+
+    /**
+     * Get mapId
+     *
+     * @return integer
+     */
+    public function getMapId()
+    {
+        return $this->map_id;
+    }
 }

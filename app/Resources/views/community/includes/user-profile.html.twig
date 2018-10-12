@@ -1,5 +1,3 @@
-<div class="col-md-4">
-<div class="section" >
     <div class="mdl-typography--text-center">
         <ul class="list-unstyled-custom">
             <li>
@@ -52,35 +50,3 @@
             </li>
         </ul>
     </div>
-</div>
-
-{% if user.pendingFriendRequests is not empty and app.user == user %}
-    <div class="section" >
-        <div class="section-header">
-            <i class="fas fa-user-plus"></i>
-            <h2>Requêtes d'amis</h2>
-        </div>
-        <div class="section-content text-center">
-            <ul class="list-unstyled-custom">
-                {% for request in user.pendingFriendRequests %}
-                    <li>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>{{ request.username }}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-primary acceptFriendRequest" data-user="{{ request.id }}">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                                <button class="btn btn-secondary removeFriendRequest" data-user="{{ request.id }}">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-{% endif %}
-</div>

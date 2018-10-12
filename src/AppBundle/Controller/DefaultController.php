@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\NewEventForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,6 +52,27 @@ class DefaultController extends Controller
         return $this->render('default/app.html.twig', [
             'coordinates' => $coordinates
         ]);
+    }
+
+    /**
+     * @Route("/feed", name="feed")
+     */
+    public function feedAction(Request $request){
+
+        $events = $this->getDoctrine()->getRepository('AppBundle:Event')
+            ->findAll();
+
+        return $this->render('default/feed.html.twig', [
+            'events' => $events
+        ]);
+    }
+
+    /**
+     * @Route("/feed/new", name="feed-new")
+     */
+    public function feedNewAction(Request $request) {
+        $form = $this->createForm(NewEventForm::class);
+
     }
 
 }

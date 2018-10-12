@@ -6,7 +6,6 @@
             {% include 'community/includes/user-profile.html.twig' %}
         </div>
         <div class = "mdl-cell mdl-cell--8-col">
-
             <p class="section-title">Favoris</p>
             <div id="favoris">
                 <table class="mdl-data-table mdl-js-data-table" width="100%">
@@ -16,7 +15,7 @@
                         <th>Latitude</th>
                         <th>Longitude</th>
                         <th>Météo actuelle</th>
-                        <th>Voir</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,10 +26,14 @@
                                  <td>{{ favorite.lat }}</td>
                                  <td>{{ favorite.lon }}</td>
                                  <td id="favorite{{ i }}"></td>
-                                 <td><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                                 <td>
+                                    <a title="Voir" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon"
                                         href="{{ path('app-coordinates', {'lat': favorite.lat, 'lon': favorite.lon }) }}">
                                          <i class="material-icons">arrow_right_alt</i>
                                      </a>
+                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon removeFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
+                                        <i class="material-icons">clear</i>
+                                    </button>
                                  </td>
                              </tr>
                             {% set i = i+1 %}
@@ -38,6 +41,7 @@
                     </tbody>
                 </table>
             </div>
+            <!--
             <p class="section-title">Statistiques</p>
             <div id="stats">
                 <section class="section--footer mdl-color--white mdl-grid">
@@ -55,14 +59,35 @@
                     </div>
                 </section>
             </div>
+            -->
+
+            {% if app.user == user and user.pendingFriendRequests is not empty %}
+                <p class="section-title">Demandes d'amis</p>
+                <div id="requests">
+                     <div class="mdl-grid">
+                        {% for request in user.pendingFriendRequests %}
+                        <div class="mdl-cell mdl-cell--3-col mdl-typography--text-center">
+                            <a href="{{ path('profile-index', { 'username': request.username }) }}"><img src="{{ asset('uploads/users/' ~ request.avatar) }}" class="avatar"></a>
+                            <p style="font-weight: bold;">{{ request.username }}</p>
+                            <button title="Accepter" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon acceptFriendRequest" data-user="{{ request.id }}">
+                                <i class="material-icons">check</i>
+                            </button>
+                            <button title="Refuser" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon removeFriendRequest" data-user="{{ request.id }}">
+                                <i class="material-icons">clear</i>
+                            </button>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             <p class="section-title">Amis</p>
             <div id="friends">
                 {% if user.friends is not empty %}
-                    <div class="row">
+                     <div class="mdl-grid">
                         {% for friend in user.friends %}
-                            <div class="col-md-3 text-center">
-                                <p><a href="{{ path('profile-index', { 'username': friend.username }) }}"><img class="profile-friend-avatar" src="{{ asset('uploads/users/' ~ friend.avatar) }}"></a></p>
-                                <p><a href="{{ path('profile-index', { 'username': friend.username }) }}">{{ friend.username }}</a></p>
+                            <div class="mdl-cell mdl-cell--3-col mdl-typography--text-center">
+                                <a href="{{ path('profile-index', { 'username': friend.username }) }}"><img src="{{ asset('uploads/users/' ~ friend.avatar) }}" class="avatar"></a>
+                               <p style="font-weight: bold;">{{ friend.username }}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -88,5 +113,8 @@
                 }
             );
         {% endfor %}
+        $('.removeFavorite').on('click', function() {
+            $(this).closest('tr').fadeOut();
+        })
     </script>
 {% endblock %}
