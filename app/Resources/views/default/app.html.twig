@@ -37,7 +37,6 @@
                 lng: {{ coordinates.lon }}
         };
         map = L.map('map').setView(coordinates, 15);
-        marker = L.marker(coordinates).addTo(map);
     </script>
     <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDyAUYiB2W99SH25z5MlHfvo0n2wqHDESU"></script>
     <script src="{{ asset('js/main.js') }}"></script>

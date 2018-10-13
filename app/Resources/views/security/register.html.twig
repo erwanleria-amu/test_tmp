@@ -1,41 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {% for message in app.flashes('register') %}
-        <div class="alert alert-dismissible alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-    <div class="section">
-        <div class="section-header">
-            <i class="fas fa-sign-in-alt"></i>
-            <h2>Inscription</h2>
-        </div>
-            <div class="section-content">
+
+    <div class="mdl-grid">
+        <div class="mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+            <div class="mdl-card__title mdl-color--primary">
+                <h2 style="font-weight: bold;" class="mdl-card__title-text mdl-color-text--white">Inscription</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-grid">
+                {% for message in app.flashes('register') %}
+                    <b class="mdl-color-text--accent">{{ message }}</b>
+                {% endfor %}
                 {{ form_start(form) }}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            {{ form_row(form._username) }}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            {{ form_row(form._email) }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ form_row(form._plainPassword.first) }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ form_row(form._plainPassword.second) }}
-                        </div>
-                    </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_username">Nom d'utilisateur</label>
+                    {{ form_widget(form._username) }}
                 </div>
-                <button class="btn btn-primary pull-right" type="submit">Register</button>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_username">Email</label>
+                    {{ form_widget(form._email) }}
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_password">Mot de passe</label>
+                    {{ form_widget(form._plainPassword.first) }}
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_password">Confirmer le mot de passe</label>
+                    {{ form_widget(form._plainPassword.second) }}
+                </div>
+
+                <p style="margin-left: 8px">Déjà un compte ? <a href="{{ path('login') }}">Se connecter</a></p>
+                <div class="mdl-cell mdl-cell--12-col send-button" align="right">
+                    <button type="submit"  class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                        S'inscrire
+                    </button>
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>
+    </div>
 {% endblock %}

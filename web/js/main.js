@@ -1,5 +1,5 @@
 
-
+//http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 // Copyright
 
@@ -57,36 +57,10 @@ function hasNumber(myString) {
     return /\d/.test(myString);
 }
 
-function displayFavorites(){
-    $.each(favorites, function (key, value) {
-        value.addListener('click', function() {
-            map.removeLayer(value);
-            favorites.pop();
-        });
-        value.addTo(map);
-    })
-}
-
-function manageBookmarks(e) {
-    let favorite = L.marker(e.latlng, {icon: favoriteIcon}).addTo(map);
-    favorites.push(favorite);
-    favorite.addListener('click', function() {
-        map.removeLayer(value);
-        favorites.pop();
-    });
-}
-
-function removeMarker(){
-    if (marker != null) {
-        map.removeLayer(marker);
-    }
-}
-
 // Move or place the circle area on the map then get all nearest locations weather
 function onMapClick(e) {
     removeCircle();
     coordinates = e.latlng;
-    //removeMarker();
     //marker = L.marker(coordinates).addTo(map);
     clickCircle = L.circle(coordinates, radiusInput*1000, {
         color: '#f07300',
@@ -134,7 +108,8 @@ function getNearestLocations(){
     });
 
     $('#results').empty();
-    $.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" + radiusInput + "&units=metric&appid=" + OWeatherMapAPIKey,
+    $.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" +
+        radiusInput + "&units=metric&appid=" + OWeatherMapAPIKey,
         function(data) {
             let noRepeat = [];
             console.log(data);
@@ -159,7 +134,13 @@ function getNearestLocations(){
                                 starIcon = "star";
                                 startingClass = "removeFavorite";
                             }
-                            $('#results').append('<tr><td>' + value.name + '</td><td>' + value.weather[0].description + ' (' + value.main.temp + ' °c)' + '<img src="/icons/weather/' +  value.weather[0].icon  + '.png"></td><td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon + '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
+
+                            $('#results').append('<tr>' +
+                                '<td>' + value.name + '</td>' +
+                                '<td>' + value.weather[0].description + '(' + parseInt(value.main.temp) + '°C)<img src="/icons/weather/' +  value.weather[0].icon  + '.png"></td>' +
+                                '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
+                                'data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon +
+                                '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
                         });
                     }
                 })
