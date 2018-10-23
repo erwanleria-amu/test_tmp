@@ -37,7 +37,7 @@ let clickCircle;
 // Listeners
 map.on('click', onMapClick);
 map.on('contextmenu', removeCircle);
-$('#radiusInput').on('input', lookForRadiusChange);
+$('#radiusInput').on('input change keyup', lookForRadiusChange);
 
 /*
 displayFavorites();
@@ -90,14 +90,14 @@ function lookForRadiusChange()
 // Get
 function getNearestLocations(){
     console.log(coordinates);
+    console.log(radiusInput);
     overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' + 
     '[out:json][timeout:60];' + 
-    'node(around:' + radiusInput*1000 + ', ' + coordinates.lat + ', ' + coordinates.lon + ')[place=town];' + 
-    'out;' + 
-    'node(around:' + radiusInput*1000 + ', ' + coordinates.lat + ', ' + coordinates.lon + ')[place=village];' +
+    'node(around:' + radiusInput*1000 + ',' + coordinates.lat + ',' + coordinates.lng + ')[place=town];' + 
     'out;';
+    //console.log(overpassRequest);
     /*'[out:json][timeout:60];node(around:20000,48.857487002645485,2.335205071078028)[place=town];out;' +
-    'node(around:20000,48.857487002645485,2.335205071078028)[place=village];out;';*/
+    'node(around:20,48.857487002645485,2.335205071078028)[place=village];out;';*/
 
     dataOverpass = $.ajax({
         url: overpassRequest,
@@ -106,7 +106,18 @@ function getNearestLocations(){
         async: true,
         crossDomain: true
     }).done(function(returnOverpass){
-        console.log(returnOverpass);
+        nearCities = [];
+        console.log(returnOverpass.elements)
+         returnOverpass.elements.forEach(element => {
+            returnElement = $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&APPID=" + OWeatherMapAPIKeyYoa);
+            console.log(returnElement);
+            console.log(returnElement.responseJSON);
+            nearCities.push(returnElement);
+         });
+         console.log(nearCities);
+         /*if(nearCities != null){
+             $each
+         }*/
     }).fail(function(error){
         console.log(error);
     });
@@ -151,8 +162,7 @@ function getNearestLocations(){
             }
         }
     );*/
-    nearCities = [];
-    console.log(dataOverpass.elements);
+
     /*dataOverpass.elements.forEach(element => {
         console.log(element);
     });*/
