@@ -99,7 +99,7 @@ $ php bin/console server:run
 #Vous arrivez sur la page web de MétéoRando
 
 ## Aparté : Creer un projet symfony
-$ symfony new test
+$ symfony new test 3.4
 
  Downloading Symfony...
 
