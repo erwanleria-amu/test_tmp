@@ -93,7 +93,11 @@ function getNearestLocations(){
     overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' + 
     '[out:json][timeout:60];' + 
     'node(around:' + radiusInput*1000 + ', ' + coordinates.lat + ', ' + coordinates.lon + ')[place=town];' + 
+    'out;' + 
+    'node(around:' + radiusInput*1000 + ', ' + coordinates.lat + ', ' + coordinates.lon + ')[place=village];' +
     'out;';
+    /*'[out:json][timeout:60];node(around:20000,48.857487002645485,2.335205071078028)[place=town];out;' +
+    'node(around:20000,48.857487002645485,2.335205071078028)[place=village];out;';*/
 
     dataOverpass = $.ajax({
         url: overpassRequest,
@@ -108,7 +112,7 @@ function getNearestLocations(){
     });
 
     $('#results').empty();
-    $.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" +
+    /*$.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" +
         radiusInput + "&units=metric&appid=" + OWeatherMapAPIKey,
         function(data) {
             let noRepeat = [];
@@ -146,7 +150,13 @@ function getNearestLocations(){
                 })
             }
         }
-    );
+    );*/
+    nearCities = [];
+    console.log(dataOverpass.elements);
+    /*dataOverpass.elements.forEach(element => {
+        console.log(element);
+    });*/
+    //$.get("https://api.openweathermap.org/data/2.5/forecast?id="
 }
 
 getNearestLocations();
