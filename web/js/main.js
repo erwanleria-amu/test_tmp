@@ -117,57 +117,63 @@ function lookForRadiusChange()
 getNearestLocations();*/
 
 function getNearestLocations() {
-        $('#results').empty();
-        overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' +
-            '[out:json][timeout:60];' +
-            'node(around:' + radiusInput * 1000 + ',' + coordinates.lat + ',' + coordinates.lng + ')[place=town];' +
-            'out;';
+    $('#results').empty();
+    overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' +
+        '[out:json][timeout:60];' +
+        'node(around:' + radiusInput * 1000 + ',' + coordinates.lat + ',' + coordinates.lng + ')[place=city];' +
+        'out;' + 
+        'node(around:' + radiusInput * 1000 + ',' + coordinates.lat + ',' + coordinates.lng + ')[place=town];' +
+        'out;' + 
+        'node(around:' + radiusInput * 1000 + ',' + coordinates.lat + ',' + coordinates.lng + ')[place=village];' +
+        'out;';
 
-        dataOverpass = $.ajax({
-            url: overpassRequest,
-            dataType: 'json',
-            type: 'GET',
-            async: true,
-            crossDomain: true
-        }).done(function (returnOverpass) {
-            nearCities = [];
-            returnOverpass.elements.forEach(element => {
-                $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric" + "&APPID=" + OWeatherMapAPIKeyYoa, function (data) {
-                    $('#results').empty();
-                    let noRepeat = [];
-                    console.log(data);
-                    if(data != null) {
-                        if ($.inArray(data.name, noRepeat) === -1 && !hasNumber(data.name)) {
-                            noRepeat.push(data.name);
-                            let id = 0;
-                            let starIcon = "star_border";
-                            let startingClass = "addFavorite";
-                            $.ajax({
-                                url: Routing.generate('get-location'),
-                                type: 'POST',
-                                context: this,
-                                data: {
-                                    map_id: data.id
-                                }
-                            }).done(function (data2) {
-                                if (data2 > 0) {
-                                    id = data2;
-                                    starIcon = "star";
-                                    startingClass = "removeFavorite";
-                                }
-                                $('#results').append('<tr>' +
-                                    '<td>' + data.name + '</td>' +
-                                    '<td>' + data.weather[0].description + '(' + parseInt(data.main.temp) + '°C)<img src="/icons/weather/' + data.weather[0].icon + '.png"></td>' +
-                                    '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
-                                    'data-name="' + data.name + '" data-lat="' + data.coord.lat + '" data-lng="' + data.coord.lon +
-                                    '" data-id="' + id + '" data-map-id="' + data.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
-                            });
-                        }
+    dataOverpass = $.ajax({
+        url: overpassRequest,
+        dataType: 'json',
+        type: 'GET',
+        async: true,
+        crossDomain: true
+    }).done(function (returnOverpass) {
+        nearCities = [];
+        let i = 0;
+        returnOverpass.elements.forEach(element => {
+            i++; if (i > 5) break; //Limiter à 5 requêtes max
+            $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric" + "&APPID=" + OWeatherMapAPIKeyYoa, function (data) {
+                $('#results').empty();
+                let noRepeat = [];
+                console.log(data);
+                if(data != null) {
+                    if ($.inArray(data.name, noRepeat) === -1 && !hasNumber(data.name)) {
+                        noRepeat.push(data.name);
+                        let id = 0;
+                        let starIcon = "star_border";
+                        let startingClass = "addFavorite";
+                        $.ajax({
+                            url: Routing.generate('get-location'),
+                            type: 'POST',
+                            context: this,
+                            data: {
+                                map_id: data.id
+                            }
+                        }).done(function (data2) {
+                            if (data2 > 0) {
+                                id = data2;
+                                starIcon = "star";
+                                startingClass = "removeFavorite";
+                            }
+                            $('#results').append('<tr>' +
+                                '<td>' + data.name + '</td>' +
+                                '<td>' + data.weather[0].description + '(' + parseInt(data.main.temp) + '°C)<img src="/icons/weather/' + data.weather[0].icon + '.png"></td>' +
+                                '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
+                                'data-name="' + data.name + '" data-lat="' + data.coord.lat + '" data-lng="' + data.coord.lon +
+                                '" data-id="' + id + '" data-map-id="' + data.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
+                        });
                     }
-                });
+                }
             });
-        }).fail(function (error) {
-            console.log(error);
         });
+    }).fail(function (error) {
+        console.log(error);
+    });
 }
 getNearestLocations();
