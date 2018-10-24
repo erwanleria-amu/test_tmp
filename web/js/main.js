@@ -109,10 +109,9 @@ function getNearestLocations(){
         nearCities = [];
         console.log(returnOverpass.elements)
          returnOverpass.elements.forEach(element => {
-            returnElement = $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&APPID=" + OWeatherMapAPIKeyYoa);
-            console.log(returnElement);
-            console.log(returnElement.responseJSON);
-            nearCities.push(returnElement);
+            $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric&APPID=" + OWeatherMapAPIKeyYoa, function (data) {
+                nearCities.push(data);
+            });
          });
          console.log(nearCities);
          /*if(nearCities != null){
