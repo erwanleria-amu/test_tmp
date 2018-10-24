@@ -31,7 +31,7 @@
                                         href="{{ path('app-coordinates', {'lat': favorite.lat, 'lon': favorite.lon }) }}">
                                          <i class="material-icons">arrow_right_alt</i>
                                      </a>
-                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon removeFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
+                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon removeProfileFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
                                         <i class="material-icons">clear</i>
                                     </button>
                                  </td>

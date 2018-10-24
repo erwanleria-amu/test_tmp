@@ -72,6 +72,19 @@ $(document).on('click', '.removeFavorite', function () {
     });
 });
 
+$(document).on('click', '.removeProfileFavorite', function () {
+    $.ajax({
+        url: Routing.generate('remove-favorite'),
+        type: 'POST',
+        context: this,
+        data: {
+            id: $(this).attr('data-id')
+        }
+    }).done(function(data){
+        $(this).parent().parent().fadeOut();
+    });
+});
+
 
 $('#removeFriend').on('click', function () {
     $.ajax({

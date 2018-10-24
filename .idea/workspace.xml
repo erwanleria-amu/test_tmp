@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a31064e0-f0b1-4b3b-a17f-c82110e3d5ed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/community/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/community/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/ajax.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +34,11 @@
         <counts>
           <entry key="css" value="5" />
           <entry key="dist" value="1" />
-          <entry key="js" value="5" />
+          <entry key="js" value="6" />
           <entry key="json" value="3" />
           <entry key="php" value="71" />
           <entry key="png" value="1" />
-          <entry key="twig" value="77" />
+          <entry key="twig" value="78" />
           <entry key="yml" value="19" />
         </counts>
       </usages-collector>
@@ -46,10 +47,10 @@
           <entry key="CSS" value="5" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="5" />
+          <entry key="JavaScript" value="6" />
           <entry key="PHP" value="71" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="77" />
+          <entry key="Twig" value="78" />
           <entry key="YAML" value="19" />
         </counts>
       </usages-collector>
@@ -57,9 +58,9 @@
         <counts>
           <entry key="css" value="306" />
           <entry key="dummy" value="61" />
-          <entry key="js" value="223" />
+          <entry key="js" value="269" />
           <entry key="php" value="3586" />
-          <entry key="twig" value="1167" />
+          <entry key="twig" value="1179" />
           <entry key="txt" value="147" />
           <entry key="yml" value="118" />
         </counts>
@@ -67,10 +68,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="306" />
-          <entry key="JavaScript" value="223" />
+          <entry key="JavaScript" value="269" />
           <entry key="PHP" value="3586" />
           <entry key="PLAIN_TEXT" value="208" />
-          <entry key="Twig" value="1167" />
+          <entry key="Twig" value="1179" />
           <entry key="YAML" value="118" />
         </counts>
       </usages-collector>
@@ -79,10 +80,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/js/main.js">
+        <entry file="file://$PROJECT_DIR$/web/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="139" column="84" selection-start-line="139" selection-start-column="84" selection-end-line="139" selection-end-column="84" />
+            <state relative-caret-position="288">
+              <caret line="84" column="7" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="84" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/community/profile.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="33" column="184" selection-start-line="33" selection-start-column="184" selection-end-line="33" selection-end-column="184" />
             </state>
           </provider>
         </entry>
@@ -112,8 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="G:/DiscoFunk/src/AppBundle/Security/UserProvider.php" />
-        <option value="G:/DiscoFunk/src/AppBundle/Security/UserAuthenticator.php" />
         <option value="G:/DiscoFunk/src/AppBundle/Doctrine/UserListener.php" />
         <option value="G:/DiscoFunk/composer.json" />
         <option value="G:/DiscoFunk/app/Resources/views/admin/add-user.html.twig" />
@@ -163,6 +171,8 @@
         <option value="G:/DiscoFunk/app/Resources/views/default/includes/display-artists.html.twig" />
         <option value="G:/DiscoFunk/app/Resources/views/default/includes/display-vinyls.html.twig" />
         <option value="$PROJECT_DIR$/web/js/main.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/community/profile.html.twig" />
+        <option value="$PROJECT_DIR$/web/js/ajax.js" />
       </list>
     </option>
   </component>
@@ -242,6 +252,35 @@
             <path>
               <item name="MeteoRando" type="b2602c69:ProjectViewProjectNode" />
               <item name="MeteoRando" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeteoRando" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeteoRando" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeteoRando" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeteoRando" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="community" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeteoRando" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeteoRando" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeteoRando" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeteoRando" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -311,18 +350,18 @@
       <workItem from="1540293797214" duration="171000" />
       <workItem from="1540333760525" duration="28000" />
       <workItem from="1540368583517" duration="1242000" />
-      <workItem from="1540391191000" duration="1751000" />
+      <workItem from="1540391191000" duration="2079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33223000" />
+    <option name="totallyTimeSpent" value="33551000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28954422" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28954422" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -337,7 +376,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="12" visible="true" weight="0.32952926" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="12" visible="true" weight="0.32952926" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -351,13 +390,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://G:/DiscoFunk/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="29" column="74" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://G:/DiscoFunk/src/AppBundle/Entity/Vinyl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1311">
@@ -369,13 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1150">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/community/profile.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -699,6 +724,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="139" column="84" selection-start-line="139" selection-start-column="84" selection-end-line="139" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/community/profile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="33" column="184" selection-start-line="33" selection-start-column="184" selection-end-line="33" selection-end-column="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="84" column="7" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="84" selection-end-column="7" />
         </state>
       </provider>
     </entry>
