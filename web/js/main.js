@@ -135,9 +135,8 @@ function getNearestLocations() {
         crossDomain: true
     }).done(function (returnOverpass) {
         nearCities = [];
-        let i = 0;
-        returnOverpass.elements.forEach(element => {
-            i++; if (i > 5) break; //Limiter à 5 requêtes max
+        for(var i = 0; i < returnOverpass.elements.length && i < 5; ++i){
+            element = returnOverpass.elements[i];
             $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric" + "&APPID=" + OWeatherMapAPIKeyYoa, function (data) {
                 $('#results').empty();
                 let noRepeat = [];
@@ -171,7 +170,7 @@ function getNearestLocations() {
                     }
                 }
             });
-        });
+        }
     }).fail(function (error) {
         console.log(error);
     });
