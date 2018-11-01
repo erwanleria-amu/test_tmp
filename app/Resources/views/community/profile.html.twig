@@ -23,15 +23,15 @@
                         {% for favorite in user.favorites %}
                              <tr>
                                  <td>{{ favorite.name }}</td>
-                                 <td>{{ favorite.lat }}</td>
-                                 <td>{{ favorite.lon }}</td>
+                                 <td>{{ favorite.location.latitude }}</td>
+                                 <td>{{ favorite.location.longitude }}</td>
                                  <td id="favorite{{ i }}"></td>
                                  <td>
                                     <a title="Voir" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon"
-                                        href="{{ path('app-coordinates', {'lat': favorite.lat, 'lon': favorite.lon }) }}">
-                                         <i class="material-icons">arrow_right_alt</i>
+                                        href="{{ path('app-coordinates', {'lat': favorite.location.latitude, 'lon': favorite.location.longitude }) }}">
+                                         <i class="material-icons">arrow_right</i>
                                      </a>
-                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon removeFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
+                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon profileRemoveFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
                                         <i class="material-icons">clear</i>
                                     </button>
                                  </td>
@@ -103,18 +103,31 @@
         var user = {{ user.id }};
         let j = 1;
         {% for favorite in user.favorites %}
-            $.get("https://api.openweathermap.org/data/2.5/find?lat=" + {{ favorite.lat }} + "&lon=" + {{ favorite.lon }} + "&cnt=1&units=metric&appid=" + OWeatherMapAPIKey,
+            console.log("TEST");
+            $.get("https://api.openweathermap.org/data/2.5/find?lat=" + {{ favorite.location.latitude }} + "&lon=" + {{ favorite.location.longitude }} + "&cnt=1&units=metric&appid=" + OWeatherMapAPIKey,
                 function(data) {
                     if(data != null){
                         let id = "#favorite" + j;
-                        $(id).append('<img class="weatherIcon" src="/icons/weather/' +  data.list[0].weather[0].icon  + '.png">');
+                        $(id).append('<img src="https://openweathermap.org/img/w/' +  data.list[0].weather[0].icon  + '.png">');
                         ++j;
                     }
                 }
             );
         {% endfor %}
-        $('.removeFavorite').on('click', function() {
-            $(this).closest('tr').fadeOut();
-        })
+        console.log(j);
+    </script>
+    <script>
+        $(document).on('click', '.profileRemoveFavorite', function () {
+            $.ajax({
+                url: Routing.generate('remove-favorite'),
+                type: 'POST',
+                context: this,
+                data: {
+                    id: $(this).attr('data-id')
+                }
+            }).done(function(data){
+                $(this).closest('tr').fadeOut();
+            });
+        });
     </script>
 {% endblock %}

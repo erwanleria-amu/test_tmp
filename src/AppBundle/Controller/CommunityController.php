@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Artwork;
+use AppBundle\Entity\Favorite;
 use AppBundle\Entity\Location;
 use AppBundle\Entity\Report;
 use AppBundle\Entity\SurveyResult;
@@ -180,18 +181,28 @@ class CommunityController extends Controller
 
         $data = $request->request->all();
 
-        $doctrine = $this->getDoctrine();
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        $favorite = new Location();
+        $favorite = new Favorite();
+        $locationCheck = $this->getDoctrine()->getRepository('AppBundle:Location')
+            ->findOneBy(['latitude' => $data['lat'], 'longitude' => $data['lng']]);
+        if($locationCheck == null){
+            $location = new Location();
+            $location->setLatitude($data['lat']);
+            $location->setLongitude($data['lng']);
+            $em->persist($location);
+
+            $favorite->setLocation($location);
+        } else {
+            $favorite->setLocation($locationCheck);
+        }
         $favorite->setName($data['name']);
-        $favorite->setLat($data['lat']);
-        $favorite->setLon($data['lng']);
         $favorite->setMapId($data['map_id']);
         $favorite->setUser($user);
 
-        $doctrine->getManager()->persist($favorite);
-        $doctrine->getManager()->flush();
+        $em->persist($favorite);
+        $em->flush();
 
         return new Response($favorite->getId());
     }
@@ -207,7 +218,7 @@ class CommunityController extends Controller
 
         $doctrine = $this->getDoctrine();
 
-        $favorite = $doctrine->getRepository('AppBundle:Location')
+        $favorite = $doctrine->getRepository('AppBundle:Favorite')
             ->find($data['id']);
 
         $doctrine->getManager()->remove($favorite);
@@ -226,7 +237,7 @@ class CommunityController extends Controller
         $data = $request->request->all();
 
         $doctrine = $this->getDoctrine();
-        $favorite = $doctrine->getRepository('AppBundle:Location')
+        $favorite = $doctrine->getRepository('AppBundle:Favorite')
             ->findOneBy(['map_id' => $data['map_id']]);
 
         if($favorite != null)

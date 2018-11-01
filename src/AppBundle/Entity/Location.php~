@@ -22,38 +22,19 @@ class Location
     private $id;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="map_id", type="integer")
+     * @ORM\Column(name="latitude", type="float", unique=true)
      */
-    private $map_id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
+    private $latitude;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lat", type="float")
+     * @ORM\Column(name="longitude", type="float", unique=true)
      */
-    private $lat;
+    private $longitude;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="lon", type="float")
-     */
-    private $lon;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="favorites")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
 
     /**
      * Get id
@@ -66,146 +47,51 @@ class Location
     }
 
     /**
-     * Set name
+     * Set latitude
      *
-     * @param string $name
+     * @param float $latitude
      *
      * @return Location
      */
-    public function setName($name)
+    public function setLatitude($latitude)
     {
-        $this->name = $name;
+        $this->latitude = $latitude;
 
         return $this;
     }
 
     /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set lat
-     *
-     * @param float $lat
-     *
-     * @return Location
-     */
-    public function setLat($lat)
-    {
-        $this->lat = $lat;
-
-        return $this;
-    }
-
-    /**
-     * Get lat
+     * Get latitude
      *
      * @return float
      */
-    public function getLat()
+    public function getLatitude()
     {
-        return $this->lat;
+        return $this->latitude;
     }
 
     /**
-     * Set lon
+     * Set longitude
      *
-     * @param float $lon
+     * @param float $longitude
      *
      * @return Location
      */
-    public function setLon($lon)
+    public function setLongitude($longitude)
     {
-        $this->lon = $lon;
+        $this->longitude = $longitude;
 
         return $this;
     }
 
     /**
-     * Get lon
+     * Get longitude
      *
      * @return float
      */
-    public function getLon()
+    public function getLongitude()
     {
-        return $this->lon;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \AppBundle\Entity\User $user
-     *
-     * @return Location
-     */
-    public function setUser(\AppBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set owmId
-     *
-     * @param integer $owmId
-     *
-     * @return Location
-     */
-    public function setOwmId($owmId)
-    {
-        $this->owm_id = $owmId;
-
-        return $this;
-    }
-
-    /**
-     * Get owmId
-     *
-     * @return integer
-     */
-    public function getOwmId()
-    {
-        return $this->owm_id;
-    }
-
-    /**
-     * Set mapId
-     *
-     * @param integer $mapId
-     *
-     * @return Location
-     */
-    public function setMapId($mapId)
-    {
-        $this->map_id = $mapId;
-
-        return $this;
-    }
-
-    /**
-     * Get mapId
-     *
-     * @return integer
-     */
-    public function getMapId()
-    {
-        return $this->map_id;
+        return $this->longitude;
     }
 }
+

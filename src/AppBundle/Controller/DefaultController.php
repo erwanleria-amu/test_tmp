@@ -53,26 +53,4 @@ class DefaultController extends Controller
             'coordinates' => $coordinates
         ]);
     }
-
-    /**
-     * @Route("/feed", name="feed")
-     */
-    public function feedAction(Request $request){
-
-        $events = $this->getDoctrine()->getRepository('AppBundle:Event')
-            ->findAll();
-
-        return $this->render('default/feed.html.twig', [
-            'events' => $events
-        ]);
-    }
-
-    /**
-     * @Route("/feed/new", name="feed-new")
-     */
-    public function feedNewAction(Request $request) {
-        $form = $this->createForm(NewEventForm::class);
-
-    }
-
 }

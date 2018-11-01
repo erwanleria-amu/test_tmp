@@ -69,6 +69,12 @@ class Event
      */
     private $participants;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $startPoint;
+
 
     /**
      * Get id
@@ -253,5 +259,29 @@ class Event
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Set tripDate
+     *
+     * @param \DateTime $tripDate
+     *
+     * @return Event
+     */
+    public function setTripDate($tripDate)
+    {
+        $this->tripDate = $tripDate;
+
+        return $this;
+    }
+
+    /**
+     * Get tripDate
+     *
+     * @return \DateTime
+     */
+    public function getTripDate()
+    {
+        return $this->tripDate;
     }
 }

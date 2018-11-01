@@ -1,42 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="add-event">
+    <a href="{{ path('events-new') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="add-event">
         <i class="material-icons">add</i>
-    </button>
+    </a>
+    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="add-event">
+        <b>Créer un évènement</b>
+    </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--2-col"></div>
         <div class="mdl-cell mdl-cell--8-col">
             <div class="mdl-grid">
+                {% for message in app.flashes('events-new') %}
+                    <b class="mdl-color-text--accent">{{ message }}</b>
+                {% endfor %}
                 {% for event in events%}
+                    {% set freePlaces = event.nbParticipants - event.participants|length %}
                     <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white">
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center" style="border-right: 1px solid rgb(255,87,34)">
                                 <img class="avatar" src="{{ asset('uploads/users/' ~ event.author.avatar) }}">
                                 <p style="font-weight: bold; margin: 0">{{ event.author.username }}</p>
-                                <span class="muted">le {{ event.creationDate|date('d/m/Y') }}</span>
+                                <p class="muted">le {{ event.creationDate|date('d/m/Y') }}</p>
+                                <a href="{{ path('events-view', {'eventId': event.id}) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" >
+                                    <i class="material-icons">arrow_right</i>
+                                </a>
+                                <p><b>Voir plus</b></p>
                             </div>
                             <div class="mdl-cell mdl-cell--10-col">
                                 <h2>{{ event.name }}</h2>
-
                                 <p><b>Heure de départ:</b> {{ event.tripDate|date('d/m/Y à H:i') }}</p>
-
-                                <p>{{ event.description|nl2br }}</p>
-                                {% set freePlaces = event.nbParticipants - event.participants|length %}
-                                    <a title="{{ event.author.username }}" href="{{ path('profile-index', { 'username': event.author.username }) }}"><img class="avatar" src="{{ asset('uploads/users/' ~ event.author.avatar) }}"></a>
-                                {% for participant in event.participants %}
-                                    <a id="user{{ participant.username }}" title="{{ participant.username }}" href="{{ path('profile-index', { 'username': participant.username }) }}"><img class="avatar" src="{{ asset('uploads/users/' ~ participant.avatar) }}"></a>
-                                {% endfor %}
-                                {% if app.user != event.author and app.user not in event.participants %}
-                                    {% for i in 1..freePlaces %}
-                                        <button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="{{ event.id }}">
-                                            <i class="material-icons">add</i>
-                                        </button>
-                                    {% endfor %}
-                                {% elseif app.user in event.participants %}
-                                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent quitEvent" data-id="{{ event.id }}">
-                                        <i class="material-icons">remove</i>
-                                    </button>
-                                {% endif %}
+                                <p><b>Nombre de places:</b> {{ freePlaces }}/{{ event.nbParticipants }} disponibles.</p>
                             </div>
                         </div>
                     </div>
