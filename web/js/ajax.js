@@ -66,6 +66,7 @@ $(document).on('click', '.removeFavorite', function () {
             id: $(this).attr('data-id')
         }
     }).done(function(data){
+        $(this).closest('tr').fadeOut();
         $(this).children().text("star_border");
         $(this).removeClass('removeFavorite');
         $(this).addClass('addFavorite');
@@ -107,7 +108,7 @@ $(document).on('click', '.joinEvent', function() {
             eventId: $(this).attr('data-id')
         }
     }).done(function(data){
-        $(event).replaceWith('<img src="uploads/users/' + data + '" class="avatar">');
+        $(event).replaceWith('<img src="/uploads/users/' + data + '" class="avatar">');
     });
 });
 
@@ -121,7 +122,7 @@ $('.quitEvent').on('click', function() {
         }
     }).done(function(data){
         let id = $(event).attr('data-id');
-        $('#user' + data).replaceWith('<button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="' + id + '"> <i class="material-icons">add</i></button>');
+        $('#user' + data).remove();
         $(event).remove();
     });
 });

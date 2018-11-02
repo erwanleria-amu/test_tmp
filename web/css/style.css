@@ -109,7 +109,7 @@ th, td {
     display: inline;
 }
 
-#add-event {
+#add-event, #startPoint {
     position: fixed;
     display: block;
     right: 0;

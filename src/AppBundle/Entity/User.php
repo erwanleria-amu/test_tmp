@@ -103,7 +103,7 @@ class User implements UserInterface, Serializable, EquatableInterface
     private $role;
 
     /**
-     * @ORM\OneToMany(targetEntity="Location", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Favorite", mappedBy="user")
      * @ORM\JoinColumn(nullable=false)
      */
     private $favorites;
@@ -548,11 +548,11 @@ class User implements UserInterface, Serializable, EquatableInterface
     /**
      * Add favorite
      *
-     * @param \AppBundle\Entity\Location $favorite
+     * @param \AppBundle\Entity\Favorite $favorite
      *
      * @return User
      */
-    public function addFavorite(\AppBundle\Entity\Location $favorite)
+    public function addFavorite(\AppBundle\Entity\Favorite $favorite)
     {
         $this->favorites[] = $favorite;
 
@@ -562,9 +562,9 @@ class User implements UserInterface, Serializable, EquatableInterface
     /**
      * Remove favorite
      *
-     * @param \AppBundle\Entity\Location $favorite
+     * @param \AppBundle\Entity\Favorite $favorite
      */
-    public function removeFavorite(\AppBundle\Entity\Location $favorite)
+    public function removeFavorite(\AppBundle\Entity\Favorite $favorite)
     {
         $this->favorites->removeElement($favorite);
     }

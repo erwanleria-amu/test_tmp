@@ -12,6 +12,7 @@ L.tileLayer('http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png').addTo(map);
 // Searchbar
 L.Control.geocoder().addTo(map);
 
+marker = L.marker(coordinates).addTo(map);
 // Variables
 let radiusInput = document.getElementById("radiusInput").value;
 let clickCircle;
@@ -42,6 +43,7 @@ function hasNumber(myString) {
 
 // Move or place the circle area on the map then get all nearest locations weather
 function onMapClick(e) {
+    if(marker != null) map.removeLayer(marker);
     removeCircle();
     coordinates = e.latlng;
     //marker = L.marker(coordinates).addTo(map);
@@ -102,7 +104,7 @@ function lookForRadiusChange()
 
                             $('#results').append('<tr>' +
                                 '<td>' + value.name + '</td>' +
-                                '<td>' + value.weather[0].description + '(' + parseInt(value.main.temp) + '°C)<img src="/icons/weather/' +  value.weather[0].icon  + '.png"></td>' +
+                                '<td>' + value.weather[0].description + '(' + parseInt(value.main.temp) + '°C)<img src="https://openweathermap.org/img/w/' +  value.weather[0].icon  + '.png"></td>' +
                                 '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
                                 'data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon +
                                 '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')

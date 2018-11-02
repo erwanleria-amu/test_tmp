@@ -69,6 +69,12 @@ class Event
      */
     private $participants;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $startPoint;
+
 
     /**
      * Get id
@@ -277,5 +283,29 @@ class Event
     public function getTripDate()
     {
         return $this->tripDate;
+    }
+
+    /**
+     * Set startPoint
+     *
+     * @param \AppBundle\Entity\Location $startPoint
+     *
+     * @return Event
+     */
+    public function setStartPoint(\AppBundle\Entity\Location $startPoint)
+    {
+        $this->startPoint = $startPoint;
+
+        return $this;
+    }
+
+    /**
+     * Get startPoint
+     *
+     * @return \AppBundle\Entity\Location
+     */
+    public function getStartPoint()
+    {
+        return $this->startPoint;
     }
 }
