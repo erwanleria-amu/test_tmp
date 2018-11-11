@@ -17,9 +17,9 @@ class SecurityControllerTest extends WebTestCase
         /*$form['_username'] = 'testForm';
         $form['_email'] = 'testForm@gmail.com';
         $form['_plainPassword[first]'] = 'testForm';
-        $form['_plainPassword[second]'] = 'testForm';
+        $form['_plainPassword[second]'] = 'testForm';*/
         
-        $crawler = $client->submit($form);
+        /*$crawler = $client->submit($form);
 
         $this->assertCount(1,  $crawler->filter('b'));*/
     }
