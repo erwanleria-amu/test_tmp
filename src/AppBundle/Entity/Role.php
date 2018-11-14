@@ -102,7 +102,7 @@ class Role
      *
      * @return boolean
      */
-    public function getIsAdmin()
+    public function isAdmin()
     {
         return $this->isAdmin;
     }
@@ -126,7 +126,7 @@ class Role
      *
      * @return boolean
      */
-    public function getIsModerator()
+    public function isModerator()
     {
         return $this->isModerator;
     }

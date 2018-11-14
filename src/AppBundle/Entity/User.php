@@ -109,6 +109,12 @@ class User implements UserInterface, Serializable, EquatableInterface
     private $favorites;
 
     /**
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="author")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $events;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="markers", type="integer")
@@ -272,10 +278,10 @@ class User implements UserInterface, Serializable, EquatableInterface
      */
     public function getRoles()
     {
-        if($this->getRole()->getIsAdmin())
+        if($this->getRole()->isAdmin())
             return ['ROLE_ADMIN'];
 
-        if($this->getRole()->getIsModerator())
+        if($this->getRole()->isModerator())
             return ['ROLE_MODERATOR'];
 
         return ['ROLE_USER'];
@@ -625,5 +631,39 @@ class User implements UserInterface, Serializable, EquatableInterface
     public function getCities()
     {
         return $this->cities;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Event $event
+     *
+     * @return User
+     */
+    public function addEvent(\AppBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Event $event
+     */
+    public function removeEvent(\AppBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

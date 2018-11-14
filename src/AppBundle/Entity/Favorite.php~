@@ -36,13 +36,13 @@ class Favorite
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\ManyToOne(targetEntity="Location", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="favorites")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="favorites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -199,5 +199,29 @@ class Favorite
     public function getMapId()
     {
         return $this->map_id;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \AppBundle\Entity\Location $location
+     *
+     * @return Favorite
+     */
+    public function setLocation(\AppBundle\Entity\Location $location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \AppBundle\Entity\Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 }

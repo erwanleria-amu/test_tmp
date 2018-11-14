@@ -109,6 +109,12 @@ class User implements UserInterface, Serializable, EquatableInterface
     private $favorites;
 
     /**
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="author")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $events;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="markers", type="integer")

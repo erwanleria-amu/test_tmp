@@ -37,7 +37,7 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;

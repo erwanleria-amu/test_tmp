@@ -41,14 +41,14 @@
                                         <button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="{{ event.id }}" id="participate">
                                             <i class="material-icons">add</i>
                                         </button>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="participate">
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-participate" data-mdl-for="participate">
                                             <b>Participer</b>
                                         </div>
                                     {% elseif app.user != event.author and app.user in event.participants  %}
                                         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent quitEvent" data-id="{{ event.id }}" id="cancelParticipation">
                                             <i class="material-icons">remove</i>
                                         </button>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="cancelParticipation">
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-leave" data-mdl-for="cancelParticipation">
                                             <b>Ne plus participer</b>
                                         </div>
                                     {% endif %}
