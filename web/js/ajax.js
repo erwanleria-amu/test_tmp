@@ -50,6 +50,7 @@ $(document).on('click', '.addFavorite', function () {
             map_id: $(this).attr('data-map-id')
         }
     }).done(function(data){
+        console.log(data);
         $(this).attr('data-id', data);
         $(this).children().text("star");
         $(this).removeClass('addFavorite');
@@ -66,7 +67,6 @@ $(document).on('click', '.removeFavorite', function () {
             id: $(this).attr('data-id')
         }
     }).done(function(data){
-        $(this).closest('tr').fadeOut();
         $(this).children().text("star_border");
         $(this).removeClass('removeFavorite');
         $(this).addClass('addFavorite');
@@ -134,9 +134,7 @@ function addCitiesToStats(dataInput) {
         url: Routing.generate('update-stats-cities'),
         type: 'POST',
         data: {
-            cities: dataInput.count
+            cities: dataInput
         }
-    }).done(function(data){
-
-    });
+    }).done(function(data){});
 }

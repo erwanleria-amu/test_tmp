@@ -1,35 +1,26 @@
-//http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
+/*
+    http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
-// Copyright
-/*L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);*/
+    Copyright
+    L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-//L.tileLayer('https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png').addTo(map);
-//L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png').addTo(map);
+    L.tileLayer('https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png').addTo(map);
+    L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png').addTo(map);
+ */
+
 L.tileLayer('http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png').addTo(map);
-
-// Searchbar
 L.Control.geocoder().addTo(map);
-
 marker = L.marker(coordinates).addTo(map);
-// Variables
+
 let radiusInput = document.getElementById("radiusInput").value;
 let clickCircle;
-
 
 // Listeners
 map.on('click', onMapClick);
 map.on('contextmenu', removeCircle);
 $('#radiusInput').on('input', lookForRadiusChange);
-
-/*
-displayFavorites();
-
-//Functions
-
-*/
-// Remove circle area from the map
 
 function removeCircle(){
     if (clickCircle != null) {
@@ -137,10 +128,11 @@ function getNearestLocations() {
         async: true,
         crossDomain: true
     }).done(function (returnOverpass) {
+        addCitiesToStats(returnOverpass.elements.length);
         nearCities = [];
         for(var i = 0; i < returnOverpass.elements.length && i < 5; ++i){
             element = returnOverpass.elements[i];
-            $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric" + "&APPID=" + OWeatherMapAPIKeyYoa, function (data) {
+            $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + element.lat + "&lon=" + element.lon + "&units=metric" + "&APPID=" + OWeatherMapAPIKey, function (data) {
                 $('#results').empty();
                 let noRepeat = [];
                 console.log(data);
@@ -165,7 +157,7 @@ function getNearestLocations() {
                             }
                             $('#results').append('<tr>' +
                                 '<td>' + data.name + '</td>' +
-                                '<td>' + data.weather[0].description + '(' + parseInt(data.main.temp) + '°C)<img src="/icons/weather/' + data.weather[0].icon + '.png"></td>' +
+                                '<td>' + data.weather[0].description + '(' + parseInt(data.main.temp) + '°C)<img src="https://openweathermap.org/img/w/' + data.weather[0].icon + '.png"></td>' +
                                 '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
                                 'data-name="' + data.name + '" data-lat="' + data.coord.lat + '" data-lng="' + data.coord.lon +
                                 '" data-id="' + id + '" data-map-id="' + data.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
@@ -178,4 +170,5 @@ function getNearestLocations() {
         console.log(error);
     });
 }
+
 getNearestLocations();

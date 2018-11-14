@@ -24,14 +24,14 @@ class Location
     /**
      * @var float
      *
-     * @ORM\Column(name="latitude", type="float", unique=true)
+     * @ORM\Column(name="latitude", type="float")
      */
     private $latitude;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="longitude", type="float", unique=true)
+     * @ORM\Column(name="longitude", type="float")
      */
     private $longitude;
 
