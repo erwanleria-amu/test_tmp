@@ -189,6 +189,7 @@ class CommunityController extends Controller
             ->findOneBy(['latitude' => $data['lat'], 'longitude' => $data['lng']]);
         if($locationCheck == null){
             $location = new Location();
+            $location->setName($data['name']);
             $location->setLatitude($data['lat']);
             $location->setLongitude($data['lng']);
             $em->persist($location);
@@ -197,7 +198,6 @@ class CommunityController extends Controller
         } else {
             $favorite->setLocation($locationCheck);
         }
-        $favorite->setName($data['name']);
         $favorite->setMapId($data['map_id']);
         $favorite->setUser($user);
 

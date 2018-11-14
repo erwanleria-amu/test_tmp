@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block navTitle %}Evaluation de {{ location.name }}{% endblock %}
+{% block body %}
+    <a href="{{ path('reviews-new', {'id': location.id }) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="add-event">
+        <i class="material-icons">add</i>
+    </a>
+    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="add-event">
+        <b>Créer une évaluation</b>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col"></div>
+        <div class="mdl-cell mdl-cell--8-col">
+            <div class="mdl-grid">
+                {% for message in app.flashes('reviews-new') %}
+                    <b class="mdl-color-text--accent">{{ message }}</b>
+                {% endfor %}
+                {% if location.reviews is not empty %}
+                {% for review in location.reviews %}
+                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center" style="border-right: 1px solid rgb(255,87,34)">
+                                <img class="avatar" src="{{ asset('uploads/users/' ~ review.author.avatar) }}">
+                                <p style="font-weight: bold; margin: 0">{{ review.author.username }}</p>
+                                <p class="muted">le {{ review.creationDate|date('d/m/Y') }}</p>
+                                {% if app.user == review.author or app.user.role.isAdmin %}
+                                    <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet review?');" href="{{ path('reviews-delete', {'id': review.id}) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" >
+                                        <i class="material-icons">close</i>
+                                    </a>
+                                    <p><b>Supprimer</b></p>
+                                {% endif %}
+                            </div>
+                            <div class="mdl-cell mdl-cell--10-col">
+                                {% if review.isPositive %}
+                                    <i class="material-icons">thumb_up</i>
+                                {% else %}
+                                    <i class="material-icons">thumb_down</i>
+                                {% endif %}
+                                <p class="mdl-typography--text-justify">{{ review.comment|nl2br }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white mdl-typography--text-center">
+                        Aucune évaluation n'a été rédigée pour cet endroit.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col"></div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

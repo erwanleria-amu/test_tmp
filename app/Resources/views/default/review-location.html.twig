@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block navTitle %}Evaluation de {{ location.name }}{% endblock %}
+{% block body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+            <div class="mdl-card__title mdl-color--primary">
+                <h2 style="font-weight: bold;" class="mdl-card__title-text mdl-color-text--white">Evaluation de "{{ location.name }}"</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-grid">
+                {{ form_start(form) }}
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_username">Commentaire</label>
+                    {{ form_widget(form.comment) }}
+                </div>
+
+                    {{ form_widget(form.isPositive) }}
+
+                <div class="mdl-cell mdl-cell--12-col send-button" align="right">
+                    <button type="submit"  class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" id="submit">
+                        Envoyer
+                    </button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

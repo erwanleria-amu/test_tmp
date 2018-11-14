@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block navTitle %}Evènements > {{ event.name }}{% endblock %}
 {% block body %}
     <a target="_blank" href="{{ path('app-coordinates', { 'lat': event.startPoint.latitude, 'lon': event.startPoint.longitude }) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="startPoint">
         <i class="material-icons">arrow_right</i>
@@ -10,52 +11,78 @@
         <div class="mdl-cell mdl-cell--2-col"></div>
         <div class="mdl-cell mdl-cell--8-col">
             <div class="mdl-grid">
-                    {% set freePlaces = event.nbParticipants - event.participants|length %}
-                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center" style="border-right: 1px solid rgb(255,87,34)">
-                                <img class="avatar" src="{{ asset('uploads/users/' ~ event.author.avatar) }}">
-                                <p style="font-weight: bold; margin: 0">{{ event.author.username }}</p>
-                                <p class="muted">le {{ event.creationDate|date('d/m/Y') }}</p>
-                                {% if app.user == event.author or app.user.role.isAdmin %}
-                                <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet évènement?');" href="{{ path('events-delete', {'eventId': event.id}) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" >
-                                    <i class="material-icons">close</i>
-                                </a>
-                                <p><b>Supprimer</b></p>
-                                {% endif %}
-                            </div>
-                            <div class="mdl-cell mdl-cell--10-col">
-                                <h2>{{ event.name }}</h2>
+                {% set freePlaces = event.nbParticipants - event.participants|length %}
+                <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center" style="border-right: 1px solid rgb(255,87,34)">
+                            <img class="avatar" src="{{ asset('uploads/users/' ~ event.author.avatar) }}">
+                            <p style="font-weight: bold; margin: 0">{{ event.author.username }}</p>
+                            <p class="muted">le {{ event.creationDate|date('d/m/Y') }}</p>
+                            {% if app.user == event.author or app.user.role.isAdmin %}
+                            <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet évènement?');" href="{{ path('events-delete', {'eventId': event.id}) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" >
+                                <i class="material-icons">close</i>
+                            </a>
+                            <p><b>Supprimer</b></p>
+                            {% endif %}
+                        </div>
+                        <div class="mdl-cell mdl-cell--10-col">
+                            <h2>{{ event.name }}</h2>
 
-                                <p><b>Heure de départ:</b> {{ event.tripDate|date('d/m/Y à H:i') }}</p>
-                                <p><b>Nombre de places:</b> {{ freePlaces }}/{{ event.nbParticipants }} disponibles.</p>
-                                <p class="mdl-typography--text-justify">{{ event.description|nl2br }}</p>
-                                {% for participant in event.participants %}
-                                    <a id="user{{ participant.username }}" title="{{ participant.username }}" href="{{ path('profile-index', { 'username': participant.username }) }}"><img class="avatar" src="{{ asset('uploads/users/' ~ participant.avatar) }}"></a>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="user{{ participant.username }}">
-                                        <b>{{  participant.username }}</b>
+                            <p><b>Heure de départ:</b> {{ event.tripDate|date('d/m/Y à H:i') }}</p>
+                            <p><b>Nombre de places:</b> {{ freePlaces }}/{{ event.nbParticipants }} disponibles.</p>
+                            <p class="mdl-typography--text-justify">{{ event.description|nl2br }}</p>
+                            {% for participant in event.participants %}
+                                <a id="user{{ participant.username }}" title="{{ participant.username }}" href="{{ path('profile-index', { 'username': participant.username }) }}"><img class="avatar" src="{{ asset('uploads/users/' ~ participant.avatar) }}"></a>
+                                <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="user{{ participant.username }}">
+                                    <b>{{  participant.username }}</b>
+                                </div>
+                            {% endfor %}
+                            <span id="actions-buttons">
+                                {% if app.user not in event.participants %}
+                                    <button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="{{ event.id }}" id="participate">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-participate" data-mdl-for="participate">
+                                        <b>Participer</b>
                                     </div>
-                                {% endfor %}
-                                <span id="actions-buttons">
-                                    {% if app.user not in event.participants %}
-                                        <button class="mdl-button mdl-js-button mdl-button--fab joinEvent" data-id="{{ event.id }}" id="participate">
-                                            <i class="material-icons">add</i>
-                                        </button>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-participate" data-mdl-for="participate">
-                                            <b>Participer</b>
-                                        </div>
-                                    {% elseif app.user != event.author and app.user in event.participants  %}
-                                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent quitEvent" data-id="{{ event.id }}" id="cancelParticipation">
-                                            <i class="material-icons">remove</i>
-                                        </button>
-                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-leave" data-mdl-for="cancelParticipation">
-                                            <b>Ne plus participer</b>
-                                        </div>
-                                    {% endif %}
-                                </span>
-                            </div>
+                                {% elseif app.user != event.author and app.user in event.participants  %}
+                                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent quitEvent" data-id="{{ event.id }}" id="cancelParticipation">
+                                        <i class="material-icons">remove</i>
+                                    </button>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" id="tooltip-leave" data-mdl-for="cancelParticipation">
+                                        <b>Ne plus participer</b>
+                                    </div>
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white">
+                    {{ form_start(form) }}
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_username">Commentaire</label>
+                        {{ form_widget(form.comment) }}
+                    </div>
+
+                    <button type="submit" style="margin: 10px; float: right;" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                        Envoyer
+                    </button>
+                    {{ form_end(form) }}
+                </div>
+                {% for comment in event.comments %}
+                <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center" style="border-right: 1px solid rgb(255,87,34)">
+                            <img class="avatar" src="{{ asset('uploads/users/' ~ comment.author.avatar) }}">
+                            <p style="font-weight: bold; margin: 0">{{ comment.author.username }}</p>
+                            <p class="muted">le {{ comment.creationDate|date('d/m/Y à H:i') }}</p>
+                        </div>
+                        <div class="mdl-cell mdl-cell--10-col">
+                            <p class="mdl-typography--text-justify">{{ comment.comment|nl2br }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="mdl-cell mdl-cell--2-col"></div>

@@ -22,6 +22,13 @@ class Location
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
@@ -35,6 +42,12 @@ class Location
      */
     private $longitude;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Review", mappedBy="location")
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OrderBy({"creationDate" = "DESC"})
+     */
+    private $reviews;
 
     /**
      * Get id
@@ -92,5 +105,70 @@ class Location
     public function getLongitude()
     {
         return $this->longitude;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add review
+     *
+     * @param \AppBundle\Entity\Review $review
+     *
+     * @return Location
+     */
+    public function addReview(\AppBundle\Entity\Review $review)
+    {
+        $this->reviews[] = $review;
+
+        return $this;
+    }
+
+    /**
+     * Remove review
+     *
+     * @param \AppBundle\Entity\Review $review
+     */
+    public function removeReview(\AppBundle\Entity\Review $review)
+    {
+        $this->reviews->removeElement($review);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Location
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

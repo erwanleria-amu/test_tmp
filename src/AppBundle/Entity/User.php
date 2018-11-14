@@ -115,6 +115,18 @@ class User implements UserInterface, Serializable, EquatableInterface
     private $events;
 
     /**
+     * @ORM\OneToMany(targetEntity="Review", mappedBy="author")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reviews;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventComment", mappedBy="author")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $comments;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="markers", type="integer")
@@ -665,5 +677,73 @@ class User implements UserInterface, Serializable, EquatableInterface
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Add review
+     *
+     * @param \AppBundle\Entity\Review $review
+     *
+     * @return User
+     */
+    public function addReview(\AppBundle\Entity\Review $review)
+    {
+        $this->reviews[] = $review;
+
+        return $this;
+    }
+
+    /**
+     * Remove review
+     *
+     * @param \AppBundle\Entity\Review $review
+     */
+    public function removeReview(\AppBundle\Entity\Review $review)
+    {
+        $this->reviews->removeElement($review);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\EventComment $comment
+     *
+     * @return User
+     */
+    public function addComment(\AppBundle\Entity\EventComment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\EventComment $comment
+     */
+    public function removeComment(\AppBundle\Entity\EventComment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

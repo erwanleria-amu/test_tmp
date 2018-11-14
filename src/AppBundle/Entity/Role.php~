@@ -102,7 +102,7 @@ class Role
      *
      * @return boolean
      */
-    public function getIsAdmin()
+    public function isAdmin()
     {
         return $this->isAdmin;
     }
@@ -126,7 +126,7 @@ class Role
      *
      * @return boolean
      */
-    public function getIsModerator()
+    public function isModerator()
     {
         return $this->isModerator;
     }
@@ -153,5 +153,25 @@ class Role
     public function getRoleColor()
     {
         return $this->roleColor;
+    }
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Get isModerator
+     *
+     * @return boolean
+     */
+    public function getIsModerator()
+    {
+        return $this->isModerator;
     }
 }

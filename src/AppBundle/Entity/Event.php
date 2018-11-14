@@ -45,14 +45,14 @@ class Event
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="creationDate", type="datetime", nullable=true)
+     * @ORM\Column(name="creationDate", type="datetime", nullable=false)
      */
     private $creationDate;
 
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="tripDate", type="datetime", nullable=true)
+     * @ORM\Column(name="tripDate", type="datetime", nullable=false)
      */
     private $tripDate;
 
@@ -74,6 +74,13 @@ class Event
      * @ORM\JoinColumn(nullable=false)
      */
     private $startPoint;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventComment", mappedBy="event")
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OrderBy({"creationDate" = "DESC"})
+     */
+    private $comments;
 
 
     /**
@@ -307,5 +314,39 @@ class Event
     public function getStartPoint()
     {
         return $this->startPoint;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\EventComment $comment
+     *
+     * @return Event
+     */
+    public function addComment(\AppBundle\Entity\EventComment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\EventComment $comment
+     */
+    public function removeComment(\AppBundle\Entity\EventComment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

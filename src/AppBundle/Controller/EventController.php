@@ -10,7 +10,9 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Event;
+use AppBundle\Entity\EventComment;
 use AppBundle\Entity\Location;
+use AppBundle\Form\EventCommentForm;
 use AppBundle\Form\NewEventForm;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -94,8 +96,26 @@ class EventController extends Controller
             ->find($eventId);
         if($event == null) return $this->createNotFoundException();
 
+        $eventComment = new EventComment();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(EventCommentForm::class, $eventComment);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $eventComment->setAuthor($this->getUser());
+            $eventComment->setCreationDate(new DateTime());
+            $eventComment->setEvent($event);
+            $em->persist($eventComment);
+            $em->flush();
+
+            return $this->redirectToRoute('events-view', [
+                'eventId' => $eventId
+            ]);
+        }
         return $this->render('default/display-event.html.twig', [
-            'event' => $event
+            'event' => $event,
+            'form' => $form->createView()
         ]);
     }
 

@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% set i = 1 %}
+{% block navTitle %}Profil de {{ user.username }}{% endblock %}
 {% block body %}
     <div class="mdl-grid">
         <div class = "mdl-cell mdl-cell--4-col">
@@ -22,7 +23,7 @@
 
                         {% for favorite in user.favorites %}
                              <tr>
-                                 <td>{{ favorite.name }}</td>
+                                 <td>{{ favorite.location.name }}</td>
                                  <td>{{ favorite.location.latitude }}</td>
                                  <td>{{ favorite.location.longitude }}</td>
                                  <td id="favorite{{ i }}"></td>
@@ -30,6 +31,10 @@
                                     <a title="Voir" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon"
                                         href="{{ path('app-coordinates', {'lat': favorite.location.latitude, 'lon': favorite.location.longitude }) }}">
                                          <i class="material-icons">arrow_right</i>
+                                     </a>
+                                     <a title="Evaluations" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon"
+                                        href="{{ path('reviews-index', {'id': favorite.location.id }) }}">
+                                         <i class="material-icons" style="font-size: 15px;">comment</i>
                                      </a>
                                     <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon profileRemoveFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
                                         <i class="material-icons">clear</i>

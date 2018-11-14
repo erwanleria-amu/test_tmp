@@ -10,6 +10,19 @@
     L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png').addTo(map);
  */
 
+itineraireMode = 0;
+$('#itineraireMode').on('click', function () {
+    itineraireMode = !itineraireMode;
+    if(itineraireMode) {
+        $('#radiusForm').hide();
+        $(this).text('Mode Itinéraire ON')
+    } else {
+        $('#radiusForm').show();
+        $(this).text('Créer un itinéraire')
+    }
+});
+
+
 L.tileLayer('http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png').addTo(map);
 L.Control.geocoder().addTo(map);
 marker = L.marker(coordinates).addTo(map);
@@ -63,53 +76,6 @@ function lookForRadiusChange()
     }
 }
 
-// Get
-/*function getNearestLocations(){
-    $('#results').empty();
-    $.get("https://api.openweathermap.org/data/2.5/find?lat=" + coordinates.lat + "&lon=" + coordinates.lng + "&cnt=" +
-        radiusInput + "&units=metric&appid=" + OWeatherMapAPIKey,
-        function(data) {
-            let noRepeat = [];
-            console.log(data);
-            if(data != null){
-                addCitiesToStats(data);
-                $.each(data.list, function (key, value) {
-                    if($.inArray(value.name, noRepeat) === -1 && !hasNumber(value.name)){
-                        noRepeat.push(value.name);
-                        let id = 0;
-                        let starIcon = "star_border";
-                        let startingClass = "addFavorite";
-                        console.log(value.id);
-                        $.ajax({
-                            url: Routing.generate('get-location'),
-                            type: 'POST',
-                            context: this,
-                            data: {
-                                map_id: value.id
-                            }
-                        }).done(function(data){
-                            if(data > 0) {
-                                id = data;
-                                starIcon = "star";
-                                startingClass = "removeFavorite";
-                            }
-
-                            $('#results').append('<tr>' +
-                                '<td>' + value.name + '</td>' +
-                                '<td>' + value.weather[0].description + '(' + parseInt(value.main.temp) + '°C)<img src="https://openweathermap.org/img/w/' +  value.weather[0].icon  + '.png"></td>' +
-                                '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
-                                'data-name="' + value.name + '" data-lat="' + value.coord.lat + '" data-lng="' + value.coord.lon +
-                                '" data-id="' + id + '" data-map-id="' + value.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
-                        });
-                    }
-                })
-            }
-        }
-    );
-}
-
-getNearestLocations();*/
-
 function getNearestLocations() {
     $('#results').empty();
     overpassRequest = 'https://www.overpass-api.de/api/interpreter?data=' +
@@ -160,7 +126,7 @@ function getNearestLocations() {
                                 '<td>' + data.weather[0].description + '(' + parseInt(data.main.temp) + '°C)<img src="https://openweathermap.org/img/w/' + data.weather[0].icon + '.png"></td>' +
                                 '<td><button class="' + startingClass + ' mdl-button mdl-js-button mdl-button--icon" ' +
                                 'data-name="' + data.name + '" data-lat="' + data.coord.lat + '" data-lng="' + data.coord.lon +
-                                '" data-id="' + id + '" data-map-id="' + data.id + '"><i class="material-icons favorite">' + starIcon + '</i></button></td>')
+                                '" data-id="' + id + '" data-map-id="' + data.id + '"><i class="material-icons favorite">' + starIcon + '</i></button><a class="mdl-button mdl-js-button mdl-button--icon" href="' + Routing.generate('reviews-mapid-finder', {'mapId': data.id, 'name': data.name, 'lat': data.coord.lat, 'lng': data.coord.lon }) + '"><i class="material-icons" style="font-size: 15px; color: #0174DF;">comment</i></a></td>')
                         });
                     }
                 }
@@ -170,5 +136,3 @@ function getNearestLocations() {
         console.log(error);
     });
 }
-
-getNearestLocations();

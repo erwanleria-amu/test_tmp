@@ -29,13 +29,6 @@ class Favorite
     private $map_id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Location", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */

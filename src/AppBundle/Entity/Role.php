@@ -154,4 +154,24 @@ class Role
     {
         return $this->roleColor;
     }
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Get isModerator
+     *
+     * @return boolean
+     */
+    public function getIsModerator()
+    {
+        return $this->isModerator;
+    }
 }
