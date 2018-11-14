@@ -96,6 +96,7 @@ $(document).on('click', '.joinEvent', function() {
         }
     }).done(function(data){
         $(event).replaceWith('<img src="/uploads/users/' + data + '" class="avatar">');
+        $("#tooltip-participate").remove()
     });
 });
 
@@ -111,6 +112,18 @@ $('.quitEvent').on('click', function() {
         let id = $(event).attr('data-id');
         $('#user' + data).remove();
         $(event).remove();
+        $('#tooltip-leave').remove();
     });
 });
 
+function addCitiesToStats(dataInput) {
+    $.ajax({
+        url: Routing.generate('update-stats-cities'),
+        type: 'POST',
+        data: {
+            cities: dataInput.count
+        }
+    }).done(function(data){
+
+    });
+}

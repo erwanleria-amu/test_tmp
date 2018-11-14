@@ -82,6 +82,7 @@ function getNearestLocations(){
             let noRepeat = [];
             console.log(data);
             if(data != null){
+                addCitiesToStats(data);
                 $.each(data.list, function (key, value) {
                     if($.inArray(value.name, noRepeat) === -1 && !hasNumber(value.name)){
                         noRepeat.push(value.name);

@@ -94,4 +94,3 @@ class Location
         return $this->longitude;
     }
 }
-

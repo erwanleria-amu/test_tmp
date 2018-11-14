@@ -41,25 +41,23 @@
                     </tbody>
                 </table>
             </div>
-            <!--
             <p class="section-title">Statistiques</p>
             <div id="stats">
                 <section class="section--footer mdl-color--white mdl-grid">
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
-                        <b class="counter data-big" data-count="{{ user.markers }}">0</b>
-                        <p class="info-big">marqueurs</p>
+                        <b class="counter data-big" data-count="{{ user.events|length }}">0</b>
+                        <p class="info-big">évènement{% if user.events|length > 1 %}s{% endif %} créé{% if user.events|length > 1 %}s{% endif %}</p>
                     </div>
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
                         <b class="counter data-big" data-count="{{ user.cities }}">0</b>
-                        <p class="info-big">villes</p>
+                        <p class="info-big">ville{% if user.cities > 1 %}s{% endif %} recherchée{% if user.cities > 1 %}s{% endif %}</p>
                     </div>
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
                         <b class=" counter data-big" data-count="{{ user.favorites|length }}">0</b>
-                        <p class="info-big">favoris</p>
+                        <p class="info-big">favori{% if user.favorites|length > 1 %}s{% endif %}</p>
                     </div>
                 </section>
             </div>
-            -->
 
             {% if app.user == user and user.pendingFriendRequests is not empty %}
                 <p class="section-title">Demandes d'amis</p>

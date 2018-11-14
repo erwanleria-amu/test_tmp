@@ -37,7 +37,7 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -283,5 +283,29 @@ class Event
     public function getTripDate()
     {
         return $this->tripDate;
+    }
+
+    /**
+     * Set startPoint
+     *
+     * @param \AppBundle\Entity\Location $startPoint
+     *
+     * @return Event
+     */
+    public function setStartPoint(\AppBundle\Entity\Location $startPoint)
+    {
+        $this->startPoint = $startPoint;
+
+        return $this;
+    }
+
+    /**
+     * Get startPoint
+     *
+     * @return \AppBundle\Entity\Location
+     */
+    public function getStartPoint()
+    {
+        return $this->startPoint;
     }
 }

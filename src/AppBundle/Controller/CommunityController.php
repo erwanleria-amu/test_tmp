@@ -288,4 +288,24 @@ class CommunityController extends Controller
             return new Response($user->getUsername());
         }
     }
+
+    /**
+     * @Route("/community/update-cities", name="update-stats-cities", options={"expose" = true})
+     * @param Request $request
+     * @return Response
+     */
+    public function updateCitiesAction(Request $request){
+
+        $data = $request->request->all();
+
+        $user = $this->getUser();
+
+        $doctrine = $this->getDoctrine();
+
+        if($user != null) {
+            $user->setCities($user->getCities() + $data['cities']);
+            $doctrine->getManager()->flush();
+            return new Response('OK');
+        }
+    }
 }

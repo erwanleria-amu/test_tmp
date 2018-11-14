@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <body>
         <div id="wrapper">
             <div id="map"></div>
 
@@ -18,15 +17,13 @@
             <tr>
                 <th class="mdl-typography--text-center" width="50%">Ville</th>
                 <th class="mdl-typography--text-center" width="50%">Météo</th>
-                <th class="mdl-typography--text-center" width="50%">Favori</th>
+                {% if app.user %}<th class="mdl-typography--text-center" width="50%">Favori</th>{% endif %}
             </tr>
             </thead>
             <tbody id="results">
 
             </tbody>
         </table>
-    </body>
-
 {% endblock %}
 
 {% block javascripts %}
