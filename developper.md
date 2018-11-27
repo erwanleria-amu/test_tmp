@@ -1,13 +1,24 @@
 # POUR LES DEVELOPPEURS
 
-## Préface :
+# Sommaire
+[Préface](#preface)
+I.	[Installer php7 sur Linux](#install_php7_linux)
+II.	[Installer composer](#install_composer)
+III.	[Accéder au projet](#acces_projet)
+[Aparté :Créer un projet Symfony](#aparte)
+[Sous Windows](#msdos)
+[Documentation](#doc)
+
+## Préface : <a name="preface"></a>
 
 Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal.
 A la fin du document une partie est dédiée au système d'exploitation non-libre Windows.  
+
+Manipulations effectuées sous
 OS : Linux  
 Distribution : Debian 9 Stretch
 
-## I. Installer php7
+## I. Installer php7 sur Linux <a name="install_php7_linux"></a>
 
 - Télécharger la dernière tarball de php 7, décompressez-la dans un répertoire de votre Home
 - Au préalable vérifier que certaines librairies sont bien installées:
@@ -41,10 +52,16 @@ Installing PDO headers:           /usr/local/include/php/ext/pdo/
 
 - NB : Vous pouvez faire make test MAIS si vous avez Debian en français alors le test va s'arrêter(crash)  en lisant la date car un des tests se base sur la date actuelle fournie par la machine, or le test en question utilise une fonction qui ne lit la date qu'au format anglophone.
 
-## II. Installer composer sur votre machine
+## II. Installer composer <a name="install_composer"></a>
+
+- Si vous avez installé php de la manière précédente, il vous suffit de faire :
 $ curl -sS https://getcomposer.org/installer | php
 
-- Cela crée un fichier composer.phar dans le répertoire courant, vous pouvez le copier et ou le déplacer de la façon suivante /usr/local/bin/composer ceci vous permettra d'utiliser composer dans n'importe quel autre répertoire
+- Ou bien si vous aviez déjà installé php avec XAMPP par exemple :
+$ sudo curl -sS https://getcomposer.org/installer | /opt/lampp/bin/php
+
+
+- Cela crée un fichier composer.phar dans le répertoire courant, vous pouvez le copier et ou le déplacer de la façon suivante `mv composer.phar /usr/local/bin/composer` ceci vous permettra d'utiliser composer dans n'importe quel autre répertoire
 
 ```
 All settings correct for using Composer
@@ -54,7 +71,7 @@ Composer (version 1.7.2) successfully installed to: /home/erwan/Téléchargement
 Use it: php composer.phar
 ```
 
-## III. Acceder au projet
+## III. Accéder au projet <a name="acces_projet"></a>
 ```
 $ git clone https://github.com/Kr4unos/MeteoRando.git
 $ cd MeteoRando
@@ -121,7 +138,7 @@ $ php bin/console server:run
 
 - Lancer votre navigateur web favori. Dans la barre d'adresse écrire `http://127.0.0.1:8000`. Vous arrivez sur la page web de MétéoRando
 
-## Aparté : Creer un projet symfony
+## Aparté : Creer un projet Symfony <a name="aparte"></a>
 
 - Installer Symfony:
 ```
@@ -155,7 +172,7 @@ app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests 
 ...
 ```
 
-## Sous Windows
+## Sous Windows <a name="msdos"></a>
 
 - Installer php : `http://php.net/manual/fr/install.windows.php`
 - Ajouter le chemin de l'éxécutable PHP7 à la variable d'environnement PATH
@@ -192,3 +209,8 @@ c:\projects\> php symfony
 - Ensuite executer `php bin/console doctrine:schema:create` à la racine du projet
 
 - Enfin, vous pouvez lancer un serveur php local avec `php bin/console server:run`
+
+## Documentation
+
+La documentation  est disponible dans le répertoire `docs/MeteoRando` depuis la racine du projet.
+Elle est visualisable au format html (fichier `index.html`)
