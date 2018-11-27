@@ -1,13 +1,15 @@
 # POUR LES DEVELOPPEURS
 
 # Sommaire
-[Préface](#preface)
+[Préface](#preface)  
 I.	[Installer php7 sur Linux](#install_php7_linux)  
 II.	[Installer composer](#install_composer)  
 III.	[Accéder au projet](#acces_projet)  
 [Aparté :Créer un projet Symfony](#aparte)  
 [Sous Windows](#msdos)  
-[Documentation](#doc)  
+[Documentation](#doc)
+
+
 
 ## Préface : <a name="preface"></a>
 
