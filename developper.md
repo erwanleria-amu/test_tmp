@@ -5,7 +5,7 @@
 I.	[Installer php7 sur Linux](#install_php7_linux)  
 II.	[Installer composer](#install_composer)  
 III.	[Accéder au projet](#acces_projet)  
-[Aparté :Créer un projet Symfony](#aparte)  
+[Aparté : Créer un projet Symfony](#aparte)  
 [Sous Windows](#msdos)  
 [Documentation](#doc)
 
@@ -142,6 +142,8 @@ $ php bin/console server:run
 
 ## Aparté : Creer un projet Symfony <a name="aparte"></a>
 
+- Le projet a été crée à partir du framework Symfony, voici donc une brève explication de comment démarrer un projet avec Symfony.  
+
 - Installer Symfony:
 ```
 $ curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
@@ -177,28 +179,8 @@ app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests 
 ## Sous Windows <a name="msdos"></a>
 
 - Installer php : `http://php.net/manual/fr/install.windows.php`
+
 - Ajouter le chemin de l'éxécutable PHP7 à la variable d'environnement PATH
-- Appuyer sur Windows + r, taper "cmd". Dans l'invite de commande faire: `php -r "readfile('https://symfony.com/installer');" > symfony`
-
----
-- Par exemple, si WAMP est utilisé...
-`c:\> move symfony c:\wamp\bin\php`
-...alors, exécutez la commande comme ceci :
-`c:\> symfony`
-
-- Déplacement dans le dossier de vos projets ...
-`c:\> move symfony c:\projects`
-
-- ...  alors, exécutez la commande comme ceci
-```
-c:\> cd projects
-c:\projects\> php symfony
-```
-
-(Source : https://symfony.developpez.com/documentation/symfony3/part-03-apprendre-installer-configurer/#L2-2)
-
-
---- 
 
 - Installer Composer: https://getcomposer.org/ (En l'ajoutant bien à votre path lors de l'install)
 
