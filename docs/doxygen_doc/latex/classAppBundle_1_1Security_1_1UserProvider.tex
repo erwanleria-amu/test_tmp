@@ -1,0 +1,102 @@
+\hypertarget{classAppBundle_1_1Security_1_1UserProvider}{}\section{Référence de la classe App\+Bundle\textbackslash{}Security\textbackslash{}User\+Provider}
+\label{classAppBundle_1_1Security_1_1UserProvider}\index{App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Provider@{App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Provider}}
+
+
+Graphe d\textquotesingle{}héritage de App\+Bundle\textbackslash{}Security\textbackslash{}User\+Provider\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAppBundle_1_1Security_1_1UserProvider__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de App\+Bundle\textbackslash{}Security\textbackslash{}User\+Provider\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAppBundle_1_1Security_1_1UserProvider__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserProvider_a97a35f6c912b496c5abb18653655d51d}\label{classAppBundle_1_1Security_1_1UserProvider_a97a35f6c912b496c5abb18653655d51d}} 
+{\bfseries \+\_\+\+\_\+construct} (Entity\+Manager\+Interface \$em)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserProvider_a00f367425384017ab3fdcaa62503be07}{load\+User\+By\+Username} (\$username)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserProvider_a4d9093d182287860fa773c3ef574c026}{refresh\+User} (User\+Interface \$user)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserProvider_a5a7658a77c854bd0b27c646a98e1feab}{supports\+Class} (\$class)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserProvider_a00f367425384017ab3fdcaa62503be07}\label{classAppBundle_1_1Security_1_1UserProvider_a00f367425384017ab3fdcaa62503be07}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}!load\+User\+By\+Username@{load\+User\+By\+Username}}
+\index{load\+User\+By\+Username@{load\+User\+By\+Username}!App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}}
+\subsubsection{\texorpdfstring{load\+User\+By\+Username()}{loadUserByUsername()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Provider\+::load\+User\+By\+Username (\begin{DoxyParamCaption}\item[{}]{\$username }\end{DoxyParamCaption})}
+
+Loads the user for the given username.
+
+This method must throw Username\+Not\+Found\+Exception if the user is not found.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$username} & The username\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+User\+Interface
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Username\+Not\+Found\+Exception} & if the user is not found \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserProvider_a4d9093d182287860fa773c3ef574c026}\label{classAppBundle_1_1Security_1_1UserProvider_a4d9093d182287860fa773c3ef574c026}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}!refresh\+User@{refresh\+User}}
+\index{refresh\+User@{refresh\+User}!App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}}
+\subsubsection{\texorpdfstring{refresh\+User()}{refreshUser()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Provider\+::refresh\+User (\begin{DoxyParamCaption}\item[{User\+Interface}]{\$user }\end{DoxyParamCaption})}
+
+Refreshes the user for the account interface.
+
+It is up to the implementation to decide if the user data should be totally reloaded (e.\+g. from the database), or if the User\+Interface object can just be merged into some internal array of users / identity map.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+User\+Interface & {\em \$user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+User\+Interface
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Unsupported\+User\+Exception} & if the account is not supported \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserProvider_a5a7658a77c854bd0b27c646a98e1feab}\label{classAppBundle_1_1Security_1_1UserProvider_a5a7658a77c854bd0b27c646a98e1feab}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}!supports\+Class@{supports\+Class}}
+\index{supports\+Class@{supports\+Class}!App\+Bundle\+::\+Security\+::\+User\+Provider@{App\+Bundle\+::\+Security\+::\+User\+Provider}}
+\subsubsection{\texorpdfstring{supports\+Class()}{supportsClass()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Provider\+::supports\+Class (\begin{DoxyParamCaption}\item[{}]{\$class }\end{DoxyParamCaption})}
+
+Whether this provider supports the given user class.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$class} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+src/\+App\+Bundle/\+Security/User\+Provider.\+php\end{DoxyCompactItemize}

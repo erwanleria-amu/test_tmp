@@ -1,0 +1,206 @@
+\section*{Sommaire}
+
+\href{#preface}{\tt Préface} I. \href{#install_php7_linux}{\tt Installer php7 sur Linux} II. \href{#install_composer}{\tt Installer composer} I\+II. \href{#acces_projet}{\tt Accéder au projet} \href{#aparte}{\tt Aparté \+: Créer un projet Symfony} \href{#msdos}{\tt Sous Windows} \href{#doc}{\tt Documentation}
+
+\subsection*{Préface \+: \label{_preface}%
+}
+
+Ce document explique comment lancer le projet Météo\+Rando (de l\textquotesingle{}équipe-\/projet Météo\+Rando1) de A à Z sur Linux/\+Debian via le terminal. A la fin du document une partie est dédiée au système d\textquotesingle{}exploitation non-\/libre Windows.
+
+Manipulations effectuées sous OS \+: Linux Distribution \+: Debian 9 Stretch
+
+\subsection*{I. Installer php7 sur Linux \label{_install_php7_linux}%
+}
+
+
+\begin{DoxyItemize}
+\item Télécharger la dernière tarball de php 7, décompressez-\/la dans un répertoire de votre Home
+\item Au préalable vérifier que certaines librairies sont bien installées\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+$ sudo apt-get install autoconf build-essential curl libtool \(\backslash\)
+  libssl-dev libcurl4-openssl-dev libxml2-dev libreadline7 \(\backslash\)
+  libreadline-dev libzip-dev libzip4 nginx openssl \(\backslash\)
+  pkg-config zlib1g-dev
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Vous pouvez configurer le build dans un répertoire pour faire les choses proprement, sinon ignorer ci-\/dessous \char`\"{}-\/-\/prefix=$<$\+I\+N\+S\+E\+R\+E\+R U\+N R\+E\+P\+E\+R\+T\+O\+I\+R\+E P\+O\+U\+R L\+E B\+U\+I\+L\+D$>$\char`\"{}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+$./configure  --prefix=<INSERER UN REPERTOIRE POUR LE BUILD> --enable-mysqlnd     --with-pdo-mysql    
+       --with-pdo-mysql=mysqlnd     --with-pdo-pgsql=/usr/bin/pg\_config     --enable-bcmath     --enable-fpm    
+       --with-fpm-user=www-data     --with-fpm-group=www-data     --enable-mbstring     --enable-phpdbg    
+       --enable-shmop     --enable-sockets     --enable-sysvmsg     --enable-sysvsem     --enable-sysvshm     --enable-zip    
+       --with-libzip    --with-zlib     --with-curl     --with-pear     --with-openssl     --enable-pcntl    
+       --with-readline
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}
+$make -jX (remplacer x par le nombre de processeurs de votre machine -car c'est assez long)
+Build complete.
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}
+$ make install
+Wrote PEAR system config file at: /usr/local/etc/pear.conf
+You may want to add: /usr/local/lib/php to your php.ini include\_path
+/home/erwan/Téléchargements/php-7.2.10/build/shtool install -c ext/phar/phar.phar /usr/local/bin
+ln -s -f phar.phar /usr/local/bin/phar
+Installing PDO headers:           /usr/local/include/php/ext/pdo/
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item NB \+: Vous pouvez faire make test M\+A\+IS si vous avez Debian en français alors le test va s\textquotesingle{}arrêter(crash) en lisant la date car un des tests se base sur la date actuelle fournie par la machine, or le test en question utilise une fonction qui ne lit la date qu\textquotesingle{}au format anglophone.
+\end{DoxyItemize}
+
+\subsection*{II. Installer composer \label{_install_composer}%
+}
+
+
+\begin{DoxyItemize}
+\item Si vous avez installé php de la manière précédente, il vous suffit de faire \+: \$ curl -\/sS \href{https://getcomposer.org/installer}{\tt https\+://getcomposer.\+org/installer} $\vert$ php
+\item Ou bien si vous aviez déjà installé php avec X\+A\+M\+PP par exemple \+: \$ sudo curl -\/sS \href{https://getcomposer.org/installer}{\tt https\+://getcomposer.\+org/installer} $\vert$ /opt/lampp/bin/php
+\item Cela crée un fichier composer.\+phar dans le répertoire courant, vous pouvez le copier et ou le déplacer de la façon suivante {\ttfamily mv composer.\+phar /usr/local/bin/composer} ceci vous permettra d\textquotesingle{}utiliser composer dans n\textquotesingle{}importe quel autre répertoire
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+All settings correct for using Composer
+Downloading...
+
+Composer (version 1.7.2) successfully installed to: /home/erwan/Téléchargements/php-7.2.10/composer.phar
+Use it: php composer.phar
+\end{DoxyCode}
+
+
+\#\# I\+II. Accéder au projet \label{_acces_projet}%
+ 
+\begin{DoxyCode}
+$ git clone https://github.com/Kr4unos/MeteoRando.git
+$ cd MeteoRando
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Avant de lancer la commande suivante il faut au préalable avoir créé \#une session utilisateur mysql (installer les packages mysql-\/client et mysql-\/server. Lancer mysql (cela peut ne pas fonctionner sans les privilèges root) il faudra alors se mettre en mode root \+: Si c\textquotesingle{}est une première connexion avec mysql, remplacer le mot newpass par un mot de passe \+: 
+\begin{DoxyCode}
+$ mysqladmin -u root password newpass
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+(Source \+: \href{https://www.howtoforge.com/setting-changing-resetting-mysql-root-passwords#method-set-up-root-password-for-the-first-time}{\tt https\+://www.\+howtoforge.\+com/setting-\/changing-\/resetting-\/mysql-\/root-\/passwords\#method-\/set-\/up-\/root-\/password-\/for-\/the-\/first-\/time})
+
+
+\begin{DoxyItemize}
+\item Sinon \+: {\ttfamily \$ mysql -\/u root -\/p} Et entrez votre mot de passe si vous en avez déjà configuré un.
+\item Une fois dans l\textquotesingle{}interface mysql du terminal, on va créer une session avec le nom de l\textquotesingle{}utilisateur habituel du répertoire home (pour éviter de lancer le projet en root), entrer \+: 
+\begin{DoxyCode}
+> GRANT ALL PRIVILEGES ON *.* TO 'INSERER NOM DE L UTILISATEUR DU REPERTOIRE HOME COURANT'@'127.0.0.1'
+       IDENTIFIED BY 'INSERER MOT DE PASSE'
+> Ctrl + c #ou quit pour sortir
+\end{DoxyCode}
+
+\item Bien sortir du mode root si vous avez fait une commande du type \char`\"{}su\char`\"{} ou \char`\"{}sudo -\/s\char`\"{}\+: {\ttfamily \$ exit}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+$ composer install #ou composer.phar install
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Des lignes de ce genre vont apparaître \+: 
+\begin{DoxyCode}
+Patienter un peu, ensuite il faut entrer des informations. Pour les champs non-complétés ci-dessous il
+       faudra appuyer sur Entrée.
+\end{DoxyCode}
+ database\+\_\+host (127.\+0.\+0.\+1)\+: database\+\_\+port (null)\+: database\+\_\+name (symfony)\+: M\+E\+T\+T\+RE I\+CI LE N\+OM DE B\+A\+SE DE D\+O\+N\+NÉ\+ES S\+O\+U\+H\+A\+I\+TÉ (N\+O\+N-\/\+E\+X\+I\+S\+T\+A\+NT, S\+Y\+M\+F\+O\+NY LE C\+RÉ\+E\+RA) database\+\_\+user (root)\+: C\+H\+A\+N\+G\+ER A\+V\+EC LE N\+OM D\textquotesingle{}U\+T\+I\+L\+I\+S\+A\+T\+E\+UR C\+H\+O\+I\+SI P\+R\+E\+C\+E\+D\+E\+M\+M\+E\+NT database\+\_\+password (null)\+: I\+N\+S\+E\+R\+ER LE M\+DP C\+H\+O\+I\+SI P\+R\+E\+C\+E\+D\+E\+M\+M\+E\+NT mailer\+\_\+transport (smtp)\+: mailer\+\_\+host (127.\+0.\+0.\+1)\+: mailer\+\_\+user (null)\+: mailer\+\_\+password (null)\+: secret (This\+Token\+Is\+Not\+So\+Secret\+Change\+It)\+: 
+\begin{DoxyCode}
+- Création de la base de données:
+\end{DoxyCode}
+ \$ php bin/console doctrine\+:database\+:create Created database {\ttfamily symfony} for connection named default 
+\begin{DoxyCode}
+\end{DoxyCode}
+
+\item Création du schéma de base de données en fonction des classes P\+HP\+: \$ php bin/console doctrine\+:schema\+:create Creating database schema... Database schema created successfully! 
+\begin{DoxyCode}
+- Lancement du serveur
+\end{DoxyCode}
+ \$ php bin/console server\+:run \mbox{[}OK\mbox{]} Server listening on \href{http://127.0.0.1:8000}{\tt http\+://127.\+0.\+0.\+1\+:8000} 
+\begin{DoxyCode}
+- Lancer votre navigateur web favori. Dans la barre d'adresse écrire `http://127.0.0.1:8000`. Vous arrivez
+       sur la page web de MétéoRando
+
+## Aparté : Creer un projet Symfony <a name="aparte"></a>
+
+- Le projet a été crée à partir du framework Symfony, voici donc une brève explication de comment démarrer
+       un projet avec Symfony.  
+
+- Installer Symfony:
+\end{DoxyCode}
+ \$ curl -\/\+LsS \href{https://symfony.com/installer}{\tt https\+://symfony.\+com/installer} -\/o /usr/local/bin/symfony \$ chmod a+x /usr/local/bin/symfony ```
+\item Créer un projet nommé test\+: {\ttfamily \$ symfony new test 3.\+4}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+ Downloading Symfony...
+
+    6.2 MiB/6.2 MiB ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%
+
+ Preparing project...
+
+ ✔  Symfony 3.4.17 was successfully installed. Now you can:
+
+    * Change your current directory to /home/erwan/GL/test
+
+    * Configure your application in app/config/parameters.yml file.
+
+    * Run your application:
+        1. Execute the php bin/console server:start command.
+        2. Browse to the http://localhost:8000 URL.
+
+    * Read the documentation at https://symfony.com/doc
+
+$ ls test
+app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests  var  vendor  web
+...
+\end{DoxyCode}
+
+
+\subsection*{Sous Windows \label{_msdos}%
+}
+
+
+\begin{DoxyItemize}
+\item Installer php \+: {\ttfamily \href{http://php.net/manual/fr/install.windows.php}{\tt http\+://php.\+net/manual/fr/install.\+windows.\+php}}
+\item Ajouter le chemin de l\textquotesingle{}éxécutable P\+H\+P7 à la variable d\textquotesingle{}environnement P\+A\+TH
+\item Installer Composer\+: \href{https://getcomposer.org/}{\tt https\+://getcomposer.\+org/} (En l\textquotesingle{}ajoutant bien à votre path lors de l\textquotesingle{}install)
+\item Exécuter {\ttfamily composer install} à la racine de votre projet
+\item Modifier le fichier \char`\"{}/app/parameters.\+yml\char`\"{} pour mettre les données de connexion de votre BD locale (Obligatoirement My\+S\+QL)
+\item Executer {\ttfamily php bin/console doctrine\+:database\+:create} à la racine du projet
+\item Ensuite executer {\ttfamily php bin/console doctrine\+:schema\+:create} à la racine du projet
+\item Enfin, vous pouvez lancer un serveur php local avec {\ttfamily php bin/console server\+:run}
+\end{DoxyItemize}
+
+\subsection*{Documentation \label{_doc}%
+}
+
+La documentation est disponible dans le répertoire {\ttfamily docs/\+Meteo\+Rando} depuis la racine du projet. Elle est visualisable au format html, pour cela il faut ouvrir le fichier {\ttfamily index.\+html} dans un navigateur web. 

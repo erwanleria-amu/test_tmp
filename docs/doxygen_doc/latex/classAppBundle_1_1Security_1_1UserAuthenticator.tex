@@ -1,0 +1,149 @@
+\hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator}{}\section{Référence de la classe App\+Bundle\textbackslash{}Security\textbackslash{}User\+Authenticator}
+\label{classAppBundle_1_1Security_1_1UserAuthenticator}\index{App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator@{App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator}}
+
+
+Graphe d\textquotesingle{}héritage de App\+Bundle\textbackslash{}Security\textbackslash{}User\+Authenticator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classAppBundle_1_1Security_1_1UserAuthenticator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de App\+Bundle\textbackslash{}Security\textbackslash{}User\+Authenticator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classAppBundle_1_1Security_1_1UserAuthenticator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_a5cb01cfb7331e4e083540521b131d74f}\label{classAppBundle_1_1Security_1_1UserAuthenticator_a5cb01cfb7331e4e083540521b131d74f}} 
+{\bfseries \+\_\+\+\_\+construct} (Form\+Factory\+Interface \$form\+Factory, User\+Password\+Encoder\+Interface \$encoder, Router\+Interface \$router, Entity\+Manager\+Interface \$em)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_af627fa4cca3a3a5cbe2ca81f1875b7ff}{get\+Credentials} (Request \$request)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_a4f446bc07605bcfa92e2dfb6d20dc9b2}{get\+User} (\$credentials, User\+Provider\+Interface \$user\+Provider)
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_ab998f6a4f9065aa65184a9a3a72db31c}{check\+Credentials} (\$credentials, User\+Interface \$user)
+\item 
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_a2790107232881534993e88d7a1627f5e}\label{classAppBundle_1_1Security_1_1UserAuthenticator_a2790107232881534993e88d7a1627f5e}} 
+{\bfseries on\+Authentication\+Success} (Request \$request, Token\+Interface \$token, \$provider\+Key)
+\item 
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_a7f8c85e740637103f61d6cc7a24c5f31}\label{classAppBundle_1_1Security_1_1UserAuthenticator_a7f8c85e740637103f61d6cc7a24c5f31}} 
+{\bfseries get\+Default\+Success\+Redirect\+Url} ()
+\end{DoxyCompactItemize}
+\subsection*{Fonctions membres protégées}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_a8323994f489e8a2e5a7f58e1fc05b77f}{get\+Login\+Url} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_ab998f6a4f9065aa65184a9a3a72db31c}\label{classAppBundle_1_1Security_1_1UserAuthenticator_ab998f6a4f9065aa65184a9a3a72db31c}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}!check\+Credentials@{check\+Credentials}}
+\index{check\+Credentials@{check\+Credentials}!App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}}
+\subsubsection{\texorpdfstring{check\+Credentials()}{checkCredentials()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator\+::check\+Credentials (\begin{DoxyParamCaption}\item[{}]{\$credentials,  }\item[{User\+Interface}]{\$user }\end{DoxyParamCaption})}
+
+Returns true if the credentials are valid.
+
+If any value other than true is returned, authentication will fail. You may also throw an Authentication\+Exception if you wish to cause authentication to fail.
+
+The {\itshape credentials} are the return value from \hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_af627fa4cca3a3a5cbe2ca81f1875b7ff}{get\+Credentials()}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+mixed & {\em \$credentials} & \\
+\hline
+User\+Interface & {\em \$user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Authentication\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_af627fa4cca3a3a5cbe2ca81f1875b7ff}\label{classAppBundle_1_1Security_1_1UserAuthenticator_af627fa4cca3a3a5cbe2ca81f1875b7ff}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}!get\+Credentials@{get\+Credentials}}
+\index{get\+Credentials@{get\+Credentials}!App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}}
+\subsubsection{\texorpdfstring{get\+Credentials()}{getCredentials()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator\+::get\+Credentials (\begin{DoxyParamCaption}\item[{Request}]{\$request }\end{DoxyParamCaption})}
+
+Get the authentication credentials from the request and return them as any type (e.\+g. an associate array). If you return null, authentication will be skipped.
+
+Whatever value you return here will be passed to \hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_a4f446bc07605bcfa92e2dfb6d20dc9b2}{get\+User()} and \hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_ab998f6a4f9065aa65184a9a3a72db31c}{check\+Credentials()}
+
+For example, for a form login, you might\+: \begin{DoxyVerb} if ($request->request->has('_username')) {
+     return array(
+         'username' => $request->request->get('_username'),
+         'password' => $request->request->get('_password'),
+     );
+ } else {
+     return;
+ }
+\end{DoxyVerb}
+
+
+Or for an A\+PI token that\textquotesingle{}s on a header, you might use\+: \begin{DoxyVerb} return array('api_key' => $request->headers->get('X-API-TOKEN'));
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Request & {\em \$request} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mixed$\vert$null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_a8323994f489e8a2e5a7f58e1fc05b77f}\label{classAppBundle_1_1Security_1_1UserAuthenticator_a8323994f489e8a2e5a7f58e1fc05b77f}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}!get\+Login\+Url@{get\+Login\+Url}}
+\index{get\+Login\+Url@{get\+Login\+Url}!App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}}
+\subsubsection{\texorpdfstring{get\+Login\+Url()}{getLoginUrl()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator\+::get\+Login\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Return the U\+RL to the login page.
+
+\begin{DoxyReturn}{Renvoie}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAppBundle_1_1Security_1_1UserAuthenticator_a4f446bc07605bcfa92e2dfb6d20dc9b2}\label{classAppBundle_1_1Security_1_1UserAuthenticator_a4f446bc07605bcfa92e2dfb6d20dc9b2}} 
+\index{App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!App\+Bundle\+::\+Security\+::\+User\+Authenticator@{App\+Bundle\+::\+Security\+::\+User\+Authenticator}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}}
+{\footnotesize\ttfamily App\+Bundle\textbackslash{}\+Security\textbackslash{}\+User\+Authenticator\+::get\+User (\begin{DoxyParamCaption}\item[{}]{\$credentials,  }\item[{User\+Provider\+Interface}]{\$user\+Provider }\end{DoxyParamCaption})}
+
+Return a User\+Interface object based on the credentials.
+
+The {\itshape credentials} are the return value from \hyperlink{classAppBundle_1_1Security_1_1UserAuthenticator_af627fa4cca3a3a5cbe2ca81f1875b7ff}{get\+Credentials()}
+
+You may throw an Authentication\+Exception if you wish. If you return null, then a Username\+Not\+Found\+Exception is thrown for you.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+mixed & {\em \$credentials} & \\
+\hline
+User\+Provider\+Interface & {\em \$user\+Provider} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Authentication\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Renvoie}
+User\+Interface$\vert$null 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+src/\+App\+Bundle/\+Security/User\+Authenticator.\+php\end{DoxyCompactItemize}

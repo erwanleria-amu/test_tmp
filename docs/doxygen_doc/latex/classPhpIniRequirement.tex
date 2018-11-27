@@ -1,0 +1,66 @@
+\hypertarget{classPhpIniRequirement}{}\section{Référence de la classe Php\+Ini\+Requirement}
+\label{classPhpIniRequirement}\index{Php\+Ini\+Requirement@{Php\+Ini\+Requirement}}
+
+
+Graphe d\textquotesingle{}héritage de Php\+Ini\+Requirement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classPhpIniRequirement__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de Php\+Ini\+Requirement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classPhpIniRequirement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPhpIniRequirement_af3e88e1bbec416c36ed54c88ca1397bb}{\+\_\+\+\_\+construct} (\$cfg\+Name, \$evaluation, \$approve\+Cfg\+Absence=false, \$test\+Message=null, \$help\+Html=null, \$help\+Text=null, \$optional=false)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Represents a P\+HP requirement in form of a php.\+ini configuration.
+
+\begin{DoxyAuthor}{Auteur}
+Tobias Schultze \href{http://tobion.de}{\tt http\+://tobion.\+de} 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{classPhpIniRequirement_af3e88e1bbec416c36ed54c88ca1397bb}\label{classPhpIniRequirement_af3e88e1bbec416c36ed54c88ca1397bb}} 
+\index{Php\+Ini\+Requirement@{Php\+Ini\+Requirement}!\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}}
+\index{\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}!Php\+Ini\+Requirement@{Php\+Ini\+Requirement}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Php\+Ini\+Requirement\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$cfg\+Name,  }\item[{}]{\$evaluation,  }\item[{}]{\$approve\+Cfg\+Absence = {\ttfamily false},  }\item[{}]{\$test\+Message = {\ttfamily null},  }\item[{}]{\$help\+Html = {\ttfamily null},  }\item[{}]{\$help\+Text = {\ttfamily null},  }\item[{}]{\$optional = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Constructor that initializes the requirement.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$cfg\+Name} & The configuration name used for ini\+\_\+get() \\
+\hline
+bool | callback & {\em \$evaluation} & Either a boolean indicating whether the configuration should evaluate to true or false, or a callback function receiving the configuration value as parameter to determine the fulfillment of the requirement \\
+\hline
+bool & {\em \$approve\+Cfg\+Absence} & If true the \hyperlink{classRequirement}{Requirement} will be fulfilled even if the configuration option does not exist, i.\+e. ini\+\_\+get() returns false. This is helpful for abandoned configs in later P\+HP versions or configs of an optional extension, like Suhosin. Example\+: You require a config to be true but P\+HP later removes this config and defaults it to true internally. \\
+\hline
+string | null & {\em \$test\+Message} & The message for testing the requirement (when null and \$evaluation is a boolean a default message is derived) \\
+\hline
+string | null & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem (when null and \$evaluation is a boolean a default help is derived) \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+bool & {\em \$optional} & Whether this is only an optional recommendation not a mandatory requirement \\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+var/Symfony\+Requirements.\+php\end{DoxyCompactItemize}

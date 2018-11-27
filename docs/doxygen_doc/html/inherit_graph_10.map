@@ -1,0 +1,8 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node2" href="$classAppBundle_1_1Form_1_1EventCommentForm.html" title="AppBundle\\Form\\EventCommentForm" alt="" coords="153,5,397,32"/>
+<area shape="rect" id="node3" href="$classAppBundle_1_1Form_1_1LoginForm.html" title="AppBundle\\Form\\LoginForm" alt="" coords="183,56,367,83"/>
+<area shape="rect" id="node4" href="$classAppBundle_1_1Form_1_1NewEventForm.html" title="AppBundle\\Form\\NewEventForm" alt="" coords="168,107,383,133"/>
+<area shape="rect" id="node5" href="$classAppBundle_1_1Form_1_1ProfileEditForm.html" title="AppBundle\\Form\\ProfileEditForm" alt="" coords="169,157,382,184"/>
+<area shape="rect" id="node6" href="$classAppBundle_1_1Form_1_1RegisterForm.html" title="AppBundle\\Form\\RegisterForm" alt="" coords="174,208,377,235"/>
+<area shape="rect" id="node7" href="$classAppBundle_1_1Form_1_1ReviewForm.html" title="AppBundle\\Form\\ReviewForm" alt="" coords="177,259,374,285"/>
+</map>
