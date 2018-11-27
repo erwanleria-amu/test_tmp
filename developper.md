@@ -16,9 +16,9 @@ III.	[Accéder au projet](#acces_projet)
 Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal.
 A la fin du document une partie est dédiée au système d'exploitation non-libre Windows.  
 
-Manipulations effectuées sous
+Manipulations effectuées sous  
 OS : Linux  
-Distribution : Debian 9 Stretch
+Distribution : Debian 9 Stretch  
 
 ## I. Installer php7 sur Linux <a name="install_php7_linux"></a>
 
@@ -212,7 +212,7 @@ c:\projects\> php symfony
 
 - Enfin, vous pouvez lancer un serveur php local avec `php bin/console server:run`
 
-## Documentation
+## Documentation <a name="doc"></a>
 
 La documentation  est disponible dans le répertoire `docs/MeteoRando` depuis la racine du projet.
-Elle est visualisable au format html (fichier `index.html`)
+Elle est visualisable au format html, pour cela il faut ouvrir le fichier `index.html` dans un navigateur web.
