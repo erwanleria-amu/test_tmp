@@ -1,0 +1,265 @@
+\hypertarget{classRequirementCollection}{}\section{Référence de la classe Requirement\+Collection}
+\label{classRequirementCollection}\index{Requirement\+Collection@{Requirement\+Collection}}
+
+
+Graphe d\textquotesingle{}héritage de Requirement\+Collection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classRequirementCollection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de Requirement\+Collection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classRequirementCollection__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRequirementCollection_a9b1922282e30ea8d9e267e206f63e071}{get\+Iterator} ()
+\item 
+\hyperlink{classRequirementCollection_a16be85daada80688601baf1d4048d4c6}{add} (\hyperlink{classRequirement}{Requirement} \$requirement)
+\item 
+\hyperlink{classRequirementCollection_a275b139b8f1daecf52952e67cb5bc6cf}{add\+Requirement} (\$fulfilled, \$test\+Message, \$help\+Html, \$help\+Text=null)
+\item 
+\hyperlink{classRequirementCollection_aa0c7a2d729d6a1d32d363b9c02d00b40}{add\+Recommendation} (\$fulfilled, \$test\+Message, \$help\+Html, \$help\+Text=null)
+\item 
+\hyperlink{classRequirementCollection_a21190a79cf3a13a6a4c9c7133c919d8f}{add\+Php\+Ini\+Requirement} (\$cfg\+Name, \$evaluation, \$approve\+Cfg\+Absence=false, \$test\+Message=null, \$help\+Html=null, \$help\+Text=null)
+\item 
+\hyperlink{classRequirementCollection_afeba77fa6ca369631f8a602800e9e29d}{add\+Php\+Ini\+Recommendation} (\$cfg\+Name, \$evaluation, \$approve\+Cfg\+Absence=false, \$test\+Message=null, \$help\+Html=null, \$help\+Text=null)
+\item 
+\hyperlink{classRequirementCollection_a4de7d0d4e50130610d6d6d3cadc5c91c}{add\+Collection} (\hyperlink{classRequirementCollection}{Requirement\+Collection} \$collection)
+\item 
+\hyperlink{classRequirementCollection_a7b84e71c211825222e548a5cc296f99b}{all} ()
+\item 
+\hyperlink{classRequirementCollection_a86ec2f872cec0395bc1f0206c2de8c6d}{get\+Requirements} ()
+\item 
+\hyperlink{classRequirementCollection_acd45245ad3ababfaeb5f0565add5e7cc}{get\+Failed\+Requirements} ()
+\item 
+\hyperlink{classRequirementCollection_aa21bc7027e02a0366c52227fbd3acb35}{get\+Recommendations} ()
+\item 
+\hyperlink{classRequirementCollection_ae11e0e7a5fd890a48f29d35876684e14}{get\+Failed\+Recommendations} ()
+\item 
+\hyperlink{classRequirementCollection_ae2b1f4fc39d0139dbebe0783cc100029}{has\+Php\+Ini\+Config\+Issue} ()
+\item 
+\hyperlink{classRequirementCollection_a40f0ae0bf0d5e4d0abcece27c151527d}{get\+Php\+Ini\+Config\+Path} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+A \hyperlink{classRequirementCollection}{Requirement\+Collection} represents a set of \hyperlink{classRequirement}{Requirement} instances.
+
+\begin{DoxyAuthor}{Auteur}
+Tobias Schultze \href{http://tobion.de}{\tt http\+://tobion.\+de} 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classRequirementCollection_a16be85daada80688601baf1d4048d4c6}\label{classRequirementCollection_a16be85daada80688601baf1d4048d4c6}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add@{add}}
+\index{add@{add}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add (\begin{DoxyParamCaption}\item[{\hyperlink{classRequirement}{Requirement}}]{\$requirement }\end{DoxyParamCaption})}
+
+Adds a \hyperlink{classRequirement}{Requirement}.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\hyperlink{classRequirement}{Requirement} & {\em \$requirement} & A \hyperlink{classRequirement}{Requirement} instance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_a4de7d0d4e50130610d6d6d3cadc5c91c}\label{classRequirementCollection_a4de7d0d4e50130610d6d6d3cadc5c91c}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add\+Collection@{add\+Collection}}
+\index{add\+Collection@{add\+Collection}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add\+Collection()}{addCollection()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add\+Collection (\begin{DoxyParamCaption}\item[{\hyperlink{classRequirementCollection}{Requirement\+Collection}}]{\$collection }\end{DoxyParamCaption})}
+
+Adds a requirement collection to the current set of requirements.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\hyperlink{classRequirementCollection}{Requirement\+Collection} & {\em \$collection} & A \hyperlink{classRequirementCollection}{Requirement\+Collection} instance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_afeba77fa6ca369631f8a602800e9e29d}\label{classRequirementCollection_afeba77fa6ca369631f8a602800e9e29d}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add\+Php\+Ini\+Recommendation@{add\+Php\+Ini\+Recommendation}}
+\index{add\+Php\+Ini\+Recommendation@{add\+Php\+Ini\+Recommendation}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add\+Php\+Ini\+Recommendation()}{addPhpIniRecommendation()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add\+Php\+Ini\+Recommendation (\begin{DoxyParamCaption}\item[{}]{\$cfg\+Name,  }\item[{}]{\$evaluation,  }\item[{}]{\$approve\+Cfg\+Absence = {\ttfamily false},  }\item[{}]{\$test\+Message = {\ttfamily null},  }\item[{}]{\$help\+Html = {\ttfamily null},  }\item[{}]{\$help\+Text = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Adds an optional recommendation in form of a php.\+ini configuration.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$cfg\+Name} & The configuration name used for ini\+\_\+get() \\
+\hline
+bool | callback & {\em \$evaluation} & Either a boolean indicating whether the configuration should evaluate to true or false, or a callback function receiving the configuration value as parameter to determine the fulfillment of the requirement \\
+\hline
+bool & {\em \$approve\+Cfg\+Absence} & If true the \hyperlink{classRequirement}{Requirement} will be fulfilled even if the configuration option does not exist, i.\+e. ini\+\_\+get() returns false. This is helpful for abandoned configs in later P\+HP versions or configs of an optional extension, like Suhosin. Example\+: You require a config to be true but P\+HP later removes this config and defaults it to true internally. \\
+\hline
+string & {\em \$test\+Message} & The message for testing the requirement (when null and \$evaluation is a boolean a default message is derived) \\
+\hline
+string & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem (when null and \$evaluation is a boolean a default help is derived) \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_a21190a79cf3a13a6a4c9c7133c919d8f}\label{classRequirementCollection_a21190a79cf3a13a6a4c9c7133c919d8f}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add\+Php\+Ini\+Requirement@{add\+Php\+Ini\+Requirement}}
+\index{add\+Php\+Ini\+Requirement@{add\+Php\+Ini\+Requirement}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add\+Php\+Ini\+Requirement()}{addPhpIniRequirement()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add\+Php\+Ini\+Requirement (\begin{DoxyParamCaption}\item[{}]{\$cfg\+Name,  }\item[{}]{\$evaluation,  }\item[{}]{\$approve\+Cfg\+Absence = {\ttfamily false},  }\item[{}]{\$test\+Message = {\ttfamily null},  }\item[{}]{\$help\+Html = {\ttfamily null},  }\item[{}]{\$help\+Text = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Adds a mandatory requirement in form of a php.\+ini configuration.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$cfg\+Name} & The configuration name used for ini\+\_\+get() \\
+\hline
+bool | callback & {\em \$evaluation} & Either a boolean indicating whether the configuration should evaluate to true or false, or a callback function receiving the configuration value as parameter to determine the fulfillment of the requirement \\
+\hline
+bool & {\em \$approve\+Cfg\+Absence} & If true the \hyperlink{classRequirement}{Requirement} will be fulfilled even if the configuration option does not exist, i.\+e. ini\+\_\+get() returns false. This is helpful for abandoned configs in later P\+HP versions or configs of an optional extension, like Suhosin. Example\+: You require a config to be true but P\+HP later removes this config and defaults it to true internally. \\
+\hline
+string & {\em \$test\+Message} & The message for testing the requirement (when null and \$evaluation is a boolean a default message is derived) \\
+\hline
+string & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem (when null and \$evaluation is a boolean a default help is derived) \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_aa0c7a2d729d6a1d32d363b9c02d00b40}\label{classRequirementCollection_aa0c7a2d729d6a1d32d363b9c02d00b40}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add\+Recommendation@{add\+Recommendation}}
+\index{add\+Recommendation@{add\+Recommendation}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add\+Recommendation()}{addRecommendation()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add\+Recommendation (\begin{DoxyParamCaption}\item[{}]{\$fulfilled,  }\item[{}]{\$test\+Message,  }\item[{}]{\$help\+Html,  }\item[{}]{\$help\+Text = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Adds an optional recommendation.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+bool & {\em \$fulfilled} & Whether the recommendation is fulfilled \\
+\hline
+string & {\em \$test\+Message} & The message for testing the recommendation \\
+\hline
+string & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_a275b139b8f1daecf52952e67cb5bc6cf}\label{classRequirementCollection_a275b139b8f1daecf52952e67cb5bc6cf}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!add\+Requirement@{add\+Requirement}}
+\index{add\+Requirement@{add\+Requirement}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{add\+Requirement()}{addRequirement()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::add\+Requirement (\begin{DoxyParamCaption}\item[{}]{\$fulfilled,  }\item[{}]{\$test\+Message,  }\item[{}]{\$help\+Html,  }\item[{}]{\$help\+Text = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Adds a mandatory requirement.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+bool & {\em \$fulfilled} & Whether the requirement is fulfilled \\
+\hline
+string & {\em \$test\+Message} & The message for testing the requirement \\
+\hline
+string & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRequirementCollection_a7b84e71c211825222e548a5cc296f99b}\label{classRequirementCollection_a7b84e71c211825222e548a5cc296f99b}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!all@{all}}
+\index{all@{all}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{all()}{all()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns both requirements and recommendations.
+
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{classRequirement}{Requirement}\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_ae11e0e7a5fd890a48f29d35876684e14}\label{classRequirementCollection_ae11e0e7a5fd890a48f29d35876684e14}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Failed\+Recommendations@{get\+Failed\+Recommendations}}
+\index{get\+Failed\+Recommendations@{get\+Failed\+Recommendations}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Failed\+Recommendations()}{getFailedRecommendations()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Failed\+Recommendations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the recommendations that were not met.
+
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{classRequirement}{Requirement}\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_acd45245ad3ababfaeb5f0565add5e7cc}\label{classRequirementCollection_acd45245ad3ababfaeb5f0565add5e7cc}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Failed\+Requirements@{get\+Failed\+Requirements}}
+\index{get\+Failed\+Requirements@{get\+Failed\+Requirements}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Failed\+Requirements()}{getFailedRequirements()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Failed\+Requirements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the mandatory requirements that were not met.
+
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{classRequirement}{Requirement}\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_a9b1922282e30ea8d9e267e206f63e071}\label{classRequirementCollection_a9b1922282e30ea8d9e267e206f63e071}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Iterator@{get\+Iterator}}
+\index{get\+Iterator@{get\+Iterator}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Iterator()}{getIterator()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the current \hyperlink{classRequirementCollection}{Requirement\+Collection} as an Iterator.
+
+\begin{DoxyReturn}{Renvoie}
+Traversable A Traversable interface 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_a40f0ae0bf0d5e4d0abcece27c151527d}\label{classRequirementCollection_a40f0ae0bf0d5e4d0abcece27c151527d}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Php\+Ini\+Config\+Path@{get\+Php\+Ini\+Config\+Path}}
+\index{get\+Php\+Ini\+Config\+Path@{get\+Php\+Ini\+Config\+Path}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Php\+Ini\+Config\+Path()}{getPhpIniConfigPath()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Php\+Ini\+Config\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the P\+HP configuration file (php.\+ini) path.
+
+\begin{DoxyReturn}{Renvoie}
+string$\vert$false php.\+ini file path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_aa21bc7027e02a0366c52227fbd3acb35}\label{classRequirementCollection_aa21bc7027e02a0366c52227fbd3acb35}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Recommendations@{get\+Recommendations}}
+\index{get\+Recommendations@{get\+Recommendations}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Recommendations()}{getRecommendations()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Recommendations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns all optional recommendations.
+
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{classRequirement}{Requirement}\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_a86ec2f872cec0395bc1f0206c2de8c6d}\label{classRequirementCollection_a86ec2f872cec0395bc1f0206c2de8c6d}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!get\+Requirements@{get\+Requirements}}
+\index{get\+Requirements@{get\+Requirements}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{get\+Requirements()}{getRequirements()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::get\+Requirements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns all mandatory requirements.
+
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{classRequirement}{Requirement}\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirementCollection_ae2b1f4fc39d0139dbebe0783cc100029}\label{classRequirementCollection_ae2b1f4fc39d0139dbebe0783cc100029}} 
+\index{Requirement\+Collection@{Requirement\+Collection}!has\+Php\+Ini\+Config\+Issue@{has\+Php\+Ini\+Config\+Issue}}
+\index{has\+Php\+Ini\+Config\+Issue@{has\+Php\+Ini\+Config\+Issue}!Requirement\+Collection@{Requirement\+Collection}}
+\subsubsection{\texorpdfstring{has\+Php\+Ini\+Config\+Issue()}{hasPhpIniConfigIssue()}}
+{\footnotesize\ttfamily Requirement\+Collection\+::has\+Php\+Ini\+Config\+Issue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns whether a php.\+ini configuration is not correct.
+
+\begin{DoxyReturn}{Renvoie}
+bool php.\+ini configuration problem? 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+var/Symfony\+Requirements.\+php\end{DoxyCompactItemize}

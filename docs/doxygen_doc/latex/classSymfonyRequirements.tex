@@ -1,0 +1,92 @@
+\hypertarget{classSymfonyRequirements}{}\section{Référence de la classe Symfony\+Requirements}
+\label{classSymfonyRequirements}\index{Symfony\+Requirements@{Symfony\+Requirements}}
+
+
+Graphe d\textquotesingle{}héritage de Symfony\+Requirements\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classSymfonyRequirements__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de Symfony\+Requirements\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classSymfonyRequirements__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSymfonyRequirements_a9543e8a8cb4c134200fd19a3052cac38}{\+\_\+\+\_\+construct} ()
+\end{DoxyCompactItemize}
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSymfonyRequirements_aadd8789c5e6de1ef1b13c78dcf985a28}\label{classSymfonyRequirements_aadd8789c5e6de1ef1b13c78dcf985a28}} 
+const {\bfseries L\+E\+G\+A\+C\+Y\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+D\+\_\+\+P\+H\+P\+\_\+\+V\+E\+R\+S\+I\+ON} = \textquotesingle{}5.\+3.\+3\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classSymfonyRequirements_af0e0b5455bf96b10af63695ab61c5137}\label{classSymfonyRequirements_af0e0b5455bf96b10af63695ab61c5137}} 
+const {\bfseries R\+E\+Q\+U\+I\+R\+E\+D\+\_\+\+P\+H\+P\+\_\+\+V\+E\+R\+S\+I\+ON} = \textquotesingle{}5.\+5.\+9\textquotesingle{}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions membres protégées}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSymfonyRequirements_a32cc5be91d7f8049b0f49ef118e2cd04}{get\+Realpath\+Cache\+Size} ()
+\item 
+\hyperlink{classSymfonyRequirements_ae0578284b71aadf39c3457fc5d3f5aa1}{get\+Php\+Required\+Version} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+This class specifies all requirements and optional recommendations that are necessary to run the Symfony Standard Edition.
+
+\begin{DoxyAuthor}{Auteur}
+Tobias Schultze \href{http://tobion.de}{\tt http\+://tobion.\+de} 
+
+Fabien Potencier \href{mailto:fabien@symfony.com}{\tt fabien@symfony.\+com} 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{classSymfonyRequirements_a9543e8a8cb4c134200fd19a3052cac38}\label{classSymfonyRequirements_a9543e8a8cb4c134200fd19a3052cac38}} 
+\index{Symfony\+Requirements@{Symfony\+Requirements}!\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}}
+\index{\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}!Symfony\+Requirements@{Symfony\+Requirements}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Symfony\+Requirements\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor that initializes the requirements. 
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classSymfonyRequirements_ae0578284b71aadf39c3457fc5d3f5aa1}\label{classSymfonyRequirements_ae0578284b71aadf39c3457fc5d3f5aa1}} 
+\index{Symfony\+Requirements@{Symfony\+Requirements}!get\+Php\+Required\+Version@{get\+Php\+Required\+Version}}
+\index{get\+Php\+Required\+Version@{get\+Php\+Required\+Version}!Symfony\+Requirements@{Symfony\+Requirements}}
+\subsubsection{\texorpdfstring{get\+Php\+Required\+Version()}{getPhpRequiredVersion()}}
+{\footnotesize\ttfamily Symfony\+Requirements\+::get\+Php\+Required\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Defines P\+HP required version from Symfony version.
+
+\begin{DoxyReturn}{Renvoie}
+string$\vert$false The P\+HP required version or false if it could not be guessed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSymfonyRequirements_a32cc5be91d7f8049b0f49ef118e2cd04}\label{classSymfonyRequirements_a32cc5be91d7f8049b0f49ef118e2cd04}} 
+\index{Symfony\+Requirements@{Symfony\+Requirements}!get\+Realpath\+Cache\+Size@{get\+Realpath\+Cache\+Size}}
+\index{get\+Realpath\+Cache\+Size@{get\+Realpath\+Cache\+Size}!Symfony\+Requirements@{Symfony\+Requirements}}
+\subsubsection{\texorpdfstring{get\+Realpath\+Cache\+Size()}{getRealpathCacheSize()}}
+{\footnotesize\ttfamily Symfony\+Requirements\+::get\+Realpath\+Cache\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Loads realpath\+\_\+cache\+\_\+size from php.\+ini and converts it to int.
+
+(e.\+g. 16k is converted to 16384 int)
+
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+var/Symfony\+Requirements.\+php\end{DoxyCompactItemize}

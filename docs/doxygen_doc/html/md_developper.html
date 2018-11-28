@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeteoRando1: POUR LES DEVELOPPEURS</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MeteoRando1
+   </div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('md_developper.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">POUR LES DEVELOPPEURS </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1>Sommaire</h1>
+<p><a href="#preface">Préface</a> I. <a href="#install_php7_linux">Installer php7 sur Linux</a> II. <a href="#install_composer">Installer composer</a> III. <a href="#acces_projet">Accéder au projet</a> <a href="#aparte">Aparté : Créer un projet Symfony</a> <a href="#msdos">Sous Windows</a> <a href="#doc">Documentation</a></p>
+<h2>Préface : <a class="anchor" id="preface"></a></h2>
+<p>Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal. A la fin du document une partie est dédiée au système d'exploitation non-libre Windows.</p>
+<p>Manipulations effectuées sous OS : Linux Distribution : Debian 9 Stretch</p>
+<h2>I. Installer php7 sur Linux <a class="anchor" id="install_php7_linux"></a></h2>
+<ul>
+<li>Télécharger la dernière tarball de php 7, décompressez-la dans un répertoire de votre Home</li>
+<li>Au préalable vérifier que certaines librairies sont bien installées:</li>
+</ul>
+<div class="fragment"><div class="line">$ sudo apt-get install autoconf build-essential curl libtool \</div><div class="line">  libssl-dev libcurl4-openssl-dev libxml2-dev libreadline7 \</div><div class="line">  libreadline-dev libzip-dev libzip4 nginx openssl \</div><div class="line">  pkg-config zlib1g-dev</div></div><!-- fragment --><ul>
+<li>Vous pouvez configurer le build dans un répertoire pour faire les choses proprement, sinon ignorer ci-dessous "--prefix=&lt;INSERER UN REPERTOIRE POUR LE BUILD&gt;"</li>
+</ul>
+<div class="fragment"><div class="line">$./configure  --prefix=&lt;INSERER UN REPERTOIRE POUR LE BUILD&gt; --enable-mysqlnd     --with-pdo-mysql     --with-pdo-mysql=mysqlnd     --with-pdo-pgsql=/usr/bin/pg_config     --enable-bcmath     --enable-fpm     --with-fpm-user=www-data     --with-fpm-group=www-data     --enable-mbstring     --enable-phpdbg     --enable-shmop     --enable-sockets     --enable-sysvmsg     --enable-sysvsem     --enable-sysvshm     --enable-zip     --with-libzip    --with-zlib     --with-curl     --with-pear     --with-openssl     --enable-pcntl     --with-readline</div></div><!-- fragment --><div class="fragment"><div class="line">$make -jX (remplacer x par le nombre de processeurs de votre machine -car c&#39;est assez long)</div><div class="line">Build complete.</div></div><!-- fragment --><div class="fragment"><div class="line">$ make install</div><div class="line">Wrote PEAR system config file at: /usr/local/etc/pear.conf</div><div class="line">You may want to add: /usr/local/lib/php to your php.ini include_path</div><div class="line">/home/erwan/Téléchargements/php-7.2.10/build/shtool install -c ext/phar/phar.phar /usr/local/bin</div><div class="line">ln -s -f phar.phar /usr/local/bin/phar</div><div class="line">Installing PDO headers:           /usr/local/include/php/ext/pdo/</div></div><!-- fragment --><ul>
+<li>NB : Vous pouvez faire make test MAIS si vous avez Debian en français alors le test va s'arrêter(crash) en lisant la date car un des tests se base sur la date actuelle fournie par la machine, or le test en question utilise une fonction qui ne lit la date qu'au format anglophone.</li>
+</ul>
+<h2>II. Installer composer <a class="anchor" id="install_composer"></a></h2>
+<ul>
+<li>Si vous avez installé php de la manière précédente, il vous suffit de faire : $ curl -sS <a href="https://getcomposer.org/installer">https://getcomposer.org/installer</a> | php</li>
+<li>Ou bien si vous aviez déjà installé php avec XAMPP par exemple : $ sudo curl -sS <a href="https://getcomposer.org/installer">https://getcomposer.org/installer</a> | /opt/lampp/bin/php</li>
+<li>Cela crée un fichier composer.phar dans le répertoire courant, vous pouvez le copier et ou le déplacer de la façon suivante <code>mv composer.phar /usr/local/bin/composer</code> ceci vous permettra d'utiliser composer dans n'importe quel autre répertoire</li>
+</ul>
+<div class="fragment"><div class="line">All settings correct for using Composer</div><div class="line">Downloading...</div><div class="line"></div><div class="line">Composer (version 1.7.2) successfully installed to: /home/erwan/Téléchargements/php-7.2.10/composer.phar</div><div class="line">Use it: php composer.phar</div></div><!-- fragment --><p>## III. Accéder au projet <a class="anchor" id="acces_projet"></a> </p><div class="fragment"><div class="line">$ git clone https://github.com/Kr4unos/MeteoRando.git</div><div class="line">$ cd MeteoRando</div></div><!-- fragment --><ul>
+<li>Avant de lancer la commande suivante il faut au préalable avoir créé #une session utilisateur mysql (installer les packages mysql-client et mysql-server. Lancer mysql (cela peut ne pas fonctionner sans les privilèges root) il faudra alors se mettre en mode root : Si c'est une première connexion avec mysql, remplacer le mot newpass par un mot de passe : <div class="fragment"><div class="line">$ mysqladmin -u root password newpass</div></div><!-- fragment --></li>
+</ul>
+<p>(Source : <a href="https://www.howtoforge.com/setting-changing-resetting-mysql-root-passwords#method-set-up-root-password-for-the-first-time">https://www.howtoforge.com/setting-changing-resetting-mysql-root-passwords#method-set-up-root-password-for-the-first-time</a>)</p>
+<ul>
+<li>Sinon : <code>$ mysql -u root -p</code> Et entrez votre mot de passe si vous en avez déjà configuré un.</li>
+<li>Une fois dans l'interface mysql du terminal, on va créer une session avec le nom de l'utilisateur habituel du répertoire home (pour éviter de lancer le projet en root), entrer : <div class="fragment"><div class="line">&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;INSERER NOM DE L UTILISATEUR DU REPERTOIRE HOME COURANT&#39;@&#39;127.0.0.1&#39; IDENTIFIED BY &#39;INSERER MOT DE PASSE&#39;</div><div class="line">&gt; Ctrl + c #ou quit pour sortir</div></div><!-- fragment --></li>
+<li>Bien sortir du mode root si vous avez fait une commande du type "su" ou "sudo -s": <code>$ exit</code></li>
+</ul>
+<div class="fragment"><div class="line">$ composer install #ou composer.phar install</div></div><!-- fragment --><ul>
+<li>Des lignes de ce genre vont apparaître : <div class="fragment"><div class="line">Patienter un peu, ensuite il faut entrer des informations. Pour les champs non-complétés ci-dessous il faudra appuyer sur Entrée.</div></div><!-- fragment --> database_host (127.0.0.1): database_port (null): database_name (symfony): METTRE ICI LE NOM DE BASE DE DONNÉES SOUHAITÉ (NON-EXISTANT, SYMFONY LE CRÉERA) database_user (root): CHANGER AVEC LE NOM D'UTILISATEUR CHOISI PRECEDEMMENT database_password (null): INSERER LE MDP CHOISI PRECEDEMMENT mailer_transport (smtp): mailer_host (127.0.0.1): mailer_user (null): mailer_password (null): secret (ThisTokenIsNotSoSecretChangeIt): <div class="fragment"><div class="line">- Création de la base de données:</div></div><!-- fragment --> $ php bin/console doctrine:database:create Created database <code>symfony</code> for connection named default <div class="fragment"></div><!-- fragment --></li>
+<li>Création du schéma de base de données en fonction des classes PHP: $ php bin/console doctrine:schema:create Creating database schema... Database schema created successfully! <div class="fragment"><div class="line">- Lancement du serveur</div></div><!-- fragment --> $ php bin/console server:run [OK] Server listening on <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> <div class="fragment"><div class="line">- Lancer votre navigateur web favori. Dans la barre d&#39;adresse écrire `http://127.0.0.1:8000`. Vous arrivez sur la page web de MétéoRando</div><div class="line"></div><div class="line">## Aparté : Creer un projet Symfony &lt;a name=&quot;aparte&quot;&gt;&lt;/a&gt;</div><div class="line"></div><div class="line">- Le projet a été crée à partir du framework Symfony, voici donc une brève explication de comment démarrer un projet avec Symfony.  </div><div class="line"></div><div class="line">- Installer Symfony:</div></div><!-- fragment --> $ curl -LsS <a href="https://symfony.com/installer">https://symfony.com/installer</a> -o /usr/local/bin/symfony $ chmod a+x /usr/local/bin/symfony ```</li>
+<li>Créer un projet nommé test: <code>$ symfony new test 3.4</code></li>
+</ul>
+<div class="fragment"><div class="line"> Downloading Symfony...</div><div class="line"></div><div class="line">    6.2 MiB/6.2 MiB ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%</div><div class="line"></div><div class="line"> Preparing project...</div><div class="line"></div><div class="line"> ✔  Symfony 3.4.17 was successfully installed. Now you can:</div><div class="line"></div><div class="line">    * Change your current directory to /home/erwan/GL/test</div><div class="line"></div><div class="line">    * Configure your application in app/config/parameters.yml file.</div><div class="line"></div><div class="line">    * Run your application:</div><div class="line">        1. Execute the php bin/console server:start command.</div><div class="line">        2. Browse to the http://localhost:8000 URL.</div><div class="line"></div><div class="line">    * Read the documentation at https://symfony.com/doc</div><div class="line"></div><div class="line">$ ls test</div><div class="line">app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests  var  vendor  web</div><div class="line">...</div></div><!-- fragment --><h2>Sous Windows <a class="anchor" id="msdos"></a></h2>
+<ul>
+<li>Installer php : <code><a href="http://php.net/manual/fr/install.windows.php">http://php.net/manual/fr/install.windows.php</a></code></li>
+<li>Ajouter le chemin de l'éxécutable PHP7 à la variable d'environnement PATH</li>
+<li>Installer Composer: <a href="https://getcomposer.org/">https://getcomposer.org/</a> (En l'ajoutant bien à votre path lors de l'install)</li>
+<li>Exécuter <code>composer install</code> à la racine de votre projet</li>
+<li>Modifier le fichier "/app/parameters.yml" pour mettre les données de connexion de votre BD locale (Obligatoirement MySQL)</li>
+<li>Executer <code>php bin/console doctrine:database:create</code> à la racine du projet</li>
+<li>Ensuite executer <code>php bin/console doctrine:schema:create</code> à la racine du projet</li>
+<li>Enfin, vous pouvez lancer un serveur php local avec <code>php bin/console server:run</code></li>
+</ul>
+<h2>Documentation <a class="anchor" id="doc"></a></h2>
+<p>La documentation est disponible dans le répertoire <code>docs/MeteoRando</code> depuis la racine du projet. Elle est visualisable au format html, pour cela il faut ouvrir le fichier <code>index.html</code> dans un navigateur web. </p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

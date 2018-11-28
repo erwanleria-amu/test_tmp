@@ -1,0 +1,4 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node1" href="$classRequirement.html" title="Requirement" alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$classPhpIniRequirement.html" title="PhpIniRequirement" alt="" coords="149,5,283,32"/>
+</map>

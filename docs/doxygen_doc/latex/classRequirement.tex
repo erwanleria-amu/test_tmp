@@ -1,0 +1,121 @@
+\hypertarget{classRequirement}{}\section{Référence de la classe Requirement}
+\label{classRequirement}\index{Requirement@{Requirement}}
+
+
+Graphe d\textquotesingle{}héritage de Requirement\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classRequirement__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRequirement_aed1695de1426aa5912a889bd93b66c83}{\+\_\+\+\_\+construct} (\$fulfilled, \$test\+Message, \$help\+Html, \$help\+Text=null, \$optional=false)
+\item 
+\hyperlink{classRequirement_aba605020ffa080b4d5b7217fc42822f0}{is\+Fulfilled} ()
+\item 
+\hyperlink{classRequirement_ac4cc7cb836c9e0c11018cef57a0fbc4d}{get\+Test\+Message} ()
+\item 
+\hyperlink{classRequirement_a6de91d308edfd46aada84b2faa16db01}{get\+Help\+Text} ()
+\item 
+\hyperlink{classRequirement_ad1ba7e3c3a6b1e94877d0d9ed66643dd}{get\+Help\+Html} ()
+\item 
+\hyperlink{classRequirement_a2e42f150791b2995f18048c7b21c7805}{is\+Optional} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Represents a single P\+HP requirement, e.\+g. an installed extension. It can be a mandatory requirement or an optional recommendation. There is a special subclass, named \hyperlink{classPhpIniRequirement}{Php\+Ini\+Requirement}, to check a php.\+ini configuration.
+
+\begin{DoxyAuthor}{Auteur}
+Tobias Schultze \href{http://tobion.de}{\tt http\+://tobion.\+de} 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{classRequirement_aed1695de1426aa5912a889bd93b66c83}\label{classRequirement_aed1695de1426aa5912a889bd93b66c83}} 
+\index{Requirement@{Requirement}!\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}}
+\index{\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Requirement\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$fulfilled,  }\item[{}]{\$test\+Message,  }\item[{}]{\$help\+Html,  }\item[{}]{\$help\+Text = {\ttfamily null},  }\item[{}]{\$optional = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Constructor that initializes the requirement.
+
+
+\begin{DoxyParams}[1]{Paramètres}
+bool & {\em \$fulfilled} & Whether the requirement is fulfilled \\
+\hline
+string & {\em \$test\+Message} & The message for testing the requirement \\
+\hline
+string & {\em \$help\+Html} & The help text formatted in H\+T\+ML for resolving the problem \\
+\hline
+string | null & {\em \$help\+Text} & The help text (when null, it will be inferred from \$help\+Html, i.\+e. stripped from H\+T\+ML tags) \\
+\hline
+bool & {\em \$optional} & Whether this is only an optional recommendation not a mandatory requirement \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classRequirement_ad1ba7e3c3a6b1e94877d0d9ed66643dd}\label{classRequirement_ad1ba7e3c3a6b1e94877d0d9ed66643dd}} 
+\index{Requirement@{Requirement}!get\+Help\+Html@{get\+Help\+Html}}
+\index{get\+Help\+Html@{get\+Help\+Html}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{get\+Help\+Html()}{getHelpHtml()}}
+{\footnotesize\ttfamily Requirement\+::get\+Help\+Html (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the help text formatted in H\+T\+ML.
+
+\begin{DoxyReturn}{Renvoie}
+string The H\+T\+ML help 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirement_a6de91d308edfd46aada84b2faa16db01}\label{classRequirement_a6de91d308edfd46aada84b2faa16db01}} 
+\index{Requirement@{Requirement}!get\+Help\+Text@{get\+Help\+Text}}
+\index{get\+Help\+Text@{get\+Help\+Text}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{get\+Help\+Text()}{getHelpText()}}
+{\footnotesize\ttfamily Requirement\+::get\+Help\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the help text for resolving the problem.
+
+\begin{DoxyReturn}{Renvoie}
+string The help text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirement_ac4cc7cb836c9e0c11018cef57a0fbc4d}\label{classRequirement_ac4cc7cb836c9e0c11018cef57a0fbc4d}} 
+\index{Requirement@{Requirement}!get\+Test\+Message@{get\+Test\+Message}}
+\index{get\+Test\+Message@{get\+Test\+Message}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{get\+Test\+Message()}{getTestMessage()}}
+{\footnotesize\ttfamily Requirement\+::get\+Test\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the message for testing the requirement.
+
+\begin{DoxyReturn}{Renvoie}
+string The test message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirement_aba605020ffa080b4d5b7217fc42822f0}\label{classRequirement_aba605020ffa080b4d5b7217fc42822f0}} 
+\index{Requirement@{Requirement}!is\+Fulfilled@{is\+Fulfilled}}
+\index{is\+Fulfilled@{is\+Fulfilled}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{is\+Fulfilled()}{isFulfilled()}}
+{\footnotesize\ttfamily Requirement\+::is\+Fulfilled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns whether the requirement is fulfilled.
+
+\begin{DoxyReturn}{Renvoie}
+bool true if fulfilled, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRequirement_a2e42f150791b2995f18048c7b21c7805}\label{classRequirement_a2e42f150791b2995f18048c7b21c7805}} 
+\index{Requirement@{Requirement}!is\+Optional@{is\+Optional}}
+\index{is\+Optional@{is\+Optional}!Requirement@{Requirement}}
+\subsubsection{\texorpdfstring{is\+Optional()}{isOptional()}}
+{\footnotesize\ttfamily Requirement\+::is\+Optional (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns whether this is only an optional recommendation and not a mandatory requirement.
+
+\begin{DoxyReturn}{Renvoie}
+bool true if optional, false if mandatory 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+var/Symfony\+Requirements.\+php\end{DoxyCompactItemize}
