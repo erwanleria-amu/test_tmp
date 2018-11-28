@@ -36,9 +36,11 @@
                                         href="{{ path('reviews-index', {'id': favorite.location.id }) }}">
                                          <i class="material-icons" style="font-size: 15px;">comment</i>
                                      </a>
+                                    {% if user == app.user or app.user.role.isAdmin %}
                                     <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon profileRemoveFavorite" data-id="{{ favorite.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce favori?');">
                                         <i class="material-icons">clear</i>
                                     </button>
+                                    {% endif %}
                                  </td>
                              </tr>
                             {% set i = i+1 %}
@@ -46,12 +48,49 @@
                     </tbody>
                 </table>
             </div>
+
+             <p class="section-title">Itinéraires</p>
+            <div id="itineraires">
+                <table class="mdl-data-table mdl-js-data-table" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Nom</th>
+                        <th>Distance (en km)</th>
+                        <th>Durée (en h)</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for itinerary in user.itineraries %}
+                             <tr>
+                                 <td>{{ itinerary.name }}</td>
+                                 <td>{{ itinerary.distance / 1000 }}</td>
+                                 <td>{% if itinerary.duration is not null %}{{ itinerary.duration|date('H:i:s') }}{% else %} > 24h{% endif %}</td>
+                                 <td>
+                                    <a title="Voir" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon"
+                                        href="{{ path('view-itinerary', {'itineraryId': itinerary.id }) }}">
+                                         <i class="material-icons">arrow_right</i>
+                                    </a>
+                                    {% if user == app.user or app.user.role.isAdmin %}
+                                    <button title="Supprimer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-button--icon profileRemoveItinerary" data-id="{{ itinerary.id }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet itinéraire?');">
+                                        <i class="material-icons">clear</i>
+                                    </button>
+                                    {% endif %}
+                                 </td>
+                             </tr>
+                            {% set i = i+1 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
             <p class="section-title">Statistiques</p>
             <div id="stats">
                 <section class="section--footer mdl-color--white mdl-grid">
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
-                        <b class="counter data-big" data-count="{{ user.events|length }}">0</b>
-                        <p class="info-big">évènement{% if user.events|length > 1 %}s{% endif %} créé{% if user.events|length > 1 %}s{% endif %}</p>
+                        <b class="counter data-big" data-count="{{ user.itineraries|length }}">0</b>
+                        <p class="info-big">itinéraire{% if user.itineraries|length > 1 %}s{% endif %}</p>
                     </div>
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-typography--text-center">
                         <b class="counter data-big" data-count="{{ user.cities }}">0</b>
@@ -106,7 +145,6 @@
         var user = {{ user.id }};
         let j = 1;
         {% for favorite in user.favorites %}
-            console.log("TEST");
             $.get("https://api.openweathermap.org/data/2.5/find?lat=" + {{ favorite.location.latitude }} + "&lon=" + {{ favorite.location.longitude }} + "&cnt=1&units=metric&appid=" + OWeatherMapAPIKey,
                 function(data) {
                     if(data != null){
@@ -117,20 +155,8 @@
                 }
             );
         {% endfor %}
-        console.log(j);
     </script>
     <script>
-        $(document).on('click', '.profileRemoveFavorite', function () {
-            $.ajax({
-                url: Routing.generate('remove-favorite'),
-                type: 'POST',
-                context: this,
-                data: {
-                    id: $(this).attr('data-id')
-                }
-            }).done(function(data){
-                $(this).closest('tr').fadeOut();
-            });
-        });
+
     </script>
 {% endblock %}

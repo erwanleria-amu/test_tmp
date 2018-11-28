@@ -37,18 +37,10 @@
                     {{ form_widget(form.tripTime) }}
                 </div>
 
-
-                <div class="mdl-textfield mdl-cell mdl-cell--12-col">
-                    <label class="mdl-color-text--grey">Latitude</label>
-                    {{ form_widget(form.latitude) }}
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <label class="mdl-color-text--grey">Itinéraire</label>
+                    {{ form_widget(form.itinerary) }}
                 </div>
-
-                <div class="mdl-textfield  mdl-cell mdl-cell--12-col">
-                    <label class="mdl-color-text--grey">Longitude</label>
-                    {{ form_widget(form.longitude) }}
-                </div>
-
-                <div id="map"></div>
 
                 <div class="mdl-cell mdl-cell--12-col send-button" align="right">
                     <button type="submit"  class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
@@ -56,29 +48,7 @@
                     </button>
                 </div>
                 {{ form_end(form) }}
-
             </div>
         </div>
     </div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-        coordinates = {
-            lat: '43.2313',
-            lng: '5.44100',
-        };
-        map = L.map('map').setView(coordinates, 12);
-        L.tileLayer('http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png').addTo(map);
-        L.Control.geocoder().addTo(map);
-        
-        map.on('click', function (e) {
-            if(marker != null) map.removeLayer(marker);
-            coordinates = e.latlng;
-            $('#new_event_form_latitude').val(coordinates.lat);
-            $('#new_event_form_longitude').val(coordinates.lng);
-            marker = L.marker(coordinates).addTo(map);
-        });
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDyAUYiB2W99SH25z5MlHfvo0n2wqHDESU"></script>
 {% endblock %}

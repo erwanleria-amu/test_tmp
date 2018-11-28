@@ -2,15 +2,19 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Form\NewEventForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ */
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * Page d'accueil du site
      */
     public function indexAction(Request $request)
     {
@@ -22,9 +26,10 @@ class DefaultController extends Controller
      * @param Request $request
      * @param $lat
      * @param $lon
+     * Carte météo avec comme point de départ les coordonnées lat/long
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function appCoordinatesAction($lat, $lon, Request $request)
+    public function appCoordinatesAction(Request $request, $lat, $lon)
     {
         $coordinates = [
             'lat' => $lat,
@@ -38,6 +43,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/app", name="app")
+     * Carte météo avec comme point de départ les coordonnées fixées de base (Luminy)
      */
     public function appAction(Request $request)
     {
@@ -45,7 +51,7 @@ class DefaultController extends Controller
             'lat' => '43.2313',
             'lon' => '5.44100'
         ];
-        // replace this example code with whatever you need
+
         return $this->render('default/app.html.twig', [
             'coordinates' => $coordinates
         ]);

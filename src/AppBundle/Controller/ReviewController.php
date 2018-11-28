@@ -8,6 +8,7 @@ use AppBundle\Form\ReviewForm;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,8 +22,9 @@ class ReviewController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/location/{id}", name="reviews-index")
+     * Affichage des évaluations d'un lieu
      */
     public function indexAction(Request $request, $id)
     {
@@ -37,8 +39,9 @@ class ReviewController extends Controller
     /**
      * @param Request $request
      * @param $mapId
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/mapId/{mapId}/{name}/{lat}/{lng}", name="reviews-mapid-finder", options={"expose" = true})
+     * Action AJAX permet de vérifier si un lieu sur la carte est déjà en BDD et l'ajouter si besoin
      */
     public function findLocationFromMapIdAction(Request $request, $mapId, $name, $lat, $lng)
     {
@@ -47,11 +50,14 @@ class ReviewController extends Controller
         ]);
 
         if($favorite == null) {
+
             $location = $this->getDoctrine()->getRepository('AppBundle:Location')->findOneBy([
                 'latitude' => $lat,
                 'longitude' => $lng
             ]);
-            if($location == null) {
+
+            if($location == null)
+            {
                 $location = new Location();
                 $location->setName($name);
                 $location->setLatitude($lat);
@@ -61,10 +67,12 @@ class ReviewController extends Controller
                 $em->persist($location);
                 $em->flush();
             }
+
             return $this->redirectToRoute('reviews-index', [
                 'id' => $location->getId()
             ]);
         }
+
         return $this->redirectToRoute('reviews-index', [
             'id' => $favorite->getLocation()->getId()
         ]);
@@ -73,15 +81,22 @@ class ReviewController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/new/{id}", name="reviews-new")
+     * Création d'une évaluation pour un lieu défini
      */
     public function createReviewAction(Request $request, $id)
     {
-        $location = $this->getDoctrine()->getRepository('AppBundle:Location')->find($id);
+        $location = $this->getDoctrine()
+            ->getRepository('AppBundle:Location')
+            ->find($id);
+
         if($location == null) $this->createNotFoundException();
-        foreach($this->getUser()->getReviews()->toArray() as $review){
-            if($review->getLocation() == $location) {
+
+        foreach($this->getUser()->getReviews()->toArray() as $review)
+        {
+            if($review->getLocation() == $location)
+            {
                 return $this->redirectToRoute('reviews-index', [
                     'id' => $location->getId()
                 ]);
@@ -93,8 +108,9 @@ class ReviewController extends Controller
         $form = $this->createForm(ReviewForm::class);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
 
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $review->setAuthor($this->getUser());
             $review->setLocation($location);
             $review->setComment($form->get('comment')->getData());
@@ -110,6 +126,7 @@ class ReviewController extends Controller
                 'id' => $location->getId()
             ]);
         }
+
         return $this->render('default/review-location.html.twig', [
             'form' => $form->createView(),
             'location' => $location
@@ -119,12 +136,16 @@ class ReviewController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/delete/{id}", name="reviews-delete")
+     * Suppression d'une évaluation pour un lieu défini
      */
     public function removeReviewAction(Request $request, $id)
     {
-        $review = $this->getDoctrine()->getRepository('AppBundle:Review')->find($id);
+        $review = $this->getDoctrine()
+            ->getRepository('AppBundle:Review')
+            ->find($id);
+
         if($review == null) $this->createNotFoundException();
 
         $locationId = $review->getLocation()->getId();

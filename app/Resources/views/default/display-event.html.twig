@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block navTitle %}Evènements > {{ event.name }}{% endblock %}
 {% block body %}
-    <a target="_blank" href="{{ path('app-coordinates', { 'lat': event.startPoint.latitude, 'lon': event.startPoint.longitude }) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="startPoint">
+    <a target="_blank" href="{{ path('view-itinerary', { 'itineraryId': event.itinerary.id }) }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--primary" id="startPoint">
         <i class="material-icons">arrow_right</i>
     </a>
     <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="startPoint">
-        <b>Voir le point de départ</b>
+        <b>Voir l'itinéraire</b>
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--2-col"></div>

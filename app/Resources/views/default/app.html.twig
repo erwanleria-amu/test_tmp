@@ -14,6 +14,9 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="width: 100%;" id="itineraireMode">
                     Créer un itinéraire
                 </button>
+                <div id="itinerary" style="display: none">
+                    <input class="mdl-textfield__input" type="text" id="itineraryName" name="itineraryName" placeholder="Entrez un nom pour votre itinéraire">
+                </div>
             </div>
         </div>
         <table class="mdl-data-table mdl-js-data-table" width="100%">
@@ -39,8 +42,6 @@
         };
         map = L.map('map').setView(coordinates, 12);
     </script>
-    <script src="{{ asset('js/location.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDyAUYiB2W99SH25z5MlHfvo0n2wqHDESU"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
 {% endblock %}

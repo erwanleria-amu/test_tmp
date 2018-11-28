@@ -1,8 +1,4 @@
-# To get started with security, check out the documentation:
-# https://symfony.com/doc/current/security.html
 security:
-
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         users:
             id: app.security.provider
@@ -11,11 +7,9 @@ security:
         AppBundle\Entity\User: bcrypt
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         main:
             pattern: ^/
             anonymous: ~
@@ -37,6 +31,8 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/profile, roles: IS_AUTHENTICATED_FULLY }
-
+        - { path: ^/community, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/events, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/reviews, roles: IS_AUTHENTICATED_FULLY }

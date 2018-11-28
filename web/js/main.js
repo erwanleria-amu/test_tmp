@@ -10,15 +10,30 @@
     L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png').addTo(map);
  */
 
+let routeCoordinates = [];
+let markers = [];
 itineraireMode = 0;
+
 $('#itineraireMode').on('click', function () {
     itineraireMode = !itineraireMode;
     if(itineraireMode) {
+        if(clickCircle !== undefined)
+            map.removeLayer(clickCircle);
+        map.removeLayer(marker);
         $('#radiusForm').hide();
-        $(this).text('Mode Itinéraire ON')
+        $('#itinerary').show();
+        $(this).text('Terminer');
     } else {
         $('#radiusForm').show();
-        $(this).text('Créer un itinéraire')
+        $(this).text('Créer un itinéraire');
+        newRoute();
+        markers.forEach(function (element){
+            map.removeLayer(element);
+        });
+        markers = [];
+        routeCoordinates = [];
+        $('#itinerary').hide();
+        alert('L\'itinéraire a bien été créé!\nVous pouvez le consulter depuis votre profil.');
     }
 });
 
@@ -47,16 +62,20 @@ function hasNumber(myString) {
 
 // Move or place the circle area on the map then get all nearest locations weather
 function onMapClick(e) {
-    if(marker != null) map.removeLayer(marker);
-    removeCircle();
-    coordinates = e.latlng;
-    //marker = L.marker(coordinates).addTo(map);
-    clickCircle = L.circle(coordinates, radiusInput*1000, {
-        color: '#f07300',
-        fillOpacity: 0.3,
-        opacity: 0.5
-    }).addTo(map);
-    getNearestLocations();
+    if(itineraireMode){
+        newPoint(e.latlng);
+    } else {
+        if(marker != null) map.removeLayer(marker);
+        removeCircle();
+        coordinates = e.latlng;
+        //marker = L.marker(coordinates).addTo(map);
+        clickCircle = L.circle(coordinates, radiusInput*1000, {
+            color: '#f07300',
+            fillOpacity: 0.3,
+            opacity: 0.5
+        }).addTo(map);
+        getNearestLocations();
+    }
 }
 
 // Change the circle arza radius depending on the radiusInput field
@@ -135,4 +154,38 @@ function getNearestLocations() {
     }).fail(function (error) {
         console.log(error);
     });
+}
+
+function isEmpty(str){
+    return !str.replace(/\s+/, '').length;
+}
+
+function newPoint(coordinates) {
+    routeCoordinates.push(coordinates);
+    let marker = L.marker(coordinates).addTo(map);
+    markers.push(marker);
+}
+
+function newRoute(){
+    let buildRequest = "https://api.openrouteservice.org/directions?api_key=" + ORouteServiceAPIKey + "&language=fr&profile=foot-hiking&coordinates=";
+    routeCoordinates.forEach(function (element, index, array) {
+        buildRequest += element.lng + "," + element.lat;
+        if(index !== array.length - 1) buildRequest += "|";
+    });
+    console.log(routeCoordinates);
+    $.get(buildRequest, function (data) {
+        console.log(routeCoordinates);
+        $.ajax({
+            url: Routing.generate('add-route'),
+            type: 'POST',
+            data: {
+                name: $('#itineraryName').val(),
+                distance: data.routes[0].summary.distance,
+                duration: data.routes[0].summary.duration,
+                polyline: data.routes[0].geometry,
+                waypoints: data.info.query.coordinates
+            }
+        }).done(function (response) {});
+    });
+    console.log(buildRequest);
 }

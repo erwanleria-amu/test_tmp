@@ -73,9 +73,22 @@ $(document).on('click', '.removeFavorite', function () {
     });
 });
 
-$(document).on('click', '.removeProfileFavorite', function () {
+$(document).on('click', '.profileRemoveFavorite', function () {
     $.ajax({
         url: Routing.generate('remove-favorite'),
+        type: 'POST',
+        context: this,
+        data: {
+            id: $(this).attr('data-id')
+        }
+    }).done(function(data){
+        $(this).closest('tr').fadeOut();
+    });
+});
+
+$(document).on('click', '.profileRemoveItinerary', function () {
+    $.ajax({
+        url: Routing.generate('remove-itinerary'),
         type: 'POST',
         context: this,
         data: {
@@ -85,6 +98,7 @@ $(document).on('click', '.removeProfileFavorite', function () {
         $(this).parent().parent().fadeOut();
     });
 });
+
 
 
 $('#removeFriend').on('click', function () {

@@ -2,7 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\EventComment;
+use AppBundle\Entity\Location;
+use AppBundle\Entity\User;
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,10 +74,10 @@ class Event
     private $participants;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Itinerary")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $startPoint;
+    private $itinerary;
 
     /**
      * @ORM\OneToMany(targetEntity="EventComment", mappedBy="event")
@@ -223,11 +227,11 @@ class Event
     /**
      * Add participant
      *
-     * @param \AppBundle\Entity\User $participant
+     * @param User $participant
      *
      * @return Event
      */
-    public function addParticipant(\AppBundle\Entity\User $participant)
+    public function addParticipant(User $participant)
     {
         $this->participants[] = $participant;
 
@@ -237,9 +241,9 @@ class Event
     /**
      * Remove participant
      *
-     * @param \AppBundle\Entity\User $participant
+     * @param User $participant
      */
-    public function removeParticipant(\AppBundle\Entity\User $participant)
+    public function removeParticipant(User $participant)
     {
         $this->participants->removeElement($participant);
     }
@@ -295,11 +299,11 @@ class Event
     /**
      * Set startPoint
      *
-     * @param \AppBundle\Entity\Location $startPoint
+     * @param Location $startPoint
      *
      * @return Event
      */
-    public function setStartPoint(\AppBundle\Entity\Location $startPoint)
+    public function setStartPoint(Location $startPoint)
     {
         $this->startPoint = $startPoint;
 
@@ -309,7 +313,7 @@ class Event
     /**
      * Get startPoint
      *
-     * @return \AppBundle\Entity\Location
+     * @return Location
      */
     public function getStartPoint()
     {
@@ -319,11 +323,11 @@ class Event
     /**
      * Add comment
      *
-     * @param \AppBundle\Entity\EventComment $comment
+     * @param EventComment $comment
      *
      * @return Event
      */
-    public function addComment(\AppBundle\Entity\EventComment $comment)
+    public function addComment(EventComment $comment)
     {
         $this->comments[] = $comment;
 
@@ -333,9 +337,9 @@ class Event
     /**
      * Remove comment
      *
-     * @param \AppBundle\Entity\EventComment $comment
+     * @param EventComment $comment
      */
-    public function removeComment(\AppBundle\Entity\EventComment $comment)
+    public function removeComment(EventComment $comment)
     {
         $this->comments->removeElement($comment);
     }
@@ -343,7 +347,7 @@ class Event
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getComments()
     {

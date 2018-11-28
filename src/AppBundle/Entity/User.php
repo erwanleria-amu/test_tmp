@@ -109,6 +109,12 @@ class User implements UserInterface, Serializable, EquatableInterface
     private $favorites;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Itinerary", mappedBy="author")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $itineraries;
+
+    /**
      * @ORM\OneToMany(targetEntity="Event", mappedBy="author")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -745,5 +751,39 @@ class User implements UserInterface, Serializable, EquatableInterface
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add itinerary
+     *
+     * @param \AppBundle\Entity\Itinerary $itinerary
+     *
+     * @return User
+     */
+    public function addItinerary(\AppBundle\Entity\Itinerary $itinerary)
+    {
+        $this->itineraries[] = $itinerary;
+
+        return $this;
+    }
+
+    /**
+     * Remove itinerary
+     *
+     * @param \AppBundle\Entity\Itinerary $itinerary
+     */
+    public function removeItinerary(\AppBundle\Entity\Itinerary $itinerary)
+    {
+        $this->itineraries->removeElement($itinerary);
+    }
+
+    /**
+     * Get itineraries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItineraries()
+    {
+        return $this->itineraries;
     }
 }

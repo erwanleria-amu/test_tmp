@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 29/07/2017
- * Time: 15:58
- */
 
 namespace AppBundle\Doctrine;
 
@@ -17,9 +11,12 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class UserListener
+ * @package AppBundle\Doctrine
+ */
 class UserListener implements EventSubscriber
 {
-
     private $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
@@ -40,7 +37,8 @@ class UserListener implements EventSubscriber
      *
      * @param LifecycleEventArgs $args
      */
-    public function prePersist(LifecycleEventArgs $args){
+    public function prePersist(LifecycleEventArgs $args)
+    {
         $entity = $args->getEntity();
 
         if(!$entity instanceof User)
@@ -57,7 +55,8 @@ class UserListener implements EventSubscriber
         $entity->setCities(0);
         $entity->setMarkers(0);
 
-        $baseRole = $args->getEntityManager()->getRepository('AppBundle:Role')
+        $baseRole = $args->getEntityManager()
+            ->getRepository('AppBundle:Role')
             ->findOneBy(['roleName' => 'Membre']);
 
         if($baseRole == null){
@@ -70,8 +69,7 @@ class UserListener implements EventSubscriber
             $args->getEntityManager()->persist($baseRole);
             try {
                 $args->getEntityManager()->flush();
-            } catch (OptimisticLockException $e) {
-            }
+            } catch (OptimisticLockException $e) {}
         }
 
         $entity->setRole($baseRole);
@@ -83,10 +81,12 @@ class UserListener implements EventSubscriber
      *
      * @param LifecycleEventArgs $args
      */
-    public function preUpdate(LifecycleEventArgs $args){
+    public function preUpdate(LifecycleEventArgs $args)
+    {
         $entity = $args->getEntity();
         if(!$entity instanceof User)
             return null;
+
         $em = $args->getEntityManager();
 
         /**

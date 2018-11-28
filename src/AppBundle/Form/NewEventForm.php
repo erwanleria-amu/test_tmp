@@ -1,18 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: d15000320
- * Date: 24/01/2018
- * Time: 14:55
- */
-
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\Itinerary;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,18 +56,13 @@ class NewEventForm extends AbstractType
                 ],
                 'required' => true,
             ])
-            ->add('latitude', NumberType::class, [
+            ->add('itinerary', EntityType::class, [
+                'class' => Itinerary::class,
+                'choice_label' => 'name',
+                'choices' => $options['data']['itineraries'],
                 'attr' => [
                     'class' => 'mdl-textfield__input',
                     'id' => 'event-latitude'
-                ],
-                'required' => true,
-
-            ])
-            ->add('longitude', NumberType::class, [
-                'attr' => [
-                    'class' => 'mdl-textfield__input',
-                    'id' => 'event-longitude'
                 ],
                 'required' => true,
 

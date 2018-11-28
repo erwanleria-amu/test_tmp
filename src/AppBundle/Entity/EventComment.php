@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Event;
+use AppBundle\Entity\User;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -85,11 +87,11 @@ class EventComment
     /**
      * Set author
      *
-     * @param \AppBundle\Entity\User $author
+     * @param User $author
      *
      * @return EventComment
      */
-    public function setAuthor(\AppBundle\Entity\User $author)
+    public function setAuthor(User $author)
     {
         $this->author = $author;
 
@@ -99,7 +101,7 @@ class EventComment
     /**
      * Get author
      *
-     * @return \AppBundle\Entity\User
+     * @return User
      */
     public function getAuthor()
     {
@@ -133,11 +135,11 @@ class EventComment
     /**
      * Set event
      *
-     * @param \AppBundle\Entity\Event $event
+     * @param Event $event
      *
      * @return EventComment
      */
-    public function setEvent(\AppBundle\Entity\Event $event)
+    public function setEvent(Event $event)
     {
         $this->event = $event;
 
@@ -147,7 +149,7 @@ class EventComment
     /**
      * Get event
      *
-     * @return \AppBundle\Entity\Event
+     * @return Event
      */
     public function getEvent()
     {
