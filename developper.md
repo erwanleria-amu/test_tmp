@@ -10,7 +10,7 @@
 ## [Documentation](#doc)  
 ___________________________________________  
 
-\pagebreak
+<div class="pagebreak"></div>
   
 ## Préface : <a name="preface"></a>
 
