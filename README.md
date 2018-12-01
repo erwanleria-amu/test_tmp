@@ -4,7 +4,7 @@ MeteoRando
 > Groupe : MeteoRando1  
 > Auteurs : Rémy DECHEYLLES, Yoann FOULON, Erwan LERIA, Younes ROUABHIA  
 > Encadrant : Laurent TICHIT  
-> Lieu : Campus Luminy, Marseille
+> Lieu : Campus Luminy, Marseille  
 ________________________________________________________________________________
 
 Bienvenue sur la page web de l'équipe-projet MeteoRando1.
