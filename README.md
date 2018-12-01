@@ -6,7 +6,7 @@ MeteoRando
 > Encadrant : Laurent TICHIT  
 > Lieu : Campus Luminy, Marseille  
 
-________________________________________________________________________________  
+____
 
 Bienvenue sur la page web de l'équipe-projet MeteoRando1.
 Vous pouvez consulter les pages suivantes : 
