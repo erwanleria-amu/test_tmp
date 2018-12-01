@@ -1,16 +1,17 @@
 # POUR LES DEVELOPPEURS
 
 # Sommaire
-[Préface](#preface)  
-I.	[Installer php7 sur Linux](#install_php7_linux)  
-II.	[Installer composer](#install_composer)  
-III.	[Accéder au projet](#acces_projet)  
-[Aparté : Créer un projet Symfony](#aparte)  
-[Sous Windows](#msdos)  
-[Documentation](#doc)
+## [Préface](#preface)  
+## I.	[Installer php7 sur Linux](#install_php7_linux)  
+## II.	[Installer composer](#install_composer)  
+## III.	[Accéder au projet](#acces_projet)  
+## [Aparté : Créer un projet Symfony](#aparte)  
+## [Sous Windows](#msdos)  
+## [Documentation](#doc)  
+___________________________________________  
 
-
-
+\pagebreak
+  
 ## Préface : <a name="preface"></a>
 
 Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal.
