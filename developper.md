@@ -10,8 +10,7 @@
 ## [Documentation](#doc)  
 ___________________________________________  
 
-<div class="pagebreak"></div>
-  
+    
 ## Préface : <a name="preface"></a>
 
 Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal.
