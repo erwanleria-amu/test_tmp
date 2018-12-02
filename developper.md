@@ -1,16 +1,16 @@
 # POUR LES DEVELOPPEURS
 
 # Sommaire
-[Préface](#preface)  
-I.	[Installer php7 sur Linux](#install_php7_linux)  
-II.	[Installer composer](#install_composer)  
-III.	[Accéder au projet](#acces_projet)  
-[Aparté : Créer un projet Symfony](#aparte)  
-[Sous Windows](#msdos)  
-[Documentation](#doc)
+## [Préface](#preface)  
+## I.	[Installer php7 sur Linux](#install_php7_linux)  
+## II.	[Installer composer](#install_composer)  
+## III.	[Accéder au projet](#acces_projet)  
+## [Aparté : Créer un projet Symfony](#aparte)  
+## [Sous Windows](#msdos)  
+## [Documentation](#doc)  
+___________________________________________  
 
-
-
+    
 ## Préface : <a name="preface"></a>
 
 Ce document explique comment lancer le projet MétéoRando (de l'équipe-projet MétéoRando1) de A à Z sur Linux/Debian via le terminal.
@@ -52,15 +52,15 @@ ln -s -f phar.phar /usr/local/bin/phar
 Installing PDO headers:           /usr/local/include/php/ext/pdo/
 ```
 
-- NB : Vous pouvez faire make test MAIS si vous avez Debian en français alors le test va s'arrêter(crash)  en lisant la date car un des tests se base sur la date actuelle fournie par la machine, or le test en question utilise une fonction qui ne lit la date qu'au format anglophone.
+- NB : Vous pouvez faire `make test` MAIS si vous avez Debian en français alors le test va s'interrompre en lisant la date actuelle, car un des tests évalue la date fournie par votre machine, or le test en question utilise une fonction qui ne lit la date qu'au format anglophone.
 
 ## II. Installer composer <a name="install_composer"></a>
 
 - Si vous avez installé php de la manière précédente, il vous suffit de faire :
 $ curl -sS https://getcomposer.org/installer | php
 
-- Ou bien si vous aviez déjà installé php avec XAMPP par exemple :
-$ sudo curl -sS https://getcomposer.org/installer | /opt/lampp/bin/php
+- Ou bien si vous aviez déjà installé php avec une version récente de XAMPP par exemple :
+$ curl -sS https://getcomposer.org/installer | /opt/lampp/bin/php
 
 
 - Cela crée un fichier composer.phar dans le répertoire courant, vous pouvez le copier et ou le déplacer de la façon suivante `mv composer.phar /usr/local/bin/composer` ceci vous permettra d'utiliser composer dans n'importe quel autre répertoire
@@ -79,9 +79,9 @@ $ git clone https://github.com/Kr4unos/MeteoRando.git
 $ cd MeteoRando
 ```
 
-- Avant de lancer la commande suivante il faut au préalable avoir créé #une session utilisateur mysql (installer les packages mysql-client et mysql-server. Lancer mysql (cela peut ne pas fonctionner sans les privilèges root) il faudra alors se mettre en mode root : Si c'est une première connexion avec mysql, remplacer le mot newpass par un mot de passe : 
+- Avant de lancer la commande suivante il faut au préalable avoir créé #une session utilisateur mysql (installer les packages mysql-client et mysql-server). Lancer mysql, il faudra alors se mettre en mode root : si c'est une première connexion avec mysql, créer mot de passe : 
 ```
-$ mysqladmin -u root password newpass
+$ mysqladmin -u root password <nouveau mot de passe >
 ```
 
 (Source : https://www.howtoforge.com/setting-changing-resetting-mysql-root-passwords#method-set-up-root-password-for-the-first-time)
@@ -90,13 +90,13 @@ $ mysqladmin -u root password newpass
 `$ mysql -u root -p`
 Et entrez votre mot de passe si vous en avez déjà configuré un.
 
-- Une fois dans l'interface mysql du terminal, on va créer une session avec le nom de l'utilisateur habituel du répertoire home (pour éviter de lancer le projet en root), entrer :
+- Une fois dans l'interface mysql du terminal, on va créer une session avec le nom de l'utilisateur sous le répertoire home (pour éviter de lancer le projet en root), entrer : (notez qu'il faudra laisser les guillemets)
 ``` 
-> GRANT ALL PRIVILEGES ON *.* TO 'INSERER NOM DE L UTILISATEUR DU REPERTOIRE HOME COURANT'@'127.0.0.1' IDENTIFIED BY 'INSERER MOT DE PASSE'
+> GRANT ALL PRIVILEGES ON *.* TO '<INSERER NOM DE L UTILISATEUR SOUS LE REPERTOIRE HOME>'@'127.0.0.1' IDENTIFIED BY '<INSERER MOT DE PASSE>'
 > Ctrl + c #ou quit pour sortir
-```
+```  
 
-- Bien sortir du mode root si vous avez fait une commande du type "su" ou "sudo -s": `$ exit`
+- Bien sortir du mode root si vous aviez auparavant fait une commande du type "su" ou "sudo -s": `$ exit`
 
 ```
 $ composer install #ou composer.phar install
@@ -182,9 +182,9 @@ app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests 
 
 - Ajouter le chemin de l'éxécutable PHP7 à la variable d'environnement PATH
 
-- Installer Composer: https://getcomposer.org/ (En l'ajoutant bien à votre path lors de l'install)
+- Installer Composer depuis le site web : https://getcomposer.org/ (En l'ajoutant bien à votre path lors de l'install)
 
-- Exécuter `composer install` à la racine de votre projet
+- Dans l'invite de commande Windows, exécuter `composer install` à la racine du projet (notamment il faudra peut-être ouvrir l'invite de commande en tant qu'administrateur)
 
 - Modifier le fichier "/app/parameters.yml" pour mettre les données de connexion de votre BD locale (Obligatoirement MySQL)
 
