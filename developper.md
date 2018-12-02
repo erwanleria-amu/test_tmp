@@ -178,11 +178,11 @@ app  bin  composer.json  composer.lock  phpunit.xml.dist  README.md  src  tests 
 
 ## Sous Windows <a name="msdos"></a>
 
-- Installer php : `http://php.net/manual/fr/install.windows.php`
+- Installer php : http://php.net/manual/fr/install.windows.php
 
 - Ajouter le chemin de l'éxécutable PHP7 à la variable d'environnement PATH
 
-- Installer Composer depuis le site web : https://getcomposer.org/ (En l'ajoutant bien à votre path lors de l'install)
+- Installer Composer depuis le site web : https://getcomposer.org/download/ (En l'ajoutant bien à votre PATH)
 
 - Dans l'invite de commande Windows, exécuter `composer install` à la racine du projet (notamment il faudra peut-être ouvrir l'invite de commande en tant qu'administrateur)
 
