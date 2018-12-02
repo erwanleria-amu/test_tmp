@@ -79,7 +79,7 @@ $ git clone https://github.com/Kr4unos/MeteoRando.git
 $ cd MeteoRando
 ```
 
-- Avant de lancer la commande suivante il faut au préalable avoir créé #une session utilisateur mysql (installer les packages mysql-client et mysql-server). Lancer mysql, il faudra alors se mettre en mode root : si c'est une première connexion avec mysql, créer mot de passe : 
+- Avant de lancer la commande suivante il faut au préalable avoir créé une session utilisateur mysql (installer les packages mysql-client et mysql-server). Il faudra alors se mettre en mode root avant de commencer la manipulation et lancer mysql. Si c'est une première connexion avec mysql, créer mot de passe : 
 ```
 $ mysqladmin -u root password <nouveau mot de passe >
 ```
