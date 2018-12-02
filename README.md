@@ -12,6 +12,6 @@ Bienvenue sur la page web de l'équipe-projet MeteoRando1.
 Vous pouvez consulter les pages suivantes : 
 
 - [Le manuel d'installation pour les développeurs](developper.md)
-- [La documentation fonctionnelle ](docs/MeteoRando/index.md)
+- [La documentation fonctionnelle ](docs/MeteoRando/index.html)
 
 A Symfony project created on September 12, 2018, 12:00 pm.
