@@ -2,7 +2,7 @@ MeteoRando
 ==========
 
 > Groupe : MeteoRando1  
-> Auteurs : Rémy DECHEYLLES, Yoann FOULON, Erwan LERIA, Younes ROUABHIA  
+> Auteurs : Rémy DECHELLES, Yoann FOULON, Erwan LERIA, Younes ROUABHIA  
 > Encadrant : Laurent TICHIT  
 > Lieu : Campus Luminy, Marseille  
 
