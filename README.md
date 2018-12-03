@@ -11,7 +11,7 @@ ____
 Bienvenue sur la page web de l'Ã©quipe-projet MeteoRando1.
 Vous pouvez consulter les pages suivantes : 
 
-- [Le manuel d'installation pour les dÃ©veloppeurs](developper.md)
+- [Le manuel d'installation pour les développeurs](developper.md)
 - [La documentation fonctionnelle ](docs/MeteoRando/index.html)
 - [Aperçu purement visuel du projet](offline_view/app.html)
 
