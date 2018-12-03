@@ -110,8 +110,8 @@ Patienter un peu, ensuite il faut entrer des informations. Pour les champs non-c
 database_host (127.0.0.1):
 database_port (null): 
 database_name (symfony): METTRE ICI LE NOM DE BASE DE DONNÉES SOUHAITÉ (NON-EXISTANT, SYMFONY LE CRÉERA)
-database_user (root): CHANGER AVEC LE NOM D'UTILISATEUR CHOISI PRECEDEMMENT
-database_password (null): INSERER LE MDP CHOISI PRECEDEMMENT
+database_user (root): INSERER LE NOM D'UTILISATEUR INSCRIT LORS DE LA CONFIGURATION MYSQL
+database_password (null): INSERER LE MDP CHOISI DE L'UTILISATEUR
 mailer_transport (smtp): 
 mailer_host (127.0.0.1): 
 mailer_user (null): 
