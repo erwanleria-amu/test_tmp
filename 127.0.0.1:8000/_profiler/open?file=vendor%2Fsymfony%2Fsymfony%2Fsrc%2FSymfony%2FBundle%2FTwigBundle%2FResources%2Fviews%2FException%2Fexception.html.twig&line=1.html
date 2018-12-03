@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Symfony Profiler</title>
+        <link rel="icon" type="image/x-icon" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFEUlEQVR4AZVXA4wm2RMf27bXDM/+3/+sYBGfrbVtezc6BWtzfPbYXtvDL9906t6v0vWl05me7q1JzXuvvu4yXnvZgJ9hH6bwZYXLFR739vauUGuDwhq1L1N4Uv/tRYUhFjwcg49hn6aYr1V4TiGp86CoP9Oh1tV414KnM6t9fHymKUZ3DAI0hW4b1AyK3lE8phh5OxWeoJgUGhi5mLm95YzBwcHuhIQEV1JSEoWGhoKWHxYWFmenhJ/B5W0GwZpDt5Ovry9lZWWRyWOu5ORk7JsUpogsq5gnmISTU+HKQoLFQv/qq6/os88+I+EVFRUlSsRZ5oRiVmwlXMWShQkahUdERJCfnx/vd+3aRTU1NXTixAmqrq6mK1eu0PTp05mnrmD+QK6XhLO0XP2O2FJAQICRjjMU4P1PP/1EfX19NGfOHM8Z0N7ezueQkBBXYGAgSWIaQ5Em2T5QzFNSUig9PV3OHOe4uDjZ87p//34C7Nm7x/NcRUUFAX799Vec8Y7m7+8Pz92SfBDXr7VwPYRbxn/MmDG8Tps2jQBd3V30/PPPe35/6qmnaPXq1TR69Gg+h4eHiwwosdLT4dBkQDSXWmJiIq/vv/8+/fvvv3ThwgWqr6+n/Px8oyCmAerq6jy03Nxc2Yv7ySSjQzrmi4i92fVpaWlYOZ79/f2MW7dtpSlTptDp06epo6ODPvroI850ASiGdyZOnEjXrl2jyspKT4XA9cgjkaPL/D8UWG62HokieyQQoKSkRGiMs2bNotraWmprayOBNWvWyO+scGdnp5zF/WYvLEb8TwpRykp1MV7feust6uzqJMD169fpueeeY/rDDz/MKzzgdrsJoGkaffvtt/TFF19wQsIDmzZtssojt+6Fo1CgzKiAvAB3DRs2jAULtLS0eErPGB5Ad3c3lZaWUnFxMfeAd955h5+JjY3FaqXAPwhBnRCNySK4b98+Aoilv/z6i/zGggSk1g0opWupAMvGP91yt96zadWqVdTc3Ezz58/31LOAy+US6zgHBP766y+mDR8+HBUgFWSnQI2EAFnqlpcaGxsJIFkMN8L9AnPnzmX6jRs3SACeAi0vL888JwYPgTEJpauhnADo6/LSgQMHCHD37l2Cp15//XXq7eslgKb+Fi1exM9lZmbaCDclIcpQQhATE4OVsrOzuamg+cyePZuzG64Hrlu3jp9ZuWolCdy+fZueeOIJpkdHR1sLHqgM0Yh0bTRz1m7fvp2KiopYkYKCApo8ebLZIwzlFeXSOXEnsLPe2Ij+p5DbYYdOdOtDQ0rNjFya5sTcsGGDcTDZoXTcNoVBMoxWyzDS2yXmOyeUtGSskmDjx4/nRgPAfBDmMpZtUIbRcsi2GsfSD2QYyd2OcdmyZSSwdu1apuXk5GB16v4bak0yX0imyIUEgwNovFTglhMZGcm0srIy43zAVUxuTLbW4xn17Fci23wly9dngUummrTaixcvMpOtW7fiiBwQpqKYU9efHuxDJE5hC9wvL9TW1RLg+PHjPGTQ8wsLC4WpDC5Y5UR4k5qKMSLT6lqeAiX0nuAaMmSI9sMPP9CZM2foyJEj9O677wpTVIuTjidNp0HibvttoH9E5OMqbWKkSaNSlojldoLF7TEP+nUEmKI62y1kOBINbVaNarcI0PuGGUlHyfYvLHg7/jhFSFYqZh0P8KHSptd5ksOPU3tvqAEUot/hFmOIYJLp87wGe9Dwm95eg5xa/R8G6d8U5EcFhwAAAABJRU5ErkJggg==">
+
+            <style>
+        
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0;font-size:2em}mark{color:#000;background:#ff0}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}
+
+html, body  {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #F9F9F9;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.header {
+    background-color: #222;
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+}
+.header h1 {
+    color: #FFF;
+    font-weight: normal;
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 10px 8px;
+    word-break: break-all;
+}
+
+a.doc {
+    color: #FFF;
+    text-decoration: none;
+    margin: auto;
+    margin-right: 10px;
+}
+
+a.doc:hover {
+    text-decoration: underline;
+}
+
+.source {
+    margin-top: 41px;
+}
+
+.source li code {
+    color: #555;
+}
+
+.source li.selected {
+    background: rgba(255, 255, 153, 0.5);
+}
+
+.anchor {
+    position: relative;
+    display: inline-block;
+    top: -7em;
+    visibility: hidden;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="header">
+    <h1>vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/exception.html.twig <small>line 1</small></h1>
+    <a class="doc" href="https://symfony.com/doc/3.4.15/reference/configuration/framework.html#ide" rel="help">Open in your IDE?</a>
+</div>
+<div class="source">
+    <ol start="1"><li class="selected"><a class="anchor" name="line1"></a><code>&lt;div&nbsp;class="exception-summary&nbsp;{{&nbsp;exception.message&nbsp;is&nbsp;empty&nbsp;?&nbsp;'exception-without-message'&nbsp;}}"&gt;</code></li>
+<li><a class="anchor" name="line2"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="exception-metadata"&gt;</code></li>
+<li><a class="anchor" name="line3"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="container"&gt;</code></li>
+<li><a class="anchor" name="line4"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;class="exception-hierarchy"&gt;</code></li>
+<li><a class="anchor" name="line5"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;for&nbsp;previousException&nbsp;in&nbsp;exception.allPrevious|reverse&nbsp;%}</code></li>
+<li><a class="anchor" name="line6"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;previousException.class|abbr_class&nbsp;}}</code></li>
+<li><a class="anchor" name="line7"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class="icon"&gt;{{&nbsp;include('@Twig/images/chevron-right.svg')&nbsp;}}&lt;/span&gt;</code></li>
+<li><a class="anchor" name="line8"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endfor&nbsp;%}</code></li>
+<li><a class="anchor" name="line9"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;exception.class|abbr_class&nbsp;}}</code></li>
+<li><a class="anchor" name="line10"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</code></li>
+<li><a class="anchor" name="line11"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;class="exception-http"&gt;</code></li>
+<li><a class="anchor" name="line12"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;{{&nbsp;status_code&nbsp;}}&nbsp;&lt;small&gt;{{&nbsp;status_text&nbsp;}}&lt;/small&gt;</code></li>
+<li><a class="anchor" name="line13"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</code></li>
+<li><a class="anchor" name="line14"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line15"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line16"></a><code></code></li>
+<li><a class="anchor" name="line17"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="exception-message-wrapper"&gt;</code></li>
+<li><a class="anchor" name="line18"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="container"&gt;</code></li>
+<li><a class="anchor" name="line19"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&nbsp;class="break-long-words&nbsp;exception-message&nbsp;{{&nbsp;exception.message|length&nbsp;&gt;&nbsp;180&nbsp;?&nbsp;'long'&nbsp;}}"&gt;</code></li>
+<li><a class="anchor" name="line20"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{-&nbsp;exception.message|nl2br|format_file_from_text&nbsp;-}}</code></li>
+<li><a class="anchor" name="line21"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h1&gt;</code></li>
+<li><a class="anchor" name="line22"></a><code></code></li>
+<li><a class="anchor" name="line23"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="exception-illustration&nbsp;hidden-xs-down"&gt;</code></li>
+<li><a class="anchor" name="line24"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;include('@Twig/images/symfony-ghost.svg')&nbsp;}}</code></li>
+<li><a class="anchor" name="line25"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line26"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line27"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line28"></a><code>&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line29"></a><code></code></li>
+<li><a class="anchor" name="line30"></a><code>&lt;div&nbsp;class="container"&gt;</code></li>
+<li><a class="anchor" name="line31"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="sf-tabs"&gt;</code></li>
+<li><a class="anchor" name="line32"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab"&gt;</code></li>
+<li><a class="anchor" name="line33"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;set&nbsp;exception_as_array&nbsp;=&nbsp;exception.toarray&nbsp;%}</code></li>
+<li><a class="anchor" name="line34"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;set&nbsp;_exceptions_with_user_code&nbsp;=&nbsp;[]&nbsp;%}</code></li>
+<li><a class="anchor" name="line35"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;for&nbsp;i,&nbsp;e&nbsp;in&nbsp;exception_as_array&nbsp;%}</code></li>
+<li><a class="anchor" name="line36"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;for&nbsp;trace&nbsp;in&nbsp;e.trace&nbsp;%}</code></li>
+<li><a class="anchor" name="line37"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(trace.file&nbsp;is&nbsp;not&nbsp;empty)&nbsp;and&nbsp;('/vendor/'&nbsp;not&nbsp;in&nbsp;trace.file)&nbsp;and&nbsp;('/var/cache/'&nbsp;not&nbsp;in&nbsp;trace.file)&nbsp;and&nbsp;not&nbsp;loop.last&nbsp;%}</code></li>
+<li><a class="anchor" name="line38"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;set&nbsp;_exceptions_with_user_code&nbsp;=&nbsp;_exceptions_with_user_code|merge([i])&nbsp;%}</code></li>
+<li><a class="anchor" name="line39"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line40"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endfor&nbsp;%}</code></li>
+<li><a class="anchor" name="line41"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endfor&nbsp;%}</code></li>
+<li><a class="anchor" name="line42"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class="tab-title"&gt;</code></li>
+<li><a class="anchor" name="line43"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;exception_as_array|length&nbsp;&gt;&nbsp;1&nbsp;%}</code></li>
+<li><a class="anchor" name="line44"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exceptions&nbsp;&lt;span&nbsp;class="badge"&gt;{{&nbsp;exception_as_array|length&nbsp;}}&lt;/span&gt;</code></li>
+<li><a class="anchor" name="line45"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;else&nbsp;%}</code></li>
+<li><a class="anchor" name="line46"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exception</code></li>
+<li><a class="anchor" name="line47"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line48"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</code></li>
+<li><a class="anchor" name="line49"></a><code></code></li>
+<li><a class="anchor" name="line50"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab-content"&gt;</code></li>
+<li><a class="anchor" name="line51"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;for&nbsp;i,&nbsp;e&nbsp;in&nbsp;exception_as_array&nbsp;%}</code></li>
+<li><a class="anchor" name="line52"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;include('@Twig/Exception/traces.html.twig',&nbsp;{&nbsp;exception:&nbsp;e,&nbsp;index:&nbsp;loop.index,&nbsp;expand:&nbsp;i&nbsp;in&nbsp;_exceptions_with_user_code&nbsp;or&nbsp;(_exceptions_with_user_code&nbsp;is&nbsp;empty&nbsp;and&nbsp;loop.first)&nbsp;},&nbsp;with_context&nbsp;=&nbsp;false)&nbsp;}}</code></li>
+<li><a class="anchor" name="line53"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endfor&nbsp;%}</code></li>
+<li><a class="anchor" name="line54"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line55"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line56"></a><code></code></li>
+<li><a class="anchor" name="line57"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;logger&nbsp;%}</code></li>
+<li><a class="anchor" name="line58"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab&nbsp;{{&nbsp;logger.logs&nbsp;is&nbsp;empty&nbsp;?&nbsp;'disabled'&nbsp;}}"&gt;</code></li>
+<li><a class="anchor" name="line59"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class="tab-title"&gt;</code></li>
+<li><a class="anchor" name="line60"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs</code></li>
+<li><a class="anchor" name="line61"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;logger.counterrors&nbsp;??&nbsp;false&nbsp;%}&lt;span&nbsp;class="badge&nbsp;status-error"&gt;{{&nbsp;logger.counterrors&nbsp;}}&lt;/span&gt;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line62"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</code></li>
+<li><a class="anchor" name="line63"></a><code></code></li>
+<li><a class="anchor" name="line64"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab-content"&gt;</code></li>
+<li><a class="anchor" name="line65"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;logger.logs&nbsp;%}</code></li>
+<li><a class="anchor" name="line66"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;include('@Twig/Exception/logs.html.twig',&nbsp;{&nbsp;logs:&nbsp;logger.logs&nbsp;},&nbsp;with_context&nbsp;=&nbsp;false)&nbsp;&nbsp;}}</code></li>
+<li><a class="anchor" name="line67"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;else&nbsp;%}</code></li>
+<li><a class="anchor" name="line68"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="empty"&gt;</code></li>
+<li><a class="anchor" name="line69"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;No&nbsp;log&nbsp;messages&lt;/p&gt;</code></li>
+<li><a class="anchor" name="line70"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line71"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line72"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line73"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line74"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line75"></a><code></code></li>
+<li><a class="anchor" name="line76"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab"&gt;</code></li>
+<li><a class="anchor" name="line77"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class="tab-title"&gt;</code></li>
+<li><a class="anchor" name="line78"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;exception_as_array|length&nbsp;&gt;&nbsp;1&nbsp;%}</code></li>
+<li><a class="anchor" name="line79"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stack&nbsp;Traces&nbsp;&lt;span&nbsp;class="badge"&gt;{{&nbsp;exception_as_array|length&nbsp;}}&lt;/span&gt;</code></li>
+<li><a class="anchor" name="line80"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;else&nbsp;%}</code></li>
+<li><a class="anchor" name="line81"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stack&nbsp;Trace</code></li>
+<li><a class="anchor" name="line82"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line83"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</code></li>
+<li><a class="anchor" name="line84"></a><code></code></li>
+<li><a class="anchor" name="line85"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab-content"&gt;</code></li>
+<li><a class="anchor" name="line86"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;for&nbsp;e&nbsp;in&nbsp;exception_as_array&nbsp;%}</code></li>
+<li><a class="anchor" name="line87"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;include('@Twig/Exception/traces_text.html.twig',&nbsp;{&nbsp;exception:&nbsp;e,&nbsp;index:&nbsp;loop.index,&nbsp;num_exceptions:&nbsp;loop.length&nbsp;},&nbsp;with_context&nbsp;=&nbsp;false)&nbsp;}}</code></li>
+<li><a class="anchor" name="line88"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endfor&nbsp;%}</code></li>
+<li><a class="anchor" name="line89"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line90"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line91"></a><code></code></li>
+<li><a class="anchor" name="line92"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;currentContent&nbsp;is&nbsp;not&nbsp;empty&nbsp;%}</code></li>
+<li><a class="anchor" name="line93"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab"&gt;</code></li>
+<li><a class="anchor" name="line94"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class="tab-title"&gt;Output&nbsp;content&lt;/h3&gt;</code></li>
+<li><a class="anchor" name="line95"></a><code></code></li>
+<li><a class="anchor" name="line96"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class="tab-content"&gt;</code></li>
+<li><a class="anchor" name="line97"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;currentContent&nbsp;}}</code></li>
+<li><a class="anchor" name="line98"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line99"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line100"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;endif&nbsp;%}</code></li>
+<li><a class="anchor" name="line101"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line102"></a><code>&lt;/div&gt;</code></li>
+<li><a class="anchor" name="line103"></a><code></code></li></ol>
+</div>
+    </body>
+</html>

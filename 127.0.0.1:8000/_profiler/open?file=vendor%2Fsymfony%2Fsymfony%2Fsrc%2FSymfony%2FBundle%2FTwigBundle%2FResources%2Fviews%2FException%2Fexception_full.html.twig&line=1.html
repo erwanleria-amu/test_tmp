@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Symfony Profiler</title>
+        <link rel="icon" type="image/x-icon" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFEUlEQVR4AZVXA4wm2RMf27bXDM/+3/+sYBGfrbVtezc6BWtzfPbYXtvDL9906t6v0vWl05me7q1JzXuvvu4yXnvZgJ9hH6bwZYXLFR739vauUGuDwhq1L1N4Uv/tRYUhFjwcg49hn6aYr1V4TiGp86CoP9Oh1tV414KnM6t9fHymKUZ3DAI0hW4b1AyK3lE8phh5OxWeoJgUGhi5mLm95YzBwcHuhIQEV1JSEoWGhoKWHxYWFmenhJ/B5W0GwZpDt5Ovry9lZWWRyWOu5ORk7JsUpogsq5gnmISTU+HKQoLFQv/qq6/os88+I+EVFRUlSsRZ5oRiVmwlXMWShQkahUdERJCfnx/vd+3aRTU1NXTixAmqrq6mK1eu0PTp05mnrmD+QK6XhLO0XP2O2FJAQICRjjMU4P1PP/1EfX19NGfOHM8Z0N7ezueQkBBXYGAgSWIaQ5Em2T5QzFNSUig9PV3OHOe4uDjZ87p//34C7Nm7x/NcRUUFAX799Vec8Y7m7+8Pz92SfBDXr7VwPYRbxn/MmDG8Tps2jQBd3V30/PPPe35/6qmnaPXq1TR69Gg+h4eHiwwosdLT4dBkQDSXWmJiIq/vv/8+/fvvv3ThwgWqr6+n/Px8oyCmAerq6jy03Nxc2Yv7ySSjQzrmi4i92fVpaWlYOZ79/f2MW7dtpSlTptDp06epo6ODPvroI850ASiGdyZOnEjXrl2jyspKT4XA9cgjkaPL/D8UWG62HokieyQQoKSkRGiMs2bNotraWmprayOBNWvWyO+scGdnp5zF/WYvLEb8TwpRykp1MV7feust6uzqJMD169fpueeeY/rDDz/MKzzgdrsJoGkaffvtt/TFF19wQsIDmzZtssojt+6Fo1CgzKiAvAB3DRs2jAULtLS0eErPGB5Ad3c3lZaWUnFxMfeAd955h5+JjY3FaqXAPwhBnRCNySK4b98+Aoilv/z6i/zGggSk1g0opWupAMvGP91yt96zadWqVdTc3Ezz58/31LOAy+US6zgHBP766y+mDR8+HBUgFWSnQI2EAFnqlpcaGxsJIFkMN8L9AnPnzmX6jRs3SACeAi0vL888JwYPgTEJpauhnADo6/LSgQMHCHD37l2Cp15//XXq7eslgKb+Fi1exM9lZmbaCDclIcpQQhATE4OVsrOzuamg+cyePZuzG64Hrlu3jp9ZuWolCdy+fZueeOIJpkdHR1sLHqgM0Yh0bTRz1m7fvp2KiopYkYKCApo8ebLZIwzlFeXSOXEnsLPe2Ij+p5DbYYdOdOtDQ0rNjFya5sTcsGGDcTDZoXTcNoVBMoxWyzDS2yXmOyeUtGSskmDjx4/nRgPAfBDmMpZtUIbRcsi2GsfSD2QYyd2OcdmyZSSwdu1apuXk5GB16v4bak0yX0imyIUEgwNovFTglhMZGcm0srIy43zAVUxuTLbW4xn17Fci23wly9dngUummrTaixcvMpOtW7fiiBwQpqKYU9efHuxDJE5hC9wvL9TW1RLg+PHjPGTQ8wsLC4WpDC5Y5UR4k5qKMSLT6lqeAiX0nuAaMmSI9sMPP9CZM2foyJEj9O677wpTVIuTjidNp0HibvttoH9E5OMqbWKkSaNSlojldoLF7TEP+nUEmKI62y1kOBINbVaNarcI0PuGGUlHyfYvLHg7/jhFSFYqZh0P8KHSptd5ksOPU3tvqAEUot/hFmOIYJLp87wGe9Dwm95eg5xa/R8G6d8U5EcFhwAAAABJRU5ErkJggg==">
+
+            <style>
+        
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0;font-size:2em}mark{color:#000;background:#ff0}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}
+
+html, body  {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #F9F9F9;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.header {
+    background-color: #222;
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+}
+.header h1 {
+    color: #FFF;
+    font-weight: normal;
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 10px 8px;
+    word-break: break-all;
+}
+
+a.doc {
+    color: #FFF;
+    text-decoration: none;
+    margin: auto;
+    margin-right: 10px;
+}
+
+a.doc:hover {
+    text-decoration: underline;
+}
+
+.source {
+    margin-top: 41px;
+}
+
+.source li code {
+    color: #555;
+}
+
+.source li.selected {
+    background: rgba(255, 255, 153, 0.5);
+}
+
+.anchor {
+    position: relative;
+    display: inline-block;
+    top: -7em;
+    visibility: hidden;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="header">
+    <h1>vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/exception_full.html.twig <small>line 1</small></h1>
+    <a class="doc" href="https://symfony.com/doc/3.4.15/reference/configuration/framework.html#ide" rel="help">Open in your IDE?</a>
+</div>
+<div class="source">
+    <ol start="1"><li class="selected"><a class="anchor" name="line1"></a><code>{%&nbsp;extends&nbsp;'@Twig/layout.html.twig'&nbsp;%}</code></li>
+<li><a class="anchor" name="line2"></a><code></code></li>
+<li><a class="anchor" name="line3"></a><code>{%&nbsp;block&nbsp;head&nbsp;%}</code></li>
+<li><a class="anchor" name="line4"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;</code></li>
+<li><a class="anchor" name="line5"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.traces&nbsp;{</code></li>
+<li><a class="anchor" name="line6"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding-bottom:&nbsp;14px;</code></li>
+<li><a class="anchor" name="line7"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line8"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.traces&nbsp;li&nbsp;{</code></li>
+<li><a class="anchor" name="line9"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;12px;</code></li>
+<li><a class="anchor" name="line10"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#868686;</code></li>
+<li><a class="anchor" name="line11"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;5px&nbsp;4px;</code></li>
+<li><a class="anchor" name="line12"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list-style-type:&nbsp;decimal;</code></li>
+<li><a class="anchor" name="line13"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left:&nbsp;20px;</code></li>
+<li><a class="anchor" name="line14"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line15"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;#logs&nbsp;.traces&nbsp;li.error&nbsp;{</code></li>
+<li><a class="anchor" name="line16"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style:&nbsp;normal;</code></li>
+<li><a class="anchor" name="line17"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#AA3333;</code></li>
+<li><a class="anchor" name="line18"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background:&nbsp;#f9ecec;</code></li>
+<li><a class="anchor" name="line19"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line20"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;#logs&nbsp;.traces&nbsp;li.warning&nbsp;{</code></li>
+<li><a class="anchor" name="line21"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style:&nbsp;normal;</code></li>
+<li><a class="anchor" name="line22"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background:&nbsp;#ffcc00;</code></li>
+<li><a class="anchor" name="line23"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line24"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;fix&nbsp;for&nbsp;Opera&nbsp;not&nbsp;liking&nbsp;empty&nbsp;&lt;li&gt;&nbsp;*/</code></li>
+<li><a class="anchor" name="line25"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.traces&nbsp;li:after&nbsp;{</code></li>
+<li><a class="anchor" name="line26"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content:&nbsp;"\00A0";</code></li>
+<li><a class="anchor" name="line27"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line28"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.trace&nbsp;{</code></li>
+<li><a class="anchor" name="line29"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:&nbsp;1px&nbsp;solid&nbsp;#D3D3D3;</code></li>
+<li><a class="anchor" name="line30"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;10px;</code></li>
+<li><a class="anchor" name="line31"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overflow:&nbsp;auto;</code></li>
+<li><a class="anchor" name="line32"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin:&nbsp;10px&nbsp;0&nbsp;20px;</code></li>
+<li><a class="anchor" name="line33"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line34"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception&nbsp;{</code></li>
+<li><a class="anchor" name="line35"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-moz-border-radius:&nbsp;16px;</code></li>
+<li><a class="anchor" name="line36"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-webkit-border-radius:&nbsp;16px;</code></li>
+<li><a class="anchor" name="line37"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius:&nbsp;16px;</code></li>
+<li><a class="anchor" name="line38"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom:&nbsp;20px;</code></li>
+<li><a class="anchor" name="line39"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color:&nbsp;#f6f6f6;</code></li>
+<li><a class="anchor" name="line40"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border:&nbsp;1px&nbsp;solid&nbsp;#dfdfdf;</code></li>
+<li><a class="anchor" name="line41"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;30px&nbsp;28px;</code></li>
+<li><a class="anchor" name="line42"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word-wrap:&nbsp;break-word;</code></li>
+<li><a class="anchor" name="line43"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overflow:&nbsp;hidden;</code></li>
+<li><a class="anchor" name="line44"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line45"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception&nbsp;div&nbsp;{</code></li>
+<li><a class="anchor" name="line46"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#313131;</code></li>
+<li><a class="anchor" name="line47"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;10px;</code></li>
+<li><a class="anchor" name="line48"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line49"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception-detected&nbsp;.illustration-exception,</code></li>
+<li><a class="anchor" name="line50"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception-detected&nbsp;.text-exception&nbsp;{</code></li>
+<li><a class="anchor" name="line51"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;left;</code></li>
+<li><a class="anchor" name="line52"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line53"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception-detected&nbsp;.illustration-exception&nbsp;{</code></li>
+<li><a class="anchor" name="line54"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;152px;</code></li>
+<li><a class="anchor" name="line55"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line56"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception-detected&nbsp;.text-exception&nbsp;{</code></li>
+<li><a class="anchor" name="line57"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;670px;</code></li>
+<li><a class="anchor" name="line58"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;30px&nbsp;44px&nbsp;24px&nbsp;46px;</code></li>
+<li><a class="anchor" name="line59"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;relative;</code></li>
+<li><a class="anchor" name="line60"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line61"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.text-exception&nbsp;.open-quote,</code></li>
+<li><a class="anchor" name="line62"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.text-exception&nbsp;.close-quote&nbsp;{</code></li>
+<li><a class="anchor" name="line63"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;Arial,&nbsp;Helvetica,&nbsp;sans-serif;</code></li>
+<li><a class="anchor" name="line64"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;absolute;</code></li>
+<li><a class="anchor" name="line65"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#C9C9C9;</code></li>
+<li><a class="anchor" name="line66"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;8em;</code></li>
+<li><a class="anchor" name="line67"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line68"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.open-quote&nbsp;{</code></li>
+<li><a class="anchor" name="line69"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;0;</code></li>
+<li><a class="anchor" name="line70"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;0;</code></li>
+<li><a class="anchor" name="line71"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line72"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.close-quote&nbsp;{</code></li>
+<li><a class="anchor" name="line73"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom:&nbsp;-0.5em;</code></li>
+<li><a class="anchor" name="line74"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right:&nbsp;50px;</code></li>
+<li><a class="anchor" name="line75"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line76"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception&nbsp;p&nbsp;{</code></li>
+<li><a class="anchor" name="line77"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;Arial,&nbsp;Helvetica,&nbsp;sans-serif;</code></li>
+<li><a class="anchor" name="line78"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line79"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception&nbsp;p&nbsp;a,</code></li>
+<li><a class="anchor" name="line80"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.block-exception&nbsp;p&nbsp;a:hover&nbsp;{</code></li>
+<li><a class="anchor" name="line81"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#565656;</code></li>
+<li><a class="anchor" name="line82"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line83"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.logs&nbsp;h2&nbsp;{</code></li>
+<li><a class="anchor" name="line84"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;left;</code></li>
+<li><a class="anchor" name="line85"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;654px;</code></li>
+<li><a class="anchor" name="line86"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line87"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.error-count,&nbsp;.sf-reset&nbsp;.support&nbsp;{</code></li>
+<li><a class="anchor" name="line88"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;right;</code></li>
+<li><a class="anchor" name="line89"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;170px;</code></li>
+<li><a class="anchor" name="line90"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align:&nbsp;right;</code></li>
+<li><a class="anchor" name="line91"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line92"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.error-count&nbsp;span&nbsp;{</code></li>
+<li><a class="anchor" name="line93"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;inline-block;</code></li>
+<li><a class="anchor" name="line94"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color:&nbsp;#aacd4e;</code></li>
+<li><a class="anchor" name="line95"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-moz-border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line96"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-webkit-border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line97"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line98"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;4px;</code></li>
+<li><a class="anchor" name="line99"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;white;</code></li>
+<li><a class="anchor" name="line100"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-right:&nbsp;2px;</code></li>
+<li><a class="anchor" name="line101"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;11px;</code></li>
+<li><a class="anchor" name="line102"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;bold;</code></li>
+<li><a class="anchor" name="line103"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line104"></a><code></code></li>
+<li><a class="anchor" name="line105"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.support&nbsp;a&nbsp;{</code></li>
+<li><a class="anchor" name="line106"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;inline-block;</code></li>
+<li><a class="anchor" name="line107"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-moz-border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line108"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-webkit-border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line109"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius:&nbsp;6px;</code></li>
+<li><a class="anchor" name="line110"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;4px;</code></li>
+<li><a class="anchor" name="line111"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#000000;</code></li>
+<li><a class="anchor" name="line112"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-right:&nbsp;2px;</code></li>
+<li><a class="anchor" name="line113"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;11px;</code></li>
+<li><a class="anchor" name="line114"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;bold;</code></li>
+<li><a class="anchor" name="line115"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line116"></a><code></code></li>
+<li><a class="anchor" name="line117"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.toggle&nbsp;{</code></li>
+<li><a class="anchor" name="line118"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vertical-align:&nbsp;middle;</code></li>
+<li><a class="anchor" name="line119"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line120"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.linked&nbsp;ul,</code></li>
+<li><a class="anchor" name="line121"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;.linked&nbsp;li&nbsp;{</code></li>
+<li><a class="anchor" name="line122"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;inline;</code></li>
+<li><a class="anchor" name="line123"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line124"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;#output-content&nbsp;{</code></li>
+<li><a class="anchor" name="line125"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#000;</code></li>
+<li><a class="anchor" name="line126"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;12px;</code></li>
+<li><a class="anchor" name="line127"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line128"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sf-reset&nbsp;#traces-text&nbsp;pre&nbsp;{</code></li>
+<li><a class="anchor" name="line129"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white-space:&nbsp;pre;</code></li>
+<li><a class="anchor" name="line130"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:&nbsp;12px;</code></li>
+<li><a class="anchor" name="line131"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&nbsp;monospace;</code></li>
+<li><a class="anchor" name="line132"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></li>
+<li><a class="anchor" name="line133"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;</code></li>
+<li><a class="anchor" name="line134"></a><code>{%&nbsp;endblock&nbsp;%}</code></li>
+<li><a class="anchor" name="line135"></a><code></code></li>
+<li><a class="anchor" name="line136"></a><code>{%&nbsp;block&nbsp;title&nbsp;%}</code></li>
+<li><a class="anchor" name="line137"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;{{&nbsp;exception.message&nbsp;}}&nbsp;({{&nbsp;status_code&nbsp;}}&nbsp;{{&nbsp;status_text&nbsp;}})</code></li>
+<li><a class="anchor" name="line138"></a><code>{%&nbsp;endblock&nbsp;%}</code></li>
+<li><a class="anchor" name="line139"></a><code></code></li>
+<li><a class="anchor" name="line140"></a><code>{%&nbsp;block&nbsp;body&nbsp;%}</code></li>
+<li><a class="anchor" name="line141"></a><code>&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;include&nbsp;'@Twig/Exception/exception.html.twig'&nbsp;%}</code></li>
+<li><a class="anchor" name="line142"></a><code>{%&nbsp;endblock&nbsp;%}</code></li>
+<li><a class="anchor" name="line143"></a><code></code></li></ol>
+</div>
+    </body>
+</html>

@@ -13,5 +13,6 @@ Vous pouvez consulter les pages suivantes :
 
 - [Le manuel d'installation pour les dÃ©veloppeurs](developper.md)
 - [La documentation fonctionnelle ](docs/MeteoRando/index.html)
+- [Aperçu purement visuel du projet](127.0.0.1:8000/app.html)
 
 A Symfony project created on September 12, 2018, 12:00 pm.

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Symfony Profiler</title>
+        <link rel="icon" type="image/x-icon" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFEUlEQVR4AZVXA4wm2RMf27bXDM/+3/+sYBGfrbVtezc6BWtzfPbYXtvDL9906t6v0vWl05me7q1JzXuvvu4yXnvZgJ9hH6bwZYXLFR739vauUGuDwhq1L1N4Uv/tRYUhFjwcg49hn6aYr1V4TiGp86CoP9Oh1tV414KnM6t9fHymKUZ3DAI0hW4b1AyK3lE8phh5OxWeoJgUGhi5mLm95YzBwcHuhIQEV1JSEoWGhoKWHxYWFmenhJ/B5W0GwZpDt5Ovry9lZWWRyWOu5ORk7JsUpogsq5gnmISTU+HKQoLFQv/qq6/os88+I+EVFRUlSsRZ5oRiVmwlXMWShQkahUdERJCfnx/vd+3aRTU1NXTixAmqrq6mK1eu0PTp05mnrmD+QK6XhLO0XP2O2FJAQICRjjMU4P1PP/1EfX19NGfOHM8Z0N7ezueQkBBXYGAgSWIaQ5Em2T5QzFNSUig9PV3OHOe4uDjZ87p//34C7Nm7x/NcRUUFAX799Vec8Y7m7+8Pz92SfBDXr7VwPYRbxn/MmDG8Tps2jQBd3V30/PPPe35/6qmnaPXq1TR69Gg+h4eHiwwosdLT4dBkQDSXWmJiIq/vv/8+/fvvv3ThwgWqr6+n/Px8oyCmAerq6jy03Nxc2Yv7ySSjQzrmi4i92fVpaWlYOZ79/f2MW7dtpSlTptDp06epo6ODPvroI850ASiGdyZOnEjXrl2jyspKT4XA9cgjkaPL/D8UWG62HokieyQQoKSkRGiMs2bNotraWmprayOBNWvWyO+scGdnp5zF/WYvLEb8TwpRykp1MV7feust6uzqJMD169fpueeeY/rDDz/MKzzgdrsJoGkaffvtt/TFF19wQsIDmzZtssojt+6Fo1CgzKiAvAB3DRs2jAULtLS0eErPGB5Ad3c3lZaWUnFxMfeAd955h5+JjY3FaqXAPwhBnRCNySK4b98+Aoilv/z6i/zGggSk1g0opWupAMvGP91yt96zadWqVdTc3Ezz58/31LOAy+US6zgHBP766y+mDR8+HBUgFWSnQI2EAFnqlpcaGxsJIFkMN8L9AnPnzmX6jRs3SACeAi0vL888JwYPgTEJpauhnADo6/LSgQMHCHD37l2Cp15//XXq7eslgKb+Fi1exM9lZmbaCDclIcpQQhATE4OVsrOzuamg+cyePZuzG64Hrlu3jp9ZuWolCdy+fZueeOIJpkdHR1sLHqgM0Yh0bTRz1m7fvp2KiopYkYKCApo8ebLZIwzlFeXSOXEnsLPe2Ij+p5DbYYdOdOtDQ0rNjFya5sTcsGGDcTDZoXTcNoVBMoxWyzDS2yXmOyeUtGSskmDjx4/nRgPAfBDmMpZtUIbRcsi2GsfSD2QYyd2OcdmyZSSwdu1apuXk5GB16v4bak0yX0imyIUEgwNovFTglhMZGcm0srIy43zAVUxuTLbW4xn17Fci23wly9dngUummrTaixcvMpOtW7fiiBwQpqKYU9efHuxDJE5hC9wvL9TW1RLg+PHjPGTQ8wsLC4WpDC5Y5UR4k5qKMSLT6lqeAiX0nuAaMmSI9sMPP9CZM2foyJEj9O677wpTVIuTjidNp0HibvttoH9E5OMqbWKkSaNSlojldoLF7TEP+nUEmKI62y1kOBINbVaNarcI0PuGGUlHyfYvLHg7/jhFSFYqZh0P8KHSptd5ksOPU3tvqAEUot/hFmOIYJLp87wGe9Dwm95eg5xa/R8G6d8U5EcFhwAAAABJRU5ErkJggg==">
+
+            <style>
+        
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0;font-size:2em}mark{color:#000;background:#ff0}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}
+
+html, body  {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #F9F9F9;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.header {
+    background-color: #222;
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+}
+.header h1 {
+    color: #FFF;
+    font-weight: normal;
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 10px 8px;
+    word-break: break-all;
+}
+
+a.doc {
+    color: #FFF;
+    text-decoration: none;
+    margin: auto;
+    margin-right: 10px;
+}
+
+a.doc:hover {
+    text-decoration: underline;
+}
+
+.source {
+    margin-top: 41px;
+}
+
+.source li code {
+    color: #555;
+}
+
+.source li.selected {
+    background: rgba(255, 255, 153, 0.5);
+}
+
+.anchor {
+    position: relative;
+    display: inline-block;
+    top: -7em;
+    visibility: hidden;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="header">
+    <h1>vendor/symfony/symfony/src/Symfony/Bridge/Monolog/Handler/ConsoleHandler.php <small>line 111</small></h1>
+    <a class="doc" href="https://symfony.com/doc/3.4.15/reference/configuration/framework.html#ide" rel="help">Open in your IDE?</a>
+</div>
+<div class="source">
+    <ol start="1"><li><a class="anchor" name="line1"></a><code><span style="color: #0000BB">&lt;?php</span></span></code></li>
+<li><a class="anchor" name="line2"></a><code><span style="color: #0000BB"></span></span></code></li>
+<li><a class="anchor" name="line3"></a><code><span style="color: #0000BB"></span><span style="color: #FF8000">/*</span></span></code></li>
+<li><a class="anchor" name="line4"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;This&nbsp;file&nbsp;is&nbsp;part&nbsp;of&nbsp;the&nbsp;Symfony&nbsp;package.</span></span></code></li>
+<li><a class="anchor" name="line5"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line6"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;(c)&nbsp;Fabien&nbsp;Potencier&nbsp;&lt;fabien@symfony.com&gt;</span></span></code></li>
+<li><a class="anchor" name="line7"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line8"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;For&nbsp;the&nbsp;full&nbsp;copyright&nbsp;and&nbsp;license&nbsp;information,&nbsp;please&nbsp;view&nbsp;the&nbsp;LICENSE</span></span></code></li>
+<li><a class="anchor" name="line9"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;file&nbsp;that&nbsp;was&nbsp;distributed&nbsp;with&nbsp;this&nbsp;source&nbsp;code.</span></span></code></li>
+<li><a class="anchor" name="line10"></a><code><span style="color: #FF8000">&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line11"></a><code><span style="color: #FF8000"></span></span></code></li>
+<li><a class="anchor" name="line12"></a><code><span style="color: #FF8000"></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Bridge</span><span style="color: #007700">\</span><span style="color: #0000BB">Monolog</span><span style="color: #007700">\</span><span style="color: #0000BB">Handler</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line13"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line14"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Monolog</span><span style="color: #007700">\</span><span style="color: #0000BB">Formatter</span><span style="color: #007700">\</span><span style="color: #0000BB">LineFormatter</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line15"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Monolog</span><span style="color: #007700">\</span><span style="color: #0000BB">Handler</span><span style="color: #007700">\</span><span style="color: #0000BB">AbstractProcessingHandler</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line16"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Monolog</span><span style="color: #007700">\</span><span style="color: #0000BB">Logger</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line17"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Bridge</span><span style="color: #007700">\</span><span style="color: #0000BB">Monolog</span><span style="color: #007700">\</span><span style="color: #0000BB">Formatter</span><span style="color: #007700">\</span><span style="color: #0000BB">ConsoleFormatter</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line18"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">Console</span><span style="color: #007700">\</span><span style="color: #0000BB">ConsoleEvents</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line19"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">Console</span><span style="color: #007700">\</span><span style="color: #0000BB">Event</span><span style="color: #007700">\</span><span style="color: #0000BB">ConsoleCommandEvent</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line20"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">Console</span><span style="color: #007700">\</span><span style="color: #0000BB">Event</span><span style="color: #007700">\</span><span style="color: #0000BB">ConsoleTerminateEvent</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line21"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">Console</span><span style="color: #007700">\</span><span style="color: #0000BB">Output</span><span style="color: #007700">\</span><span style="color: #0000BB">ConsoleOutputInterface</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line22"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">Console</span><span style="color: #007700">\</span><span style="color: #0000BB">Output</span><span style="color: #007700">\</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line23"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">EventDispatcher</span><span style="color: #007700">\</span><span style="color: #0000BB">EventSubscriberInterface</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line24"></a><code><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Symfony</span><span style="color: #007700">\</span><span style="color: #0000BB">Component</span><span style="color: #007700">\</span><span style="color: #0000BB">VarDumper</span><span style="color: #007700">\</span><span style="color: #0000BB">Dumper</span><span style="color: #007700">\</span><span style="color: #0000BB">CliDumper</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line25"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line26"></a><code><span style="color: #007700"></span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line27"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;Writes&nbsp;logs&nbsp;to&nbsp;the&nbsp;console&nbsp;output&nbsp;depending&nbsp;on&nbsp;its&nbsp;verbosity&nbsp;setting.</span></span></code></li>
+<li><a class="anchor" name="line28"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line29"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;It&nbsp;is&nbsp;disabled&nbsp;by&nbsp;default&nbsp;and&nbsp;gets&nbsp;activated&nbsp;as&nbsp;soon&nbsp;as&nbsp;a&nbsp;command&nbsp;is&nbsp;executed.</span></span></code></li>
+<li><a class="anchor" name="line30"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;Instead&nbsp;of&nbsp;listening&nbsp;to&nbsp;the&nbsp;console&nbsp;events,&nbsp;the&nbsp;output&nbsp;can&nbsp;also&nbsp;be&nbsp;set&nbsp;manually.</span></span></code></li>
+<li><a class="anchor" name="line31"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line32"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;The&nbsp;minimum&nbsp;logging&nbsp;level&nbsp;at&nbsp;which&nbsp;this&nbsp;handler&nbsp;will&nbsp;be&nbsp;triggered&nbsp;depends&nbsp;on&nbsp;the</span></span></code></li>
+<li><a class="anchor" name="line33"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;verbosity&nbsp;setting&nbsp;of&nbsp;the&nbsp;console&nbsp;output.&nbsp;The&nbsp;default&nbsp;mapping&nbsp;is:</span></span></code></li>
+<li><a class="anchor" name="line34"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;-&nbsp;OutputInterface::VERBOSITY_NORMAL&nbsp;will&nbsp;show&nbsp;all&nbsp;WARNING&nbsp;and&nbsp;higher&nbsp;logs</span></span></code></li>
+<li><a class="anchor" name="line35"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;-&nbsp;OutputInterface::VERBOSITY_VERBOSE&nbsp;(-v)&nbsp;will&nbsp;show&nbsp;all&nbsp;NOTICE&nbsp;and&nbsp;higher&nbsp;logs</span></span></code></li>
+<li><a class="anchor" name="line36"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;-&nbsp;OutputInterface::VERBOSITY_VERY_VERBOSE&nbsp;(-vv)&nbsp;will&nbsp;show&nbsp;all&nbsp;INFO&nbsp;and&nbsp;higher&nbsp;logs</span></span></code></li>
+<li><a class="anchor" name="line37"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;-&nbsp;OutputInterface::VERBOSITY_DEBUG&nbsp;(-vvv)&nbsp;will&nbsp;show&nbsp;all&nbsp;DEBUG&nbsp;and&nbsp;higher&nbsp;logs,&nbsp;i.e.&nbsp;all&nbsp;logs</span></span></code></li>
+<li><a class="anchor" name="line38"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line39"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;This&nbsp;mapping&nbsp;can&nbsp;be&nbsp;customized&nbsp;with&nbsp;the&nbsp;$verbosityLevelMap&nbsp;constructor&nbsp;parameter.</span></span></code></li>
+<li><a class="anchor" name="line40"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line41"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;@author&nbsp;Tobias&nbsp;Schultze&nbsp;&lt;http://tobion.de&gt;</span></span></code></li>
+<li><a class="anchor" name="line42"></a><code><span style="color: #FF8000">&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line43"></a><code><span style="color: #FF8000"></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">ConsoleHandler&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">AbstractProcessingHandler&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">EventSubscriberInterface</span></span></code></li>
+<li><a class="anchor" name="line44"></a><code><span style="color: #0000BB"></span><span style="color: #007700">{</span></span></code></li>
+<li><a class="anchor" name="line45"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line46"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$verbosityLevelMap&nbsp;</span><span style="color: #007700">=&nbsp;array(</span></span></code></li>
+<li><a class="anchor" name="line47"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_QUIET&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">ERROR</span><span style="color: #007700">,</span></span></code></li>
+<li><a class="anchor" name="line48"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_NORMAL&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">WARNING</span><span style="color: #007700">,</span></span></code></li>
+<li><a class="anchor" name="line49"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_VERBOSE&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">NOTICE</span><span style="color: #007700">,</span></span></code></li>
+<li><a class="anchor" name="line50"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_VERY_VERBOSE&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">INFO</span><span style="color: #007700">,</span></span></code></li>
+<li><a class="anchor" name="line51"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_DEBUG&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">DEBUG</span><span style="color: #007700">,</span></span></code></li>
+<li><a class="anchor" name="line52"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;);</span></span></code></li>
+<li><a class="anchor" name="line53"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line54"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line55"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;OutputInterface|null&nbsp;$output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;console&nbsp;output&nbsp;to&nbsp;use&nbsp;(the&nbsp;handler&nbsp;remains&nbsp;disabled&nbsp;when&nbsp;passing&nbsp;null</span></span></code></li>
+<li><a class="anchor" name="line56"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;until&nbsp;the&nbsp;output&nbsp;is&nbsp;set,&nbsp;e.g.&nbsp;by&nbsp;using&nbsp;console&nbsp;events)</span></span></code></li>
+<li><a class="anchor" name="line57"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;bool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$bubble&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;the&nbsp;messages&nbsp;that&nbsp;are&nbsp;handled&nbsp;can&nbsp;bubble&nbsp;up&nbsp;the&nbsp;stack</span></span></code></li>
+<li><a class="anchor" name="line58"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;array&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$verbosityLevelMap&nbsp;Array&nbsp;that&nbsp;maps&nbsp;the&nbsp;OutputInterface&nbsp;verbosity&nbsp;to&nbsp;a&nbsp;minimum&nbsp;logging</span></span></code></li>
+<li><a class="anchor" name="line59"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;(leave&nbsp;empty&nbsp;to&nbsp;use&nbsp;the&nbsp;default&nbsp;mapping)</span></span></code></li>
+<li><a class="anchor" name="line60"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line61"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">OutputInterface&nbsp;$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bubble&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;array&nbsp;</span><span style="color: #0000BB">$verbosityLevelMap&nbsp;</span><span style="color: #007700">=&nbsp;array())</span></span></code></li>
+<li><a class="anchor" name="line62"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line63"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">DEBUG</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bubble</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line64"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line65"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line66"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$verbosityLevelMap</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line67"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">verbosityLevelMap&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$verbosityLevelMap</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line68"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line69"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line70"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line71"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line72"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@inheritdoc}</span></span></code></li>
+<li><a class="anchor" name="line73"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line74"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">isHandling</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$record</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line75"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line76"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">updateLevel</span><span style="color: #007700">()&nbsp;&amp;&amp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">isHandling</span><span style="color: #007700">(</span><span style="color: #0000BB">$record</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line77"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line78"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line79"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line80"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@inheritdoc}</span></span></code></li>
+<li><a class="anchor" name="line81"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line82"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">handle</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$record</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line83"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line84"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;we&nbsp;have&nbsp;to&nbsp;update&nbsp;the&nbsp;logging&nbsp;level&nbsp;each&nbsp;time&nbsp;because&nbsp;the&nbsp;verbosity&nbsp;of&nbsp;the</span></span></code></li>
+<li><a class="anchor" name="line85"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;console&nbsp;output&nbsp;might&nbsp;have&nbsp;changed&nbsp;in&nbsp;the&nbsp;meantime&nbsp;(it&nbsp;is&nbsp;not&nbsp;immutable)</span></span></code></li>
+<li><a class="anchor" name="line86"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">updateLevel</span><span style="color: #007700">()&nbsp;&amp;&amp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$record</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line87"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line88"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line89"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line90"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Sets&nbsp;the&nbsp;console&nbsp;output&nbsp;to&nbsp;use&nbsp;for&nbsp;printing&nbsp;logs.</span></span></code></li>
+<li><a class="anchor" name="line91"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line92"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setOutput</span><span style="color: #007700">(</span><span style="color: #0000BB">OutputInterface&nbsp;$output</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line93"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line94"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line95"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line96"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line97"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line98"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Disables&nbsp;the&nbsp;output.</span></span></code></li>
+<li><a class="anchor" name="line99"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line100"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">close</span><span style="color: #007700">()</span></span></code></li>
+<li><a class="anchor" name="line101"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line102"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line103"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line104"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">close</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line105"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line106"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line107"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line108"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Before&nbsp;a&nbsp;command&nbsp;is&nbsp;executed,&nbsp;the&nbsp;handler&nbsp;gets&nbsp;activated&nbsp;and&nbsp;the&nbsp;console&nbsp;output</span></span></code></li>
+<li><a class="anchor" name="line109"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;is&nbsp;set&nbsp;in&nbsp;order&nbsp;to&nbsp;know&nbsp;where&nbsp;to&nbsp;write&nbsp;the&nbsp;logs.</span></span></code></li>
+<li><a class="anchor" name="line110"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li class="selected"><a class="anchor" name="line111"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">ConsoleCommandEvent&nbsp;$event</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line112"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line113"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$event</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getOutput</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line114"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">ConsoleOutputInterface</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line115"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getErrorOutput</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line116"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line117"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line118"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutput</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line119"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line120"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line121"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line122"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;After&nbsp;a&nbsp;command&nbsp;has&nbsp;been&nbsp;executed,&nbsp;it&nbsp;disables&nbsp;the&nbsp;output.</span></span></code></li>
+<li><a class="anchor" name="line123"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line124"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onTerminate</span><span style="color: #007700">(</span><span style="color: #0000BB">ConsoleTerminateEvent&nbsp;$event</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line125"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line126"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line127"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line128"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line129"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line130"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@inheritdoc}</span></span></code></li>
+<li><a class="anchor" name="line131"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line132"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getSubscribedEvents</span><span style="color: #007700">()</span></span></code></li>
+<li><a class="anchor" name="line133"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line134"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array(</span></span></code></li>
+<li><a class="anchor" name="line135"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ConsoleEvents</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMAND&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'onCommand'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">),</span></span></code></li>
+<li><a class="anchor" name="line136"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ConsoleEvents</span><span style="color: #007700">::</span><span style="color: #0000BB">TERMINATE&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'onTerminate'</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">255</span><span style="color: #007700">),</span></span></code></li>
+<li><a class="anchor" name="line137"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</span></span></code></li>
+<li><a class="anchor" name="line138"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line139"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line140"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line141"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@inheritdoc}</span></span></code></li>
+<li><a class="anchor" name="line142"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line143"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">write</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$record</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line144"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line145"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;at&nbsp;this&nbsp;point&nbsp;we've&nbsp;determined&nbsp;for&nbsp;sure&nbsp;that&nbsp;we&nbsp;want&nbsp;to&nbsp;output&nbsp;the&nbsp;record,&nbsp;so&nbsp;use&nbsp;the&nbsp;output's&nbsp;own&nbsp;verbosity</span></span></code></li>
+<li><a class="anchor" name="line146"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">write</span><span style="color: #007700">((string)&nbsp;</span><span style="color: #0000BB">$record</span><span style="color: #007700">[</span><span style="color: #DD0000">'formatted'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getVerbosity</span><span style="color: #007700">());</span></span></code></li>
+<li><a class="anchor" name="line147"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line148"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line149"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line150"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;{@inheritdoc}</span></span></code></li>
+<li><a class="anchor" name="line151"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line152"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">getDefaultFormatter</span><span style="color: #007700">()</span></span></code></li>
+<li><a class="anchor" name="line153"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line154"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">class_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">CliDumper</span><span style="color: #007700">::class))&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line155"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">LineFormatter</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line156"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line157"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line158"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">ConsoleFormatter</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line159"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line160"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line161"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">ConsoleFormatter</span><span style="color: #007700">(array(</span></span></code></li>
+<li><a class="anchor" name="line162"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'colors'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isDecorated</span><span style="color: #007700">(),</span></span></code></li>
+<li><a class="anchor" name="line163"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'multiline'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">OutputInterface</span><span style="color: #007700">::</span><span style="color: #0000BB">VERBOSITY_DEBUG&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getVerbosity</span><span style="color: #007700">(),</span></span></code></li>
+<li><a class="anchor" name="line164"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));</span></span></code></li>
+<li><a class="anchor" name="line165"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line166"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line167"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line168"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Updates&nbsp;the&nbsp;logging&nbsp;level&nbsp;based&nbsp;on&nbsp;the&nbsp;verbosity&nbsp;setting&nbsp;of&nbsp;the&nbsp;console&nbsp;output.</span></span></code></li>
+<li><a class="anchor" name="line169"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line170"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;bool&nbsp;Whether&nbsp;the&nbsp;handler&nbsp;is&nbsp;enabled&nbsp;and&nbsp;verbosity&nbsp;is&nbsp;not&nbsp;set&nbsp;to&nbsp;quiet</span></span></code></li>
+<li><a class="anchor" name="line171"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line172"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">private&nbsp;function&nbsp;</span><span style="color: #0000BB">updateLevel</span><span style="color: #007700">()</span></span></code></li>
+<li><a class="anchor" name="line173"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line174"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line175"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line176"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line177"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line178"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$verbosity&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">output</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getVerbosity</span><span style="color: #007700">();</span></span></code></li>
+<li><a class="anchor" name="line179"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">verbosityLevelMap</span><span style="color: #007700">[</span><span style="color: #0000BB">$verbosity</span><span style="color: #007700">]))&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line180"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLevel</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">verbosityLevelMap</span><span style="color: #007700">[</span><span style="color: #0000BB">$verbosity</span><span style="color: #007700">]);</span></span></code></li>
+<li><a class="anchor" name="line181"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line182"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLevel</span><span style="color: #007700">(</span><span style="color: #0000BB">Logger</span><span style="color: #007700">::</span><span style="color: #0000BB">DEBUG</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line183"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line184"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line185"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line186"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line187"></a><code><span style="color: #007700">}</span></span></code></li>
+<li><a class="anchor" name="line188"></a><code><span style="color: #007700"></span>
+</span></code></li></ol>
+</div>
+    </body>
+</html>

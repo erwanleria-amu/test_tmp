@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Symfony Profiler</title>
+        <link rel="icon" type="image/x-icon" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFEUlEQVR4AZVXA4wm2RMf27bXDM/+3/+sYBGfrbVtezc6BWtzfPbYXtvDL9906t6v0vWl05me7q1JzXuvvu4yXnvZgJ9hH6bwZYXLFR739vauUGuDwhq1L1N4Uv/tRYUhFjwcg49hn6aYr1V4TiGp86CoP9Oh1tV414KnM6t9fHymKUZ3DAI0hW4b1AyK3lE8phh5OxWeoJgUGhi5mLm95YzBwcHuhIQEV1JSEoWGhoKWHxYWFmenhJ/B5W0GwZpDt5Ovry9lZWWRyWOu5ORk7JsUpogsq5gnmISTU+HKQoLFQv/qq6/os88+I+EVFRUlSsRZ5oRiVmwlXMWShQkahUdERJCfnx/vd+3aRTU1NXTixAmqrq6mK1eu0PTp05mnrmD+QK6XhLO0XP2O2FJAQICRjjMU4P1PP/1EfX19NGfOHM8Z0N7ezueQkBBXYGAgSWIaQ5Em2T5QzFNSUig9PV3OHOe4uDjZ87p//34C7Nm7x/NcRUUFAX799Vec8Y7m7+8Pz92SfBDXr7VwPYRbxn/MmDG8Tps2jQBd3V30/PPPe35/6qmnaPXq1TR69Gg+h4eHiwwosdLT4dBkQDSXWmJiIq/vv/8+/fvvv3ThwgWqr6+n/Px8oyCmAerq6jy03Nxc2Yv7ySSjQzrmi4i92fVpaWlYOZ79/f2MW7dtpSlTptDp06epo6ODPvroI850ASiGdyZOnEjXrl2jyspKT4XA9cgjkaPL/D8UWG62HokieyQQoKSkRGiMs2bNotraWmprayOBNWvWyO+scGdnp5zF/WYvLEb8TwpRykp1MV7feust6uzqJMD169fpueeeY/rDDz/MKzzgdrsJoGkaffvtt/TFF19wQsIDmzZtssojt+6Fo1CgzKiAvAB3DRs2jAULtLS0eErPGB5Ad3c3lZaWUnFxMfeAd955h5+JjY3FaqXAPwhBnRCNySK4b98+Aoilv/z6i/zGggSk1g0opWupAMvGP91yt96zadWqVdTc3Ezz58/31LOAy+US6zgHBP766y+mDR8+HBUgFWSnQI2EAFnqlpcaGxsJIFkMN8L9AnPnzmX6jRs3SACeAi0vL888JwYPgTEJpauhnADo6/LSgQMHCHD37l2Cp15//XXq7eslgKb+Fi1exM9lZmbaCDclIcpQQhATE4OVsrOzuamg+cyePZuzG64Hrlu3jp9ZuWolCdy+fZueeOIJpkdHR1sLHqgM0Yh0bTRz1m7fvp2KiopYkYKCApo8ebLZIwzlFeXSOXEnsLPe2Ij+p5DbYYdOdOtDQ0rNjFya5sTcsGGDcTDZoXTcNoVBMoxWyzDS2yXmOyeUtGSskmDjx4/nRgPAfBDmMpZtUIbRcsi2GsfSD2QYyd2OcdmyZSSwdu1apuXk5GB16v4bak0yX0imyIUEgwNovFTglhMZGcm0srIy43zAVUxuTLbW4xn17Fci23wly9dngUummrTaixcvMpOtW7fiiBwQpqKYU9efHuxDJE5hC9wvL9TW1RLg+PHjPGTQ8wsLC4WpDC5Y5UR4k5qKMSLT6lqeAiX0nuAaMmSI9sMPP9CZM2foyJEj9O677wpTVIuTjidNp0HibvttoH9E5OMqbWKkSaNSlojldoLF7TEP+nUEmKI62y1kOBINbVaNarcI0PuGGUlHyfYvLHg7/jhFSFYqZh0P8KHSptd5ksOPU3tvqAEUot/hFmOIYJLp87wGe9Dwm95eg5xa/R8G6d8U5EcFhwAAAABJRU5ErkJggg==">
+
+            <style>
+        
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0;font-size:2em}mark{color:#000;background:#ff0}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}
+
+html, body  {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #F9F9F9;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.header {
+    background-color: #222;
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+}
+.header h1 {
+    color: #FFF;
+    font-weight: normal;
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 10px 8px;
+    word-break: break-all;
+}
+
+a.doc {
+    color: #FFF;
+    text-decoration: none;
+    margin: auto;
+    margin-right: 10px;
+}
+
+a.doc:hover {
+    text-decoration: underline;
+}
+
+.source {
+    margin-top: 41px;
+}
+
+.source li code {
+    color: #555;
+}
+
+.source li.selected {
+    background: rgba(255, 255, 153, 0.5);
+}
+
+.anchor {
+    position: relative;
+    display: inline-block;
+    top: -7em;
+    visibility: hidden;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="header">
+    <h1>vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php <small>line 145</small></h1>
+    <a class="doc" href="https://symfony.com/doc/3.4.15/reference/configuration/framework.html#ide" rel="help">Open in your IDE?</a>
+</div>
+<div class="source">
+    <ol start="1"><li><a class="anchor" name="line1"></a><code><span style="color: #0000BB">&lt;?php</span></span></code></li>
+<li><a class="anchor" name="line2"></a><code><span style="color: #0000BB"></span><span style="color: #FF8000">/*</span></span></code></li>
+<li><a class="anchor" name="line3"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;THIS&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;BY&nbsp;THE&nbsp;COPYRIGHT&nbsp;HOLDERS&nbsp;AND&nbsp;CONTRIBUTORS</span></span></code></li>
+<li><a class="anchor" name="line4"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;"AS&nbsp;IS"&nbsp;AND&nbsp;ANY&nbsp;EXPRESS&nbsp;OR&nbsp;IMPLIED&nbsp;WARRANTIES,&nbsp;INCLUDING,&nbsp;BUT&nbsp;NOT</span></span></code></li>
+<li><a class="anchor" name="line5"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;LIMITED&nbsp;TO,&nbsp;THE&nbsp;IMPLIED&nbsp;WARRANTIES&nbsp;OF&nbsp;MERCHANTABILITY&nbsp;AND&nbsp;FITNESS&nbsp;FOR</span></span></code></li>
+<li><a class="anchor" name="line6"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE&nbsp;ARE&nbsp;DISCLAIMED.&nbsp;IN&nbsp;NO&nbsp;EVENT&nbsp;SHALL&nbsp;THE&nbsp;COPYRIGHT</span></span></code></li>
+<li><a class="anchor" name="line7"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;OWNER&nbsp;OR&nbsp;CONTRIBUTORS&nbsp;BE&nbsp;LIABLE&nbsp;FOR&nbsp;ANY&nbsp;DIRECT,&nbsp;INDIRECT,&nbsp;INCIDENTAL,</span></span></code></li>
+<li><a class="anchor" name="line8"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;SPECIAL,&nbsp;EXEMPLARY,&nbsp;OR&nbsp;CONSEQUENTIAL&nbsp;DAMAGES&nbsp;(INCLUDING,&nbsp;BUT&nbsp;NOT</span></span></code></li>
+<li><a class="anchor" name="line9"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;LIMITED&nbsp;TO,&nbsp;PROCUREMENT&nbsp;OF&nbsp;SUBSTITUTE&nbsp;GOODS&nbsp;OR&nbsp;SERVICES;&nbsp;LOSS&nbsp;OF&nbsp;USE,</span></span></code></li>
+<li><a class="anchor" name="line10"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;DATA,&nbsp;OR&nbsp;PROFITS;&nbsp;OR&nbsp;BUSINESS&nbsp;INTERRUPTION)&nbsp;HOWEVER&nbsp;CAUSED&nbsp;AND&nbsp;ON&nbsp;ANY</span></span></code></li>
+<li><a class="anchor" name="line11"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;THEORY&nbsp;OF&nbsp;LIABILITY,&nbsp;WHETHER&nbsp;IN&nbsp;CONTRACT,&nbsp;STRICT&nbsp;LIABILITY,&nbsp;OR&nbsp;TORT</span></span></code></li>
+<li><a class="anchor" name="line12"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;(INCLUDING&nbsp;NEGLIGENCE&nbsp;OR&nbsp;OTHERWISE)&nbsp;ARISING&nbsp;IN&nbsp;ANY&nbsp;WAY&nbsp;OUT&nbsp;OF&nbsp;THE&nbsp;USE</span></span></code></li>
+<li><a class="anchor" name="line13"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;OF&nbsp;THIS&nbsp;SOFTWARE,&nbsp;EVEN&nbsp;IF&nbsp;ADVISED&nbsp;OF&nbsp;THE&nbsp;POSSIBILITY&nbsp;OF&nbsp;SUCH&nbsp;DAMAGE.</span></span></code></li>
+<li><a class="anchor" name="line14"></a><code><span style="color: #FF8000">&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line15"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;This&nbsp;software&nbsp;consists&nbsp;of&nbsp;voluntary&nbsp;contributions&nbsp;made&nbsp;by&nbsp;many&nbsp;individuals</span></span></code></li>
+<li><a class="anchor" name="line16"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;and&nbsp;is&nbsp;licensed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license.&nbsp;For&nbsp;more&nbsp;information,&nbsp;see</span></span></code></li>
+<li><a class="anchor" name="line17"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;&lt;http://www.doctrine-project.org&gt;.</span></span></code></li>
+<li><a class="anchor" name="line18"></a><code><span style="color: #FF8000">&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line19"></a><code><span style="color: #FF8000"></span></span></code></li>
+<li><a class="anchor" name="line20"></a><code><span style="color: #FF8000"></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Doctrine</span><span style="color: #007700">\</span><span style="color: #0000BB">Common</span><span style="color: #007700">\</span><span style="color: #0000BB">Annotations</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line21"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line22"></a><code><span style="color: #007700"></span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line23"></a><code><span style="color: #FF8000">&nbsp;*&nbsp;AnnotationRegistry.</span></span></code></li>
+<li><a class="anchor" name="line24"></a><code><span style="color: #FF8000">&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line25"></a><code><span style="color: #FF8000"></span><span style="color: #007700">final&nbsp;class&nbsp;</span><span style="color: #0000BB">AnnotationRegistry</span></span></code></li>
+<li><a class="anchor" name="line26"></a><code><span style="color: #0000BB"></span><span style="color: #007700">{</span></span></code></li>
+<li><a class="anchor" name="line27"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line28"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;A&nbsp;map&nbsp;of&nbsp;namespaces&nbsp;to&nbsp;use&nbsp;for&nbsp;autoloading&nbsp;purposes&nbsp;based&nbsp;on&nbsp;a&nbsp;PSR-0&nbsp;convention.</span></span></code></li>
+<li><a class="anchor" name="line29"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line30"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Contains&nbsp;the&nbsp;namespace&nbsp;as&nbsp;key&nbsp;and&nbsp;an&nbsp;array&nbsp;of&nbsp;directories&nbsp;as&nbsp;value.&nbsp;If&nbsp;the&nbsp;value&nbsp;is&nbsp;NULL</span></span></code></li>
+<li><a class="anchor" name="line31"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;the&nbsp;include&nbsp;path&nbsp;is&nbsp;used&nbsp;for&nbsp;checking&nbsp;for&nbsp;the&nbsp;corresponding&nbsp;file.</span></span></code></li>
+<li><a class="anchor" name="line32"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line33"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;autoloading&nbsp;mechanism&nbsp;does&nbsp;not&nbsp;utilize&nbsp;the&nbsp;PHP&nbsp;autoloading&nbsp;but&nbsp;implements&nbsp;autoloading&nbsp;on&nbsp;its&nbsp;own.</span></span></code></li>
+<li><a class="anchor" name="line34"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line35"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;array</span></span></code></li>
+<li><a class="anchor" name="line36"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line37"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;private&nbsp;</span><span style="color: #0000BB">$autoloadNamespaces&nbsp;</span><span style="color: #007700">=&nbsp;array();</span></span></code></li>
+<li><a class="anchor" name="line38"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line39"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line40"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;A&nbsp;map&nbsp;of&nbsp;autoloader&nbsp;callables.</span></span></code></li>
+<li><a class="anchor" name="line41"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line42"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;array</span></span></code></li>
+<li><a class="anchor" name="line43"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line44"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;private&nbsp;</span><span style="color: #0000BB">$loaders&nbsp;</span><span style="color: #007700">=&nbsp;array();</span></span></code></li>
+<li><a class="anchor" name="line45"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line46"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line47"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;void</span></span></code></li>
+<li><a class="anchor" name="line48"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line49"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">reset</span><span style="color: #007700">()</span></span></code></li>
+<li><a class="anchor" name="line50"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line51"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$autoloadNamespaces&nbsp;</span><span style="color: #007700">=&nbsp;array();</span></span></code></li>
+<li><a class="anchor" name="line52"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$loaders&nbsp;</span><span style="color: #007700">=&nbsp;array();</span></span></code></li>
+<li><a class="anchor" name="line53"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line54"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line55"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line56"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Registers&nbsp;file.</span></span></code></li>
+<li><a class="anchor" name="line57"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line58"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;string&nbsp;$file</span></span></code></li>
+<li><a class="anchor" name="line59"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line60"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;void</span></span></code></li>
+<li><a class="anchor" name="line61"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line62"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line63"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line64"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require_once&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line65"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line66"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line67"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line68"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Adds&nbsp;a&nbsp;namespace&nbsp;with&nbsp;one&nbsp;or&nbsp;many&nbsp;directories&nbsp;to&nbsp;look&nbsp;for&nbsp;files&nbsp;or&nbsp;null&nbsp;for&nbsp;the&nbsp;include&nbsp;path.</span></span></code></li>
+<li><a class="anchor" name="line69"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line70"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Loading&nbsp;of&nbsp;this&nbsp;namespaces&nbsp;will&nbsp;be&nbsp;done&nbsp;with&nbsp;a&nbsp;PSR-0&nbsp;namespace&nbsp;loading&nbsp;algorithm.</span></span></code></li>
+<li><a class="anchor" name="line71"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line72"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$namespace</span></span></code></li>
+<li><a class="anchor" name="line73"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;string|array|null&nbsp;$dirs</span></span></code></li>
+<li><a class="anchor" name="line74"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line75"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;void</span></span></code></li>
+<li><a class="anchor" name="line76"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line77"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerAutoloadNamespace</span><span style="color: #007700">(</span><span style="color: #0000BB">$namespace</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dirs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line78"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line79"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$autoloadNamespaces</span><span style="color: #007700">[</span><span style="color: #0000BB">$namespace</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$dirs</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line80"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line81"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line82"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line83"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Registers&nbsp;multiple&nbsp;namespaces.</span></span></code></li>
+<li><a class="anchor" name="line84"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line85"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Loading&nbsp;of&nbsp;this&nbsp;namespaces&nbsp;will&nbsp;be&nbsp;done&nbsp;with&nbsp;a&nbsp;PSR-0&nbsp;namespace&nbsp;loading&nbsp;algorithm.</span></span></code></li>
+<li><a class="anchor" name="line86"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line87"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;array&nbsp;$namespaces</span></span></code></li>
+<li><a class="anchor" name="line88"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line89"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;void</span></span></code></li>
+<li><a class="anchor" name="line90"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line91"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerAutoloadNamespaces</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$namespaces</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line92"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line93"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$autoloadNamespaces&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$autoloadNamespaces</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$namespaces</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line94"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line95"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line96"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line97"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Registers&nbsp;an&nbsp;autoloading&nbsp;callable&nbsp;for&nbsp;annotations,&nbsp;much&nbsp;like&nbsp;spl_autoload_register().</span></span></code></li>
+<li><a class="anchor" name="line98"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line99"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;NOTE:&nbsp;These&nbsp;class&nbsp;loaders&nbsp;HAVE&nbsp;to&nbsp;be&nbsp;silent&nbsp;when&nbsp;a&nbsp;class&nbsp;was&nbsp;not&nbsp;found!</span></span></code></li>
+<li><a class="anchor" name="line100"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;IMPORTANT:&nbsp;Loaders&nbsp;have&nbsp;to&nbsp;return&nbsp;true&nbsp;if&nbsp;they&nbsp;loaded&nbsp;a&nbsp;class&nbsp;that&nbsp;could&nbsp;contain&nbsp;the&nbsp;searched&nbsp;annotation&nbsp;class.</span></span></code></li>
+<li><a class="anchor" name="line101"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line102"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;callable&nbsp;$callable</span></span></code></li>
+<li><a class="anchor" name="line103"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line104"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;void</span></span></code></li>
+<li><a class="anchor" name="line105"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line106"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;\InvalidArgumentException</span></span></code></li>
+<li><a class="anchor" name="line107"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line108"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerLoader</span><span style="color: #007700">(</span><span style="color: #0000BB">$callable</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line109"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line110"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(</span><span style="color: #0000BB">$callable</span><span style="color: #007700">))&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line111"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;\</span><span style="color: #0000BB">InvalidArgumentException</span><span style="color: #007700">(</span><span style="color: #DD0000">"A&nbsp;callable&nbsp;is&nbsp;expected&nbsp;in&nbsp;AnnotationRegistry::registerLoader()."</span><span style="color: #007700">);</span></span></code></li>
+<li><a class="anchor" name="line112"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line113"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$loaders</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$callable</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line114"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line115"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line116"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**</span></span></code></li>
+<li><a class="anchor" name="line117"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Autoloads&nbsp;an&nbsp;annotation&nbsp;class&nbsp;silently.</span></span></code></li>
+<li><a class="anchor" name="line118"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line119"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;string&nbsp;$class</span></span></code></li>
+<li><a class="anchor" name="line120"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></span></code></li>
+<li><a class="anchor" name="line121"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;boolean</span></span></code></li>
+<li><a class="anchor" name="line122"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></code></li>
+<li><a class="anchor" name="line123"></a><code><span style="color: #FF8000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">loadAnnotationClass</span><span style="color: #007700">(</span><span style="color: #0000BB">$class</span><span style="color: #007700">)</span></span></code></li>
+<li><a class="anchor" name="line124"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line125"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$autoloadNamespaces&nbsp;</span><span style="color: #007700">AS&nbsp;</span><span style="color: #0000BB">$namespace&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$dirs</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line126"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$class</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$namespace</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line127"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"\\"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">".php"</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line128"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$dirs&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line129"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_resolve_include_path</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line130"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require&nbsp;</span><span style="color: #0000BB">$path</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line131"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line132"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line133"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line134"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach((array)</span><span style="color: #0000BB">$dirs&nbsp;</span><span style="color: #007700">AS&nbsp;</span><span style="color: #0000BB">$dir</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line135"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">DIRECTORY_SEPARATOR&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line136"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require&nbsp;</span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">DIRECTORY_SEPARATOR&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line137"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line138"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line139"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line140"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line141"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line142"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line143"></a><code><span style="color: #007700"></span></span></code></li>
+<li><a class="anchor" name="line144"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$loaders&nbsp;</span><span style="color: #007700">AS&nbsp;</span><span style="color: #0000BB">$loader</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li class="selected"><a class="anchor" name="line145"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #0000BB">$loader</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;{</span></span></code></li>
+<li><a class="anchor" name="line146"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line147"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line148"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line149"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;</span></span></code></li>
+<li><a class="anchor" name="line150"></a><code><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span></code></li>
+<li><a class="anchor" name="line151"></a><code><span style="color: #007700">}</span></span></code></li>
+<li><a class="anchor" name="line152"></a><code><span style="color: #007700"></span>
+</span></code></li></ol>
+</div>
+    </body>
+</html>
